@@ -1,0 +1,19 @@
+{
+    "internal-dpl-clock": "",
+    "internal-dpl-aod-reader": {
+        "time-limit": "0",
+        "orbit-offset-enumeration": "0",
+        "orbit-multiplier-enumeration": "0",
+        "start-value-enumeration": "0",
+        "end-value-enumeration": "-1",
+        "step-value-enumeration": "1",
+        "aod-file": "flatTable_pp1_MasspropSV.root",
+        "aod-reader-json": "readerConfiguration_dileptons.json"
+    },
+    "dilepton-reader": {
+        "ptCut": "0.5",
+        "chi2Cut" : "20.0"
+    },
+    "internal-dpl-aod-global-analysis-file-sink": "",
+    "internal-dpl-aod-writer": ""
+}

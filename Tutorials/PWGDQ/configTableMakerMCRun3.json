@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "AO2D.root"
+        "aod-file": "AO2D_MC_1.root"
     },
     "internal-dpl-aod-spawner": "",
     "internal-dpl-aod-index-builder": "",
@@ -208,12 +208,12 @@
         "processBarrelOnlyWithCov": "false",
         "processBarrelOnlyWithDalitzBits": "false",
         "processMuonOnly": "false",
-        "processMuonOnlyWithCov": "false",
+        "processMuonOnlyWithCov": "true",
         "processMuonOnlyWithCent": "false",
         "processAmbiguousMuonOnly": "false",
         "processAmbiguousMuonOnlyWithCov": "false",
         "processAmbiguousBarrelOnly": "false",
-        "processOnlyBCs": "true"
+        "processOnlyBCs": "false"
     },
     "internal-dpl-aod-global-analysis-file-sink": "",
     "internal-dpl-aod-writer": ""

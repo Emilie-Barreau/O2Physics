@@ -1027,7 +1027,9 @@ struct AnalysisSameEventPairing {
                         -999., -999., -999., -999.,
                         -999., -999., -999., -999.,
                         -999., -999., -999., -999.,
-                        t1.isAmbiguous(), t2.isAmbiguous());
+                        t1.isAmbiguous(), t2.isAmbiguous(),
+                        VarManager::fgValues[VarManager::kVertexingPz],
+                        VarManager::fgValues[VarManager::kVertexingSV]);
         }
       }
 

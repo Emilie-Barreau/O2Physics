@@ -11,9 +11,9 @@
         },
         "cutDirMl": {
             "values": [
-                "1",
                 "2",
-                "2"
+                "2",
+                "0"
             ]
         },
         "cutsMl": {
@@ -29,14 +29,14 @@
                 [
                     "0.5",
                     "0.5",
-                    "0.5"
+                    "0.05"
                 ]
             ]
         },
         "nClassesMl": "3",
         "onnxFileNames": {
             "values": [
-                "ModelHandler_onnx_DsToKKPi.onnx"
+                "model_onnx.onnx"
             ]
         },
         "loadModelsFromCCDB": "false",
@@ -52,7 +52,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "AO2D.root"
+        "aod-file": "AO2D_MC_Ds.root"
     },
     "hf-track-index-skim-creator-cascades": {
         "maxDZIni": "4",

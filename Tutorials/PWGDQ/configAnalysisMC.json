@@ -7,8 +7,8 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "reducedAod_mc.root",
-        "aod-reader-json": "configs/readerConfiguration_reducedEventMC.json"
+        "aod-file": "reducedAod.root",
+        "aod-reader-json": "readerConfiguration_dileptonMC.json"
     },
     "internal-dpl-injected-dummy-sink": "",
     "analysis-event-selection": {
@@ -21,33 +21,34 @@
         "cfgTrackCuts": "jpsiO2MCdebugCuts2",
         "cfgTrackMCSignals": "eFromJpsi,eFromLMeeLF",
         "cfgQA": "true",
-        "processSkimmed": "true",
-        "processDummy": "false"
-    },
-    "analysis-muon-selection": {
-        "cfgMuonCuts": "muonQualityCuts",
-        "cfgMuonMCSignals": "muFromJpsi",
-        "cfgQA": "true",
         "processSkimmed": "false",
         "processDummy": "true"
     },
+    "analysis-muon-selection": {
+        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgMuonMCSignals": "muFromJpsi",
+        "cfgQA": "true",
+        "cfgAddMuonHistogram": "muon",
+        "processSkimmed": "true",
+        "processDummy": "false"
+    },
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts2",
-        "cfgMuonCuts": "muonQualityCuts",
-        "cfgBarrelMCRecSignals": "eeFromJpsi,eeFromLMeeLF,dielectron",
+        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgBarrelMCRecSignals": "mumuFromJpsi",
         "cfgBarrelMCGenSignals": "Jpsi",
-        "cfgFlatTables": "false",
+        "cfgFlatTables": "true",
         "cfgUseKFVertexing": "false",
         "cfgUseRemoteField": "false",
         "cfgMagField": "5.0",
         "ccdburl": "http://alice-ccdb.cern.ch",
         "grpmagPath": "GLO/Config/GRPMagField",
         "cfgUseAbsDCA": "false",
-        "cfgPropToPCA": "false",
-        "processDecayToEESkimmed": "true",
+        "cfgPropToPCA": "true",
+        "processDecayToEESkimmed": "false",
         "processDecayToEEVertexingSkimmed": "false",
         "processDecayToMuMuSkimmed": "false",
-        "processDecayToMuMuVertexingSkimmed": "false",
+        "processDecayToMuMuVertexingSkimmed": "true",
         "processDummy": "false"
     },
     "analysis-dilepton-track": {
