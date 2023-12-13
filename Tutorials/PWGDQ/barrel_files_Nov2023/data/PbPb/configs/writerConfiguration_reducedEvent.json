@@ -1,0 +1,31 @@
+{
+  "OutputDirector": {
+    "debugmode": true,
+    "resfile": "reducedAod",
+    "resfilemode": "RECREATE",
+    "ntfmerge": 1,
+    "OutputDescriptors": [
+      {
+        "table": "AOD/REDUCEDEVENT/0"
+      },
+      {
+        "table": "AOD/REEXTENDED/0"
+      },
+      {
+        "table": "AOD/REVTXCOV/0"
+      },
+      {
+        "table": "AOD/REDUCEDTRACK/0"
+      },
+      {
+        "table": "AOD/RTBARREL/0"
+      },
+      {
+        "table": "AOD/RTBARRELPID/0"
+      },
+      {
+        "table": "AOD/RTBARRELCOV/0"
+      }
+    ]
+  }
+}

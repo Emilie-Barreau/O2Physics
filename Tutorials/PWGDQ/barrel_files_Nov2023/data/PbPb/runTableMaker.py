@@ -16,11 +16,10 @@ parser.add_argument('--add_fdd_conv', help="Add the fdd converter", action="stor
 parser.add_argument('--add_track_prop', help="Add track propagation to the innermost layer (TPC or ITS)", action="store_true")
 parser.add_argument("--add_weakdecay_ind", help = "Add Converts V0 and cascade version 000 to 001", action = "store_true")
 parser.add_argument("--add_col_conv", help = "Add the converter from collision to collision+001", action = "store_true")
-parser.add_argument('--add_tracks_extra', help="Add track propagation to the innermost layer (TPC or ITS)", action="store_true")
 extrargs = parser.parse_args()
 
-commonDeps = ["o2-analysis-timestamp", "o2-analysis-event-selection", "o2-analysis-multiplicity-table"]
-barrelDeps = ["o2-analysis-trackselection", "o2-analysis-trackextension","o2-analysis-pid-tof-base", "o2-analysis-pid-tof", "o2-analysis-pid-tof-full", "o2-analysis-pid-tof-beta", "o2-analysis-pid-tpc-full"]
+commonDeps = ["o2-analysis-timestamp", "o2-analysis-event-selection", "o2-analysis-multiplicity-table", "o2-analysis-tracks-extra-converter", "o2-analysis-track-propagation"]
+barrelDeps = ["o2-analysis-trackselection","o2-analysis-pid-tof-base", "o2-analysis-pid-tof", "o2-analysis-pid-tof-full", "o2-analysis-pid-tof-beta", "o2-analysis-pid-tpc-full", "o2-analysis-pid-tpc-base", "o2-analysis-ft0-corrected-table"]
 #barrelDeps = ["o2-analysis-trackselection","o2-analysis-pid-tof-base", "o2-analysis-pid-tof", "o2-analysis-pid-tof-full", "o2-analysis-pid-tof-beta", "o2-analysis-pid-tpc-full"]
 muonDeps = ["o2-analysis-fwdtrackextension"]
 specificDeps = {
@@ -254,9 +253,6 @@ if extrargs.add_weakdecay_ind:
 
 if extrargs.add_col_conv:
   commandToRun += " | o2-analysis-collision-converter --configuration json://" + updatedConfigFileName + " -b"
-
-if extrargs.add_tracks_extra:
-  commandToRun += " | o2-analysis-tracks-extra-converter --configuration json://" + updatedConfigFileName + " -b"
 
 print("====================================================================================================================")
 print("Command to run:")

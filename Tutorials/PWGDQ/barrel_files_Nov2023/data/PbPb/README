@@ -1,0 +1,50 @@
+1. The version of O2Physics used is O2Physics::daily-20231102-0100-1
+	/cvmfs/alice.cern.ch/bin/alienv enter VO_ALICE@O2Physics::daily-20231102-0100-1
+
+2. You need CCDB access for the calibration file
+	alien.py
+   To provide your password for the alien.py connection
+   exit
+
+3. Access to the tutorial of the central barrel file fold for pp skimmed tree
+        cd DQ-O2Handson-Nov23/CentralBarrel/PbPb
+
+4. How to run table maker
+	First option:
+                ./runTableMaker.sh
+	Second option:
+		python3 runTableMaker.py configs/configTableMakerDataRun3.json -runData
+	mv reducedAod.root input/
+
+5. How to run table reader
+	First option:
+		./runTableReader.sh
+	Second option:
+		python3 runAnalysis.py configs/configTableReaderDataRun3.json -runData
+	
+6. Check the output file AnalysisResults.root
+	
+
+Notes:
+	
+1. How to modify the input of TableMaker 
+	line 10 "aod-file": "@input_DataAOD_PbPb.txt" 
+
+2. How to modify the cuts of event and track selection in TableMaker
+	line 264	"cfgEventCuts": "eventStandardNoINT7",
+	line 265         "cfgBarrelTrackCuts": "Jpsi_TPCPost_calib_debug4",
+
+3. How to config the histograms of the event and track
+	line 267         "cfgAddEventHistogram": "Event,vtxPbPb,cent,mult",
+	line 268         "cfgAddTrackHistogram": "kine,map,itsvspt,tpcvspt,tpcpid,dca_fine,runbyrun",
+
+4. How to modify the input of TableMaker
+	line 10         "aod-file": "@input_DataReducedAOD_PbPb.txt"
+
+5. How to modify the cuts of event and track selection in TableReader
+	line 22         "cfgTrackCuts": "Jpsi_TPCPost_calib_debug4,Jpsi_TPCPost_calib_debug6"
+	line 40         "cfgEventCuts": "eventStandardNoINT7"
+
+6. How to config the histograms of the event and track
+	line 15         "cfgAddTrackHistogram": "tpcpid,track,dca,kine,its"
+	line 37         "cfgAddEventHistogram": "vtxpp,mult"
