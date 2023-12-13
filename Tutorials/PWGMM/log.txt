@@ -1,0 +1,482 @@
+[INFO] Initialising O2 Data Processing Layer. Driver PID: 7990.
+[INFO] Driver listening on port: 16070
+[INFO] Rate limiting set up at 500MB distributed over 1 readers
+[INFO] O2 Data Processing Layer initialised. We brake for nobody.
+[INFO] Optimised build. O2DEBUG / LOG(debug) / LOGF(debug) / assert statement will not be shown.
+[INFO] Redeployment of configuration asked.
+[INFO] Starting internal-dpl-clock on pid 7993
+[INFO] Starting internal-dpl-aod-reader on pid 7994
+[INFO] Starting internal-dpl-aod-spawner on pid 7995
+[INFO] Starting bc-converter on pid 7996
+[INFO] Starting timestamp-task on pid 7997
+[INFO] Starting tracks-extra-converter on pid 7998
+[INFO] Starting track-propagation on pid 7999
+[INFO] Starting tracks-extra-spawner on pid 8000
+[INFO] Starting my-example-task on pid 8001
+[INFO] Starting internal-dpl-aod-writer on pid 8002
+[INFO] Starting internal-dpl-aod-global-analysis-file-sink on pid 8003
+[INFO] Starting internal-dpl-injected-dummy-sink on pid 8004
+[INFO] Redeployment of configuration done.
+[7996:bc-converter]: [INFO] Instrumenting crash signals
+[7996:bc-converter]: [INFO] Spawing new device bc-converter in process with pid 7996
+[7996:bc-converter]: [15:29:44][INFO] 
+[7996:bc-converter]:       ______      _    _______  _________ 
+[7996:bc-converter]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7996:bc-converter]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7996:bc-converter]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7996:bc-converter]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7996:bc-converter]: 
+[7996:bc-converter]: [15:29:44][STATE] Starting FairMQ state machine --> IDLE
+[7996:bc-converter]: [15:29:44][STATE] IDLE ---> INITIALIZING DEVICE
+[7996:bc-converter]: [15:29:44][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7996:bc-converter]: [15:29:44][STATE] INITIALIZED ---> BINDING
+[7996:bc-converter]: [15:29:44][STATE] BINDING ---> BOUND
+[7996:bc-converter]: [15:29:44][STATE] BOUND ---> CONNECTING
+[7996:bc-converter]: [15:29:44][STATE] CONNECTING ---> DEVICE READY
+[7996:bc-converter]: [15:29:44][STATE] DEVICE READY ---> INITIALIZING TASK
+[7996:bc-converter]: [15:29:44][STATE] INITIALIZING TASK ---> READY
+[7996:bc-converter]: [15:29:44][STATE] READY ---> RUNNING
+[7996:bc-converter]: [15:29:44][INFO] fair::mq::Device running...
+[7996:bc-converter]: [15:29:44][INFO] LHCPeriod is not available, using current month NOV
+[7996:bc-converter]: [15:29:44][INFO] Correctly handshaken websocket connection.
+[INFO] Controller for internal-dpl-aod-reader not yet available.
+[7998:tracks-extra-converter]: [INFO] Instrumenting crash signals
+[8000:tracks-extra-spawner]: [INFO] Instrumenting crash signals
+[7998:tracks-extra-converter]: [INFO] Spawing new device tracks-extra-converter in process with pid 7998
+[7998:tracks-extra-converter]: [15:29:45][INFO] 
+[7998:tracks-extra-converter]:       ______      _    _______  _________ 
+[7998:tracks-extra-converter]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7998:tracks-extra-converter]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7998:tracks-extra-converter]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7998:tracks-extra-converter]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7998:tracks-extra-converter]: 
+[7998:tracks-extra-converter]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[7995:internal-dpl-aod-spawner]: [INFO] Instrumenting crash signals
+[8000:tracks-extra-spawner]: [INFO] Spawing new device tracks-extra-spawner in process with pid 8000
+[8000:tracks-extra-spawner]: [15:29:45][INFO] 
+[8000:tracks-extra-spawner]:       ______      _    _______  _________ 
+[8000:tracks-extra-spawner]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[8000:tracks-extra-spawner]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[8000:tracks-extra-spawner]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[8000:tracks-extra-spawner]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[8000:tracks-extra-spawner]: 
+[8000:tracks-extra-spawner]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[7993:internal-dpl-clock]: [INFO] Instrumenting crash signals
+[7998:tracks-extra-converter]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7998:tracks-extra-converter]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7998:tracks-extra-converter]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[8000:tracks-extra-spawner]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7998:tracks-extra-converter]: [15:29:45][STATE] BINDING ---> BOUND
+[7998:tracks-extra-converter]: [15:29:45][STATE] BOUND ---> CONNECTING
+[8000:tracks-extra-spawner]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[8000:tracks-extra-spawner]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[7998:tracks-extra-converter]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[7998:tracks-extra-converter]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[7995:internal-dpl-aod-spawner]: [INFO] Spawing new device internal-dpl-aod-spawner in process with pid 7995
+[7998:tracks-extra-converter]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[7998:tracks-extra-converter]: [15:29:45][STATE] READY ---> RUNNING
+[7998:tracks-extra-converter]: [15:29:45][INFO] fair::mq::Device running...
+[7998:tracks-extra-converter]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[8000:tracks-extra-spawner]: [15:29:45][STATE] BINDING ---> BOUND
+[8000:tracks-extra-spawner]: [15:29:45][STATE] BOUND ---> CONNECTING
+[7998:tracks-extra-converter]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[7995:internal-dpl-aod-spawner]: [15:29:45][INFO] 
+[7995:internal-dpl-aod-spawner]:       ______      _    _______  _________ 
+[7995:internal-dpl-aod-spawner]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7995:internal-dpl-aod-spawner]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7995:internal-dpl-aod-spawner]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7995:internal-dpl-aod-spawner]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7995:internal-dpl-aod-spawner]: 
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[8000:tracks-extra-spawner]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[8000:tracks-extra-spawner]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[8000:tracks-extra-spawner]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[8000:tracks-extra-spawner]: [15:29:45][STATE] READY ---> RUNNING
+[8000:tracks-extra-spawner]: [15:29:45][INFO] fair::mq::Device running...
+[8000:tracks-extra-spawner]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[8000:tracks-extra-spawner]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[7994:internal-dpl-aod-reader]: [INFO] Instrumenting crash signals
+[7993:internal-dpl-clock]: [INFO] Spawing new device internal-dpl-clock in process with pid 7993
+[7993:internal-dpl-clock]: [15:29:45][INFO] 
+[7993:internal-dpl-clock]:       ______      _    _______  _________ 
+[7993:internal-dpl-clock]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7993:internal-dpl-clock]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7993:internal-dpl-clock]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7993:internal-dpl-clock]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7993:internal-dpl-clock]: 
+[7993:internal-dpl-clock]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[7999:track-propagation]: [INFO] Instrumenting crash signals
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7994:internal-dpl-aod-reader]: [INFO] Spawing new device internal-dpl-aod-reader in process with pid 7994
+[7993:internal-dpl-clock]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[7994:internal-dpl-aod-reader]: [15:29:45][INFO] 
+[7994:internal-dpl-aod-reader]:       ______      _    _______  _________ 
+[7994:internal-dpl-aod-reader]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7994:internal-dpl-aod-reader]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7994:internal-dpl-aod-reader]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7994:internal-dpl-aod-reader]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7994:internal-dpl-aod-reader]: 
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[7993:internal-dpl-clock]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7993:internal-dpl-clock]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[7999:track-propagation]: [INFO] Spawing new device track-propagation in process with pid 7999
+[7999:track-propagation]: [15:29:45][INFO] 
+[7999:track-propagation]:       ______      _    _______  _________ 
+[7999:track-propagation]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7999:track-propagation]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7999:track-propagation]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7999:track-propagation]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7999:track-propagation]: 
+[7999:track-propagation]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[7993:internal-dpl-clock]: [15:29:45][STATE] BINDING ---> BOUND
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] BINDING ---> BOUND
+[7993:internal-dpl-clock]: [15:29:45][STATE] BOUND ---> CONNECTING
+[7993:internal-dpl-clock]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] BOUND ---> CONNECTING
+[7993:internal-dpl-clock]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[7993:internal-dpl-clock]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[7993:internal-dpl-clock]: [15:29:45][STATE] READY ---> RUNNING
+[7993:internal-dpl-clock]: [15:29:45][INFO] fair::mq::Device running...
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7993:internal-dpl-clock]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[7993:internal-dpl-clock]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[7999:track-propagation]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[7995:internal-dpl-aod-spawner]: [15:29:45][STATE] READY ---> RUNNING
+[7995:internal-dpl-aod-spawner]: [15:29:45][INFO] fair::mq::Device running...
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[7995:internal-dpl-aod-spawner]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[7995:internal-dpl-aod-spawner]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[7997:timestamp-task]: [INFO] Instrumenting crash signals
+[7999:track-propagation]: [15:29:45][INFO] Init CcdApi with UserAgentID: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-LHRprJ, Host: http://alice-ccdb.cern.ch/
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] BINDING ---> BOUND
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] BOUND ---> CONNECTING
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[7999:track-propagation]: [15:29:45][INFO] Init CcdApi with UserAgentID: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-LHRprJ, Host: http://alice-ccdb.cern.ch
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[7994:internal-dpl-aod-reader]: [15:29:45][STATE] READY ---> RUNNING
+[7994:internal-dpl-aod-reader]: [15:29:45][INFO] fair::mq::Device running...
+[7994:internal-dpl-aod-reader]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[INFO] Controller for internal-dpl-aod-reader now available.
+[7994:internal-dpl-aod-reader]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[7997:timestamp-task]: [INFO] Spawing new device timestamp-task in process with pid 7997
+[7997:timestamp-task]: [15:29:45][INFO] 
+[7997:timestamp-task]:       ______      _    _______  _________ 
+[7997:timestamp-task]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[7997:timestamp-task]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[7997:timestamp-task]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[7997:timestamp-task]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[7997:timestamp-task]: 
+[7997:timestamp-task]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[7997:timestamp-task]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[7997:timestamp-task]: [15:29:45][INFO] Init CcdApi with UserAgentID: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-PPL5ZN, Host: http://alice-ccdb.cern.ch/
+[7997:timestamp-task]: [15:29:45][INFO] Initializing TimestampTask
+[7997:timestamp-task]: [15:29:45][INFO] Init CcdApi with UserAgentID: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-PPL5ZN, Host: http://alice-ccdb.cern.ch
+[7997:timestamp-task]: [15:29:45][INFO] Init CcdApi with UserAgentID: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-LFPprH, Host: http://alice-ccdb.cern.ch
+[8001:my-example-task]: [INFO] Instrumenting crash signals
+[7997:timestamp-task]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7997:timestamp-task]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[7997:timestamp-task]: [15:29:45][STATE] BINDING ---> BOUND
+[7997:timestamp-task]: [15:29:45][STATE] BOUND ---> CONNECTING
+[7997:timestamp-task]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[7997:timestamp-task]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[7997:timestamp-task]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[7997:timestamp-task]: [15:29:45][STATE] READY ---> RUNNING
+[7997:timestamp-task]: [15:29:45][INFO] fair::mq::Device running...
+[7997:timestamp-task]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[7997:timestamp-task]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[8001:my-example-task]: [INFO] Spawing new device my-example-task in process with pid 8001
+[8001:my-example-task]: [15:29:45][INFO] 
+[8001:my-example-task]:       ______      _    _______  _________ 
+[8001:my-example-task]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[8001:my-example-task]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[8001:my-example-task]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[8001:my-example-task]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[8001:my-example-task]: 
+[8001:my-example-task]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[8001:my-example-task]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[8001:my-example-task]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[8001:my-example-task]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[8001:my-example-task]: [15:29:45][STATE] BINDING ---> BOUND
+[8001:my-example-task]: [15:29:45][STATE] BOUND ---> CONNECTING
+[8001:my-example-task]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[8001:my-example-task]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[8001:my-example-task]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[8001:my-example-task]: [15:29:45][STATE] READY ---> RUNNING
+[8001:my-example-task]: [15:29:45][INFO] fair::mq::Device running...
+[8001:my-example-task]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[8001:my-example-task]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[8002:internal-dpl-aod-writer]: [INFO] Instrumenting crash signals
+[8002:internal-dpl-aod-writer]: [INFO] Spawing new device internal-dpl-aod-writer in process with pid 8002
+[8002:internal-dpl-aod-writer]: [15:29:45][INFO] 
+[8002:internal-dpl-aod-writer]:       ______      _    _______  _________ 
+[8002:internal-dpl-aod-writer]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[8002:internal-dpl-aod-writer]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[8002:internal-dpl-aod-writer]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[8002:internal-dpl-aod-writer]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[8002:internal-dpl-aod-writer]: 
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[8004:internal-dpl-injected-dummy-sink]: [INFO] Instrumenting crash signals
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] BINDING ---> BOUND
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] BOUND ---> CONNECTING
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[8002:internal-dpl-aod-writer]: [15:29:45][STATE] READY ---> RUNNING
+[8002:internal-dpl-aod-writer]: [15:29:45][INFO] fair::mq::Device running...
+[8002:internal-dpl-aod-writer]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[8002:internal-dpl-aod-writer]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[8004:internal-dpl-injected-dummy-sink]: [INFO] Spawing new device internal-dpl-injected-dummy-sink in process with pid 8004
+[8003:internal-dpl-aod-global-analysis-file-sink]: [INFO] Instrumenting crash signals
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][INFO] 
+[8004:internal-dpl-injected-dummy-sink]:       ______      _    _______  _________ 
+[8004:internal-dpl-injected-dummy-sink]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[8004:internal-dpl-injected-dummy-sink]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[8004:internal-dpl-injected-dummy-sink]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[8004:internal-dpl-injected-dummy-sink]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[8004:internal-dpl-injected-dummy-sink]: 
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] BINDING ---> BOUND
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] BOUND ---> CONNECTING
+[8003:internal-dpl-aod-global-analysis-file-sink]: [INFO] Spawing new device internal-dpl-aod-global-analysis-file-sink in process with pid 8003
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][STATE] READY ---> RUNNING
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][INFO] fair::mq::Device running...
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][INFO] 
+[8003:internal-dpl-aod-global-analysis-file-sink]:       ______      _    _______  _________ 
+[8003:internal-dpl-aod-global-analysis-file-sink]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.8.0
+[8003:internal-dpl-aod-global-analysis-file-sink]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[8003:internal-dpl-aod-global-analysis-file-sink]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[8003:internal-dpl-aod-global-analysis-file-sink]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2023 GSI
+[8003:internal-dpl-aod-global-analysis-file-sink]: 
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] Starting FairMQ state machine --> IDLE
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[8004:internal-dpl-injected-dummy-sink]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] IDLE ---> INITIALIZING DEVICE
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] INITIALIZED ---> BINDING
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] BINDING ---> BOUND
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] BOUND ---> CONNECTING
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] CONNECTING ---> DEVICE READY
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] DEVICE READY ---> INITIALIZING TASK
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] INITIALIZING TASK ---> READY
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][STATE] READY ---> RUNNING
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][INFO] fair::mq::Device running...
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][INFO] LHCPeriod is not available, using current month NOV
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:45][INFO] Correctly handshaken websocket connection.
+[7995:internal-dpl-aod-spawner]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/cache.cc:50: Creating gandiva cache with capacity of 500
+[7995:internal-dpl-aod-spawner]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/engine.cc:112: Detected CPU Name : skylake
+[7995:internal-dpl-aod-spawner]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/engine.cc:113: Detected CPU Features: -avx512pf -tsxldtrk +cx16 +sahf -tbm -avx512ifma -sha +crc32 -fma4 -vpclmulqdq +prfchw +bmi2 -cldemote +fsgsbase -ptwrite -amx-tile -uintr -gfni +popcnt -widekl +aes -avx512bitalg -movdiri +xsaves -avx512er -avxvnni -avx512fp16 -avx512vnni -amx-bf16 -avx512vpopcntdq -pconfig -clwb -avx512f +xsavec -clzero -pku +mmx -lwp -rdpid -xop +rdseed -waitpkg -kl -movdir64b -sse4a -avx512bw +clflushopt +xsave -avx512vbmi2 +64bit -avx512vl -serialize -hreset +invpcid -avx512cd +avx -vaes -avx512bf16 +cx8 +fma -rtm +bmi -enqcmd +rdrnd -mwaitx +sse4.1 +sse4.2 +avx2 +fxsr -wbnoinvd +sse +lzcnt +pclmul -prefetchwt1 +f16c +ssse3 +sgx -shstk +cmov -avx512vbmi -amx-int8 +movbe -avx512vp2intersect +xsaveopt -avx512dq +sse2 +adx +sse3
+[7999:track-propagation]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[7999:track-propagation]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.62
+[7999:track-propagation]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.62
+[7999:track-propagation]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Param/MatLUT/09/60373/c3b9f9c3-48ad-11ee-87cc-2a010e0a0b16 in SE <ALICE::CERN::OCDB>
+[8000:tracks-extra-spawner]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/cache.cc:50: Creating gandiva cache with capacity of 500
+[8000:tracks-extra-spawner]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/engine.cc:112: Detected CPU Name : skylake
+[8000:tracks-extra-spawner]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/engine.cc:113: Detected CPU Features: -avx512pf -tsxldtrk +cx16 +sahf -tbm -avx512ifma -sha +crc32 -fma4 -vpclmulqdq +prfchw +bmi2 -cldemote +fsgsbase -ptwrite -amx-tile -uintr -gfni +popcnt -widekl +aes -avx512bitalg -movdiri +xsaves -avx512er -avxvnni -avx512fp16 -avx512vnni -amx-bf16 -avx512vpopcntdq -pconfig -clwb -avx512f +xsavec -clzero -pku +mmx -lwp -rdpid -xop +rdseed -waitpkg -kl -movdir64b -sse4a -avx512bw +clflushopt +xsave -avx512vbmi2 +64bit -avx512vl -serialize -hreset +invpcid -avx512cd +avx -vaes -avx512bf16 +cx8 +fma -rtm +bmi -enqcmd +rdrnd -mwaitx +sse4.1 +sse4.2 +avx2 +fxsr -wbnoinvd +sse +lzcnt +pclmul -prefetchwt1 +f16c +ssse3 +sgx -shstk +cmov -avx512vbmi -amx-int8 +movbe -avx512vp2intersect +xsaveopt -avx512dq +sse2 +adx +sse3
+[7994:internal-dpl-aod-reader]: [15:29:47][WARN] Timed out sending after 1s. Downstream backpressure detected on from_internal-dpl-aod-reader_to_track-propagation[0].
+[7999:track-propagation]: [15:29:47][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Param/MatLUT/1672531199000/c3b9f9c3-48ad-11ee-87cc-2a010e0a0b16 for 1699367385580 (retrieve, agent_id: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-LHRprJ), 
+[7999:track-propagation]: [15:29:47][INFO] Initializing voxel layer lookup
+[7999:track-propagation]: [15:29:47][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[7999:track-propagation]: [15:29:47][STATE] INITIALIZED ---> BINDING
+[7999:track-propagation]: [15:29:47][STATE] BINDING ---> BOUND
+[7999:track-propagation]: [15:29:47][STATE] BOUND ---> CONNECTING
+[7999:track-propagation]: [15:29:47][STATE] CONNECTING ---> DEVICE READY
+[7999:track-propagation]: [15:29:47][STATE] DEVICE READY ---> INITIALIZING TASK
+[7994:internal-dpl-aod-reader]: [15:29:47][INFO] Downstream backpressure on from_internal-dpl-aod-reader_to_track-propagation[0] recovered.
+[7999:track-propagation]: [15:29:47][STATE] INITIALIZING TASK ---> READY
+[7999:track-propagation]: [15:29:47][STATE] READY ---> RUNNING
+[7999:track-propagation]: [15:29:47][INFO] fair::mq::Device running...
+[7999:track-propagation]: [15:29:47][INFO] LHCPeriod is not available, using current month NOV
+[7999:track-propagation]: [15:29:47][INFO] Correctly handshaken websocket connection.
+[7997:timestamp-task]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[7997:timestamp-task]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.47
+[7997:timestamp-task]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.47
+[7997:timestamp-task]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/01/26939/ed7377c3-5a11-11ed-84b8-0aa140641b9a in SE <ALICE::CERN::OCDB>
+[7997:timestamp-task]: [15:29:48][INFO] ccdb reads http://alice-ccdb.cern.ch/CTP/Calib/OrbitReset/1667326855458/ed7377c3-5a11-11ed-84b8-0aa140641b9a for 1667379469250 (retrieve, agent_id: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-PPL5ZN), 
+[7997:timestamp-task]: [15:29:48][INFO] Add new run number 528543 with orbit-reset timestamp 1667326855457212 to cache
+[7999:track-propagation]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Config/GRPMagField/01/08433/1d5334e1-589d-11ed-833a-0aa1229c1b9a in SE <ALICE::CERN::OCDB>
+[7999:track-propagation]: [15:29:48][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Config/GRPMagField/1667166734342/1d5334e1-589d-11ed-833a-0aa1229c1b9a for 1667378155720 (retrieve, agent_id: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-LHRprJ), 
+[7999:track-propagation]: [15:29:48][INFO] Setting magnetic field to current 29999.8 A for run 528543 from its GRPMagField CCDB object
+[7999:track-propagation]: [15:29:48][INFO] MagneticField::Print: MagneticFieldMap:
+[7999:track-propagation]: [15:29:48][INFO] MagneticField::Print: Solenoid (0.999995*)5 kG, Dipole ON (0.999991) 
+[7999:track-propagation]: [15:29:48][INFO] MagneticField::Print: Machine B fields for p-p  beam (7000 GeV): QGrad: 22.0002 Dipole: 37.8781
+[7999:track-propagation]: [15:29:48][INFO] MagneticField::Print: Uses Sol30_Dip6_Hole  of /Users/emiliebarreau/alice/sw/osx_x86-64/O2/dev-local3/share/Common/maps/mfchebKGI_sym.root
+[7999:track-propagation]: Info in <TGeoGlobalMagField::SetField>: Global magnetic field set to <MagneticFieldMap>
+[7999:track-propagation]: Info in <TGeoGlobalMagField::Lock>: Global magnetic field <MagneticFieldMap> is now locked
+[7999:track-propagation]: [15:29:48][INFO] Loaded 440 params from $(O2_ROOT)/share/Common/maps/sol5k.txt
+[7999:track-propagation]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Calib/MeanVertex/05/34894/7f312e6f-aca8-11ed-bb7b-200114580202 in SE <ALICE::CERN::OCDB>
+[7999:track-propagation]: [15:29:48][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Calib/MeanVertex/1667377915403/7f312e6f-aca8-11ed-bb7b-200114580202 for 1667378155720 (retrieve, agent_id: alice-subatech-mbp-laurent.dyndns.cern.ch-1699367385-LHRprJ), 
+[8002:internal-dpl-aod-writer]: [15:29:49][INFO] No AODs to be saved.
+[8001:my-example-task]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/cache.cc:50: Creating gandiva cache with capacity of 500
+[8001:my-example-task]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/engine.cc:112: Detected CPU Name : skylake
+[8001:my-example-task]: /Users/emiliebarreau/alice/sw/BUILD/7868dd7443dcc1f56323a7e1a0588995e86079da/arrow/src_tmp/cpp/src/gandiva/engine.cc:113: Detected CPU Features: -avx512pf -tsxldtrk +cx16 +sahf -tbm -avx512ifma -sha +crc32 -fma4 -vpclmulqdq +prfchw +bmi2 -cldemote +fsgsbase -ptwrite -amx-tile -uintr -gfni +popcnt -widekl +aes -avx512bitalg -movdiri +xsaves -avx512er -avxvnni -avx512fp16 -avx512vnni -amx-bf16 -avx512vpopcntdq -pconfig -clwb -avx512f +xsavec -clzero -pku +mmx -lwp -rdpid -xop +rdseed -waitpkg -kl -movdir64b -sse4a -avx512bw +clflushopt +xsave -avx512vbmi2 +64bit -avx512vl -serialize -hreset +invpcid -avx512cd +avx -vaes -avx512bf16 +cx8 +fma -rtm +bmi -enqcmd +rdrnd -mwaitx +sse4.1 +sse4.2 +avx2 +fxsr -wbnoinvd +sse +lzcnt +pclmul -prefetchwt1 +f16c +ssse3 +sgx -shstk +cmov -avx512vbmi -amx-int8 +movbe -avx512vp2intersect +xsaveopt -avx512dq +sse2 +adx +sse3
+[8001:my-example-task]: *** Program crashed (Segmentation fault, FPE, BUS, ABRT, KILL, Unhandled Exception, ...)
+[8001:my-example-task]: Backtrace by DPL:
+[8001:my-example-task]: SEGMENTATION FAULT
+[8001:my-example-task]:     3   o2-analysistutorial-mm-my-example-t 0x000000010b9999fe: myExampleTask::processSim(o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter>::RowViewBase<o2::soa::DefaultIndexPolicy, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter>, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter> > const&, o2::soa::SmallGroupsBase<o2::soa::Join<o2::soa::Table<o2::aod::mccollisionlabel::McCollisionId, o2::aod::mccollisionlabel::McMask>, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::collision::BCId, o2::aod::collision::PosX, o2::aod::collision::PosY, o2::aod::collision::PosZ, o2::aod::collision::CovXX, o2::aod::collision::CovXY, o2::aod::collision::CovYY, o2::aod::collision::CovXZ, o2::aod::collision::CovYZ, o2::aod::collision::CovZZ, o2::aod::collision::Flags, o2::aod::collision::Chi2, o2::aod::collision::NumContrib, o2::aod::collision::CollisionTime, o2::aod::collision::CollisionTimeRes> >, true> const&, o2::soa::Join<o2::aod::McParticles_001Extension, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mcparticle::McCollisionId, o2::aod::mcparticle::PdgCode, o2::aod::mcparticle::StatusCode, o2::aod::mcparticle::Flags, o2::aod::mcparticle::MothersIds, o2::aod::mcparticle::DaughtersIdSlice, o2::aod::mcparticle::Weight, o2::aod::mcparticle::Px, o2::aod::mcparticle::Py, o2::aod::mcparticle::Pz, o2::aod::mcparticle::E, o2::aod::mcparticle::Vx, o2::aod::mcparticle::Vy, o2::aod::mcparticle::Vz, o2::aod::mcparticle::Vt, o2::aod::mcparticle::ProducedByGenerator<o2::aod::mcparticle::Flags>, o2::aod::mcparticle::FromBackgroundEvent<o2::aod::mcparticle::Flags>, o2::aod::mcparticle::GetGenStatusCode<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::GetHepMCStatusCode<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::GetProcess<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::IsPhysicalPrimary<o2::aod::mcparticle::Flags> > > const&, o2::soa::Filtered<o2::soa::Join<o2::soa::Join<o2::aod::TracksExtension, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::track::CollisionId, o2::aod::track::TrackType, o2::aod::track::X, o2::aod::track::Alpha, o2::aod::track::Y, o2::aod::track::Z, o2::aod::track::Snp, o2::aod::track::Tgl, o2::aod::track::Signed1Pt, o2::aod::track::IsWithinBeamPipe<o2::aod::track::X>, o2::aod::track::Px<o2::aod::track::Signed1Pt, o2::aod::track::Snp, o2::aod::track::Alpha>, o2::aod::track::Py<o2::aod::track::Signed1Pt, o2::aod::track::Snp, o2::aod::track::Alpha>, o2::aod::track::Pz<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Energy<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Rapidity<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Sign<o2::aod::track::Signed1Pt>, o2::soa::Marker<1ul> > >, o2::soa::Join<o2::aod::TracksExtra_001Extension, o2::soa::Table<o2::aod::track::TPCInnerParam, o2::aod::track::Flags, o2::aod::track::ITSClusterSizes, o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound, o2::aod::track::TPCNClsFindableMinusCrossedRows, o2::aod::track::TPCNClsShared, o2::aod::track::TRDPattern, o2::aod::track::ITSChi2NCl, o2::aod::track::TPCChi2NCl, o2::aod::track::TRDChi2, o2::aod::track::TOFChi2, o2::aod::track::TPCSignal, o2::aod::track::TRDSignal, o2::aod::track::Length, o2::aod::track::TOFExpMom, o2::aod::track::PIDForTracking<o2::aod::track::Flags>, o2::aod::track::IsPVContributor<o2::aod::track::Flags>, o2::aod::track::HasITS<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTPC<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTRD<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTOF<o2::aod::track::v001::DetectorMap>, o2::aod::track::TPCNClsFound<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TPCNClsCrossedRows<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusCrossedRows>, o2::aod::track::v001::ITSClusterMap<o2::aod::track::ITSClusterSizes>, o2::aod::track::v001::ITSNCls<o2::aod::track::ITSClusterSizes>, o2::aod::track::v001::ITSNClsInnerBarrel<o2::aod::track::ITSClusterSizes>, o2::aod::track::TPCCrossedRowsOverFindableCls<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusCrossedRows>, o2::aod::track::TPCFoundOverFindableCls<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TPCFractionSharedCls<o2::aod::track::TPCNClsShared, o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TrackEtaEMCAL, o2::aod::track::TrackPhiEMCAL, o2::aod::track::TrackTime, o2::aod::track::TrackTimeRes> >, o2::soa::Table<o2::aod::track::DcaXY, o2::aod::track::DcaZ>, o2::soa::Table<o2::aod::mctracklabel::McParticleId, o2::aod::mctracklabel::McMask> > > const&)
+[8001:my-example-task]:     4   o2-analysistutorial-mm-my-example-t 0x000000010b9ee455: void o2::framework::AnalysisDataProcessorBuilder::invokeProcess<myExampleTask, void, myExampleTask, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter>::RowViewBase<o2::soa::DefaultIndexPolicy, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter>, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter> > const&, o2::soa::SmallGroupsBase<o2::soa::Join<o2::soa::Table<o2::aod::mccollisionlabel::McCollisionId, o2::aod::mccollisionlabel::McMask>, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::collision::BCId, o2::aod::collision::PosX, o2::aod::collision::PosY, o2::aod::collision::PosZ, o2::aod::collision::CovXX, o2::aod::collision::CovXY, o2::aod::collision::CovYY, o2::aod::collision::CovXZ, o2::aod::collision::CovYZ, o2::aod::collision::CovZZ, o2::aod::collision::Flags, o2::aod::collision::Chi2, o2::aod::collision::NumContrib, o2::aod::collision::CollisionTime, o2::aod::collision::CollisionTimeRes> >, true> const&, o2::soa::Join<o2::aod::McParticles_001Extension, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mcparticle::McCollisionId, o2::aod::mcparticle::PdgCode, o2::aod::mcparticle::StatusCode, o2::aod::mcparticle::Flags, o2::aod::mcparticle::MothersIds, o2::aod::mcparticle::DaughtersIdSlice, o2::aod::mcparticle::Weight, o2::aod::mcparticle::Px, o2::aod::mcparticle::Py, o2::aod::mcparticle::Pz, o2::aod::mcparticle::E, o2::aod::mcparticle::Vx, o2::aod::mcparticle::Vy, o2::aod::mcparticle::Vz, o2::aod::mcparticle::Vt, o2::aod::mcparticle::ProducedByGenerator<o2::aod::mcparticle::Flags>, o2::aod::mcparticle::FromBackgroundEvent<o2::aod::mcparticle::Flags>, o2::aod::mcparticle::GetGenStatusCode<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::GetHepMCStatusCode<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::GetProcess<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::IsPhysicalPrimary<o2::aod::mcparticle::Flags> > > const&, o2::soa::Filtered<o2::soa::Join<o2::soa::Join<o2::aod::TracksExtension, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::track::CollisionId, o2::aod::track::TrackType, o2::aod::track::X, o2::aod::track::Alpha, o2::aod::track::Y, o2::aod::track::Z, o2::aod::track::Snp, o2::aod::track::Tgl, o2::aod::track::Signed1Pt, o2::aod::track::IsWithinBeamPipe<o2::aod::track::X>, o2::aod::track::Px<o2::aod::track::Signed1Pt, o2::aod::track::Snp, o2::aod::track::Alpha>, o2::aod::track::Py<o2::aod::track::Signed1Pt, o2::aod::track::Snp, o2::aod::track::Alpha>, o2::aod::track::Pz<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Energy<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Rapidity<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Sign<o2::aod::track::Signed1Pt>, o2::soa::Marker<1ul> > >, o2::soa::Join<o2::aod::TracksExtra_001Extension, o2::soa::Table<o2::aod::track::TPCInnerParam, o2::aod::track::Flags, o2::aod::track::ITSClusterSizes, o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound, o2::aod::track::TPCNClsFindableMinusCrossedRows, o2::aod::track::TPCNClsShared, o2::aod::track::TRDPattern, o2::aod::track::ITSChi2NCl, o2::aod::track::TPCChi2NCl, o2::aod::track::TRDChi2, o2::aod::track::TOFChi2, o2::aod::track::TPCSignal, o2::aod::track::TRDSignal, o2::aod::track::Length, o2::aod::track::TOFExpMom, o2::aod::track::PIDForTracking<o2::aod::track::Flags>, o2::aod::track::IsPVContributor<o2::aod::track::Flags>, o2::aod::track::HasITS<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTPC<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTRD<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTOF<o2::aod::track::v001::DetectorMap>, o2::aod::track::TPCNClsFound<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TPCNClsCrossedRows<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusCrossedRows>, o2::aod::track::v001::ITSClusterMap<o2::aod::track::ITSClusterSizes>, o2::aod::track::v001::ITSNCls<o2::aod::track::ITSClusterSizes>, o2::aod::track::v001::ITSNClsInnerBarrel<o2::aod::track::ITSClusterSizes>, o2::aod::track::TPCCrossedRowsOverFindableCls<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusCrossedRows>, o2::aod::track::TPCFoundOverFindableCls<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TPCFractionSharedCls<o2::aod::track::TPCNClsShared, o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TrackEtaEMCAL, o2::aod::track::TrackPhiEMCAL, o2::aod::track::TrackTime, o2::aod::track::TrackTimeRes> >, o2::soa::Table<o2::aod::track::DcaXY, o2::aod::track::DcaZ>, o2::soa::Table<o2::aod::mctracklabel::McParticleId, o2::aod::mctracklabel::McMask> > > const&>(myExampleTask&, o2::framework::InputRecord&, void (myExampleTask::*)(o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter>::RowViewBase<o2::soa::DefaultIndexPolicy, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter>, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mccollision::BCId, o2::aod::mccollision::GeneratorsID, o2::aod::mccollision::PosX, o2::aod::mccollision::PosY, o2::aod::mccollision::PosZ, o2::aod::mccollision::T, o2::aod::mccollision::Weight, o2::aod::mccollision::ImpactParameter> > const&, o2::soa::SmallGroupsBase<o2::soa::Join<o2::soa::Table<o2::aod::mccollisionlabel::McCollisionId, o2::aod::mccollisionlabel::McMask>, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::collision::BCId, o2::aod::collision::PosX, o2::aod::collision::PosY, o2::aod::collision::PosZ, o2::aod::collision::CovXX, o2::aod::collision::CovXY, o2::aod::collision::CovYY, o2::aod::collision::CovXZ, o2::aod::collision::CovYZ, o2::aod::collision::CovZZ, o2::aod::collision::Flags, o2::aod::collision::Chi2, o2::aod::collision::NumContrib, o2::aod::collision::CollisionTime, o2::aod::collision::CollisionTimeRes> >, true> const&, o2::soa::Join<o2::aod::McParticles_001Extension, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::mcparticle::McCollisionId, o2::aod::mcparticle::PdgCode, o2::aod::mcparticle::StatusCode, o2::aod::mcparticle::Flags, o2::aod::mcparticle::MothersIds, o2::aod::mcparticle::DaughtersIdSlice, o2::aod::mcparticle::Weight, o2::aod::mcparticle::Px, o2::aod::mcparticle::Py, o2::aod::mcparticle::Pz, o2::aod::mcparticle::E, o2::aod::mcparticle::Vx, o2::aod::mcparticle::Vy, o2::aod::mcparticle::Vz, o2::aod::mcparticle::Vt, o2::aod::mcparticle::ProducedByGenerator<o2::aod::mcparticle::Flags>, o2::aod::mcparticle::FromBackgroundEvent<o2::aod::mcparticle::Flags>, o2::aod::mcparticle::GetGenStatusCode<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::GetHepMCStatusCode<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::GetProcess<o2::aod::mcparticle::Flags, o2::aod::mcparticle::StatusCode>, o2::aod::mcparticle::IsPhysicalPrimary<o2::aod::mcparticle::Flags> > > const&, o2::soa::Filtered<o2::soa::Join<o2::soa::Join<o2::aod::TracksExtension, o2::soa::Table<o2::soa::Index<0ll, -1ll>, o2::aod::track::CollisionId, o2::aod::track::TrackType, o2::aod::track::X, o2::aod::track::Alpha, o2::aod::track::Y, o2::aod::track::Z, o2::aod::track::Snp, o2::aod::track::Tgl, o2::aod::track::Signed1Pt, o2::aod::track::IsWithinBeamPipe<o2::aod::track::X>, o2::aod::track::Px<o2::aod::track::Signed1Pt, o2::aod::track::Snp, o2::aod::track::Alpha>, o2::aod::track::Py<o2::aod::track::Signed1Pt, o2::aod::track::Snp, o2::aod::track::Alpha>, o2::aod::track::Pz<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Energy<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Rapidity<o2::aod::track::Signed1Pt, o2::aod::track::Tgl>, o2::aod::track::Sign<o2::aod::track::Signed1Pt>, o2::soa::Marker<1ul> > >, o2::soa::Join<o2::aod::TracksExtra_001Extension, o2::soa::Table<o2::aod::track::TPCInnerParam, o2::aod::track::Flags, o2::aod::track::ITSClusterSizes, o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound, o2::aod::track::TPCNClsFindableMinusCrossedRows, o2::aod::track::TPCNClsShared, o2::aod::track::TRDPattern, o2::aod::track::ITSChi2NCl, o2::aod::track::TPCChi2NCl, o2::aod::track::TRDChi2, o2::aod::track::TOFChi2, o2::aod::track::TPCSignal, o2::aod::track::TRDSignal, o2::aod::track::Length, o2::aod::track::TOFExpMom, o2::aod::track::PIDForTracking<o2::aod::track::Flags>, o2::aod::track::IsPVContributor<o2::aod::track::Flags>, o2::aod::track::HasITS<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTPC<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTRD<o2::aod::track::v001::DetectorMap>, o2::aod::track::HasTOF<o2::aod::track::v001::DetectorMap>, o2::aod::track::TPCNClsFound<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TPCNClsCrossedRows<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusCrossedRows>, o2::aod::track::v001::ITSClusterMap<o2::aod::track::ITSClusterSizes>, o2::aod::track::v001::ITSNCls<o2::aod::track::ITSClusterSizes>, o2::aod::track::v001::ITSNClsInnerBarrel<o2::aod::track::ITSClusterSizes>, o2::aod::track::TPCCrossedRowsOverFindableCls<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusCrossedRows>, o2::aod::track::TPCFoundOverFindableCls<o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TPCFractionSharedCls<o2::aod::track::TPCNClsShared, o2::aod::track::TPCNClsFindable, o2::aod::track::TPCNClsFindableMinusFound>, o2::aod::track::TrackEtaEMCAL, o2::aod::track::TrackPhiEMCAL, o2::aod::track::TrackTime, o2::aod::track::TrackTimeRes> >, o2::soa::Table<o2::aod::track::DcaXY, o2::aod::track::DcaZ>, o2::soa::Table<o2::aod::mctracklabel::McParticleId, o2::aod::mctracklabel::McMask> > > const&), std::__1::vector<ExpressionInfo, std::__1::allocator<ExpressionInfo> >&, o2::framework::ArrowTableSlicingCache&)
+[8001:my-example-task]:     5   o2-analysistutorial-mm-my-example-t 0x000000010b9d100a: o2::framework::DataProcessorSpec o2::framework::adaptAnalysisTask<myExampleTask>(o2::framework::ConfigContext const&)::'lambda'(o2::framework::InitContext&)::operator()(o2::framework::InitContext&)::'lambda'(o2::framework::ProcessingContext&)::operator()(o2::framework::ProcessingContext&)
+[8001:my-example-task]:     6   libO2Framework.dylib                0x000000010d098820: o2::framework::DataProcessingDevice::tryDispatchComputation(o2::framework::ServiceRegistryRef, std::__1::vector<o2::framework::DataRelayer::RecordAction, std::__1::allocator<o2::framework::DataRelayer::RecordAction> >&)::$_31::operator()(o2::framework::DataRelayer::RecordAction&)
+[8001:my-example-task]:     7   libO2Framework.dylib                0x000000010d094e5f: o2::framework::DataProcessingDevice::tryDispatchComputation(o2::framework::ServiceRegistryRef, std::__1::vector<o2::framework::DataRelayer::RecordAction, std::__1::allocator<o2::framework::DataRelayer::RecordAction> >&)
+[8001:my-example-task]:     8   libO2Framework.dylib                0x000000010d083e79: o2::framework::DataProcessingDevice::doRun(o2::framework::ServiceRegistryRef)
+[8001:my-example-task]:     9   libO2Framework.dylib                0x000000010d08fa08: o2::framework::DataProcessingDevice::Run()
+[8001:my-example-task]:     10  libfairmq.1.8.0.dylib               0x000000010e057933: fair::mq::Device::RunWrapper()
+[8001:my-example-task]:     11  libfairmq.1.8.0.dylib               0x000000010e06327b: std::__1::__function::__func<fair::mq::Device::Device(fair::mq::ProgOptions*, fair::mq::tools::Version)::$_2, std::__1::allocator<fair::mq::Device::Device(fair::mq::ProgOptions*, fair::mq::tools::Version)::$_2>, void (fair::mq::State)>::operator()(fair::mq::State&&)
+[8001:my-example-task]:     12  libfairmq.1.8.0.dylib               0x000000010e143a11: boost::detail::function::void_function_obj_invoker1<std::__1::function<void (fair::mq::State)>, void, fair::mq::State>::invoke(boost::detail::function::function_buffer&, fair::mq::State)
+[8001:my-example-task]:     13  libfairmq.1.8.0.dylib               0x000000010e132044: boost::signals2::detail::slot_call_iterator_t<boost::signals2::detail::variadic_slot_invoker<boost::signals2::detail::void_type, fair::mq::State>, std::__1::__list_iterator<boost::shared_ptr<boost::signals2::detail::connection_body<std::__1::pair<boost::signals2::detail::slot_meta_group, boost::optional<int> >, boost::signals2::slot<void (fair::mq::State), boost::function<void (fair::mq::State)> >, boost::signals2::mutex> >, void*>, boost::signals2::detail::connection_body<std::__1::pair<boost::signals2::detail::slot_meta_group, boost::optional<int> >, boost::signals2::slot<void (fair::mq::State), boost::function<void (fair::mq::State)> >, boost::signals2::mutex> >::dereference() const
+[8001:my-example-task]:     14  libfairmq.1.8.0.dylib               0x000000010e1318a1: boost::signals2::detail::signal_impl<void (fair::mq::State), boost::signals2::optional_last_value<void>, int, std::__1::less<int>, boost::function<void (fair::mq::State)>, boost::function<void (boost::signals2::connection const&, fair::mq::State)>, boost::signals2::mutex>::operator()(fair::mq::State)
+[8001:my-example-task]:     15  libfairmq.1.8.0.dylib               0x000000010e13125b: fair::mq::fsm::Machine_::ProcessWork()
+[8001:my-example-task]:     16  libfairmq.1.8.0.dylib               0x000000010e130e70: fair::mq::StateMachine::ProcessWork()
+[8001:my-example-task]:     17  libfairmq.1.8.0.dylib               0x000000010e068bee: fair::mq::DeviceRunner::Run()
+[8001:my-example-task]:     18  libO2Framework.dylib                0x000000010d239695: doChild(int, char**, o2::framework::ServiceRegistry&, o2::framework::RunningWorkflowInfo const&, o2::framework::RunningDeviceRef, o2::framework::DriverConfig const&, o2::framework::ProcessingPolicies, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, uv_loop_s*)
+[8001:my-example-task]:     19  libO2Framework.dylib                0x000000010d242fb8: runStateMachine(std::__1::vector<o2::framework::DataProcessorSpec, std::__1::allocator<o2::framework::DataProcessorSpec> > const&, WorkflowInfo const&, std::__1::vector<o2::framework::DataProcessorInfo, std::__1::allocator<o2::framework::DataProcessorInfo> > const&, o2::framework::CommandInfo const&, o2::framework::DriverControl&, o2::framework::DriverInfo&, o2::framework::DriverConfig&, std::__1::vector<o2::framework::DeviceMetricsInfo, std::__1::allocator<o2::framework::DeviceMetricsInfo> >&, boost::program_options::variables_map&, std::__1::vector<o2::framework::ServiceSpec, std::__1::allocator<o2::framework::ServiceSpec> >&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)
+[8001:my-example-task]:     20  libO2Framework.dylib                0x000000010d259acc: doMain(int, char**, std::__1::vector<o2::framework::DataProcessorSpec, std::__1::allocator<o2::framework::DataProcessorSpec> > const&, std::__1::vector<o2::framework::ChannelConfigurationPolicy, std::__1::allocator<o2::framework::ChannelConfigurationPolicy> > const&, std::__1::vector<o2::framework::CompletionPolicy, std::__1::allocator<o2::framework::CompletionPolicy> > const&, std::__1::vector<o2::framework::DispatchPolicy, std::__1::allocator<o2::framework::DispatchPolicy> > const&, std::__1::vector<o2::framework::ResourcePolicy, std::__1::allocator<o2::framework::ResourcePolicy> > const&, std::__1::vector<o2::framework::CallbacksPolicy, std::__1::allocator<o2::framework::CallbacksPolicy> > const&, std::__1::vector<o2::framework::SendingPolicy, std::__1::allocator<o2::framework::SendingPolicy> > const&, std::__1::vector<o2::framework::ConfigParamSpec, std::__1::allocator<o2::framework::ConfigParamSpec> > const&, o2::framework::ConfigContext&)
+[8001:my-example-task]:     21  o2-analysistutorial-mm-my-example-t 0x000000010b98ca1f: mainNoCatch(int, char**)
+[8001:my-example-task]: Backtrace complete.
+[ERROR] pid 8001 (my-example-task) crashed with or was killed with exit code 1
+[INFO] QUIT_REQUESTED
+[8002:internal-dpl-aod-writer]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[8002:internal-dpl-aod-writer]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[8002:internal-dpl-aod-writer]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] RUNNING ---> READY
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] READY ---> RESETTING TASK
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] IDLE ---> EXITING
+[8002:internal-dpl-aod-writer]: [15:29:49][STATE] Exiting FairMQ state machine
+[7998:tracks-extra-converter]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7998:tracks-extra-converter]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[8000:tracks-extra-spawner]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[8000:tracks-extra-spawner]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7998:tracks-extra-converter]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[8000:tracks-extra-spawner]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[8000:tracks-extra-spawner]: [15:29:49][STATE] RUNNING ---> READY
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] RUNNING ---> READY
+[7998:tracks-extra-converter]: [15:29:49][STATE] RUNNING ---> READY
+[8000:tracks-extra-spawner]: [15:29:49][STATE] READY ---> RESETTING TASK
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] READY ---> RESETTING TASK
+[7998:tracks-extra-converter]: [15:29:49][STATE] READY ---> RESETTING TASK
+[8000:tracks-extra-spawner]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[7998:tracks-extra-converter]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[8000:tracks-extra-spawner]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[7998:tracks-extra-converter]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] IDLE ---> EXITING
+[8004:internal-dpl-injected-dummy-sink]: [15:29:49][STATE] Exiting FairMQ state machine
+[8000:tracks-extra-spawner]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[8000:tracks-extra-spawner]: [15:29:49][STATE] IDLE ---> EXITING
+[8000:tracks-extra-spawner]: [15:29:49][STATE] Exiting FairMQ state machine
+[7998:tracks-extra-converter]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[7998:tracks-extra-converter]: [15:29:49][STATE] IDLE ---> EXITING
+[7998:tracks-extra-converter]: [15:29:49][STATE] Exiting FairMQ state machine
+[7995:internal-dpl-aod-spawner]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7995:internal-dpl-aod-spawner]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7993:internal-dpl-clock]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7993:internal-dpl-clock]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7996:bc-converter]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7996:bc-converter]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7995:internal-dpl-aod-spawner]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[7993:internal-dpl-clock]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[7996:bc-converter]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] RUNNING ---> READY
+[7996:bc-converter]: [15:29:49][STATE] RUNNING ---> READY
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] READY ---> RESETTING TASK
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] RUNNING ---> READY
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[7996:bc-converter]: [15:29:49][STATE] READY ---> RESETTING TASK
+[7993:internal-dpl-clock]: [15:29:49][INFO] Sending end-of-stream message to channel from_internal-dpl-clock_to_internal-dpl-aod-reader
+[7996:bc-converter]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[7993:internal-dpl-clock]: [15:29:49][STATE] RUNNING ---> READY
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] READY ---> RESETTING TASK
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[7996:bc-converter]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[7993:internal-dpl-clock]: [15:29:49][STATE] READY ---> RESETTING TASK
+[7993:internal-dpl-clock]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[7993:internal-dpl-clock]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] IDLE ---> EXITING
+[7993:internal-dpl-clock]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[7993:internal-dpl-clock]: [15:29:49][STATE] IDLE ---> EXITING
+[8003:internal-dpl-aod-global-analysis-file-sink]: [15:29:49][STATE] Exiting FairMQ state machine
+[7993:internal-dpl-clock]: [15:29:49][STATE] Exiting FairMQ state machine
+[7996:bc-converter]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[7996:bc-converter]: [15:29:49][STATE] IDLE ---> EXITING
+[7996:bc-converter]: [15:29:49][STATE] Exiting FairMQ state machine
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] IDLE ---> EXITING
+[7995:internal-dpl-aod-spawner]: [15:29:49][STATE] Exiting FairMQ state machine
+[7994:internal-dpl-aod-reader]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7994:internal-dpl-aod-reader]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7999:track-propagation]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7999:track-propagation]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7994:internal-dpl-aod-reader]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] RUNNING ---> READY
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] READY ---> RESETTING TASK
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] IDLE ---> EXITING
+[7994:internal-dpl-aod-reader]: [15:29:49][STATE] Exiting FairMQ state machine
+[7997:timestamp-task]: [15:29:49][INFO] Received device shutdown request (signal 15).
+[7997:timestamp-task]: [15:29:49][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[7997:timestamp-task]: [15:29:49][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[7997:timestamp-task]: [15:29:49][STATE] RUNNING ---> READY
+[7997:timestamp-task]: [15:29:49][STATE] READY ---> RESETTING TASK
+[7997:timestamp-task]: [15:29:49][STATE] RESETTING TASK ---> DEVICE READY
+[7997:timestamp-task]: [15:29:49][STATE] DEVICE READY ---> RESETTING DEVICE
+[7997:timestamp-task]: [15:29:49][STATE] RESETTING DEVICE ---> IDLE
+[7997:timestamp-task]: [15:29:49][STATE] IDLE ---> EXITING
+[7997:timestamp-task]: [15:29:49][STATE] Exiting FairMQ state machine
+[7999:track-propagation]: [15:29:50][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[7999:track-propagation]: [15:29:50][STATE] RUNNING ---> READY
+[7999:track-propagation]: [15:29:50][STATE] READY ---> RESETTING TASK
+[7999:track-propagation]: [15:29:50][STATE] RESETTING TASK ---> DEVICE READY
+[7999:track-propagation]: [15:29:50][STATE] DEVICE READY ---> RESETTING DEVICE
+[7999:track-propagation]: [15:29:50][STATE] RESETTING DEVICE ---> IDLE
+[7999:track-propagation]: [15:29:50][STATE] IDLE ---> EXITING
+[7999:track-propagation]: [15:29:50][STATE] Exiting FairMQ state machine
+[INFO] ## Processes completed. Run summary:
+[INFO] ### Devices started: 12
+[INFO]  - Device internal-dpl-clock: pid 7993 (exit 0)
+[INFO]  - Device internal-dpl-aod-reader: pid 7994 (exit 0)
+[INFO]  - Device internal-dpl-aod-spawner: pid 7995 (exit 0)
+[INFO]  - Device bc-converter: pid 7996 (exit 0)
+[INFO]  - Device timestamp-task: pid 7997 (exit 0)
+[INFO]  - Device tracks-extra-converter: pid 7998 (exit 0)
+[INFO]  - Device track-propagation: pid 7999 (exit 0)
+[INFO]  - Device tracks-extra-spawner: pid 8000 (exit 0)
+[ERROR]  - Device my-example-task: pid 8001 (exit 1)
+[INFO]    - First error: [INFO] Instrumenting crash signals
+[INFO]    - Last error: Backtrace complete.
+[INFO]  - Device internal-dpl-aod-writer: pid 8002 (exit 0)
+[INFO]  - Device internal-dpl-aod-global-analysis-file-sink: pid 8003 (exit 0)
+[INFO]  - Device internal-dpl-injected-dummy-sink: pid 8004 (exit 0)
+[INFO] ## Analysis Run Summary ##
+[INFO] Dumping used configuration in dpl-config.json
+[ERROR] SEVERE: Device my-example-task (8001) returned with 1

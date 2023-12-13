@@ -140,6 +140,8 @@ struct HfCandidateSelectorD0 {
   Configurable<double> cpaMin{"cpaMin", 0.98, "Min. cosine of pointing angle"};
   Configurable<double> massWindow{"massWindow", 0.4, "Half-width of the invariant-mass window"};
 
+  Configurable<double> lengthMax{"lenMax", 2., "Max decay length"};
+
   HfHelper hfHelper;
   TrackSelectorPi selectorPion;
   TrackSelectorKa selectorKaon;
@@ -170,6 +172,10 @@ struct HfCandidateSelectorD0 {
       return false;
     }
     return true;
+
+    if (candidate.decayLength() > lengthMax) {
+      return false;
+    }
   }
 
   /// Conjugate-dependent topological cuts
@@ -279,6 +285,7 @@ struct HfTaskD0 {
   HfHelper hfHelper;
 
   Partition<soa::Join<aod::HfCandProng2, aod::HfSelCandidateD0>> selectedD0Candidates = aod::hf_selcandidate_d0::isSelD0 >= selectionFlagD0 || aod::hf_selcandidate_d0::isSelD0bar >= selectionFlagD0bar;
+  Filter filterSelectCandidates = (aod::hf_selcandidate_d0::isSelD0 >= selectionFlagD0 || aod::hf_selcandidate_d0::isSelD0bar >= selectionFlagD0bar);
 
   HistogramRegistry registry{
     "registry",
@@ -292,11 +299,14 @@ struct HfTaskD0 {
     registry.add("hPtCand", strTitle + ";" + strPt + ";" + strEntries, {HistType::kTH1F, {{100, 0., 10.}}});
     registry.add("hMass", strTitle + ";" + "inv. mass (#pi K) (GeV/#it{c}^{2})" + ";" + strEntries, {HistType::kTH1F, {{500, 0., 5.}}});
     registry.add("hCpaVsPtCand", strTitle + ";" + "cosine of pointing angle" + ";" + strPt + ";" + strEntries, {HistType::kTH2F, {{110, -1.1, 1.1}, {100, 0., 10.}}});
+    registry.add("DlenpT", strTitle + ";" + "Decay length and pT" + ";" + strPt + ";" + strEntries, {HistType::kTH2F, {{110, 0., 10.}, {100, 0., 10.}}});
   }
 
-  void process(soa::Join<aod::HfCandProng2, aod::HfSelCandidateD0> const& candidates)
+  //void process(soa::Join<aod::HfCandProng2, aod::HfSelCandidateD0> const& candidates)
+  void process(aod::Collision const& collision, aod::Tracks const& tracks, soa::Filtered<soa::Join<aod::HfCandProng2, aod::HfSelCandidateD0>> const& candidates)
   {
-    for (const auto& candidate : selectedD0Candidates) {
+    //for (const auto& candidate : selectedD0Candidates) {
+    for (const auto& candidate : candidates) {
       if (candidate.isSelD0() >= selectionFlagD0) {
         registry.fill(HIST("hMass"), hfHelper.invMassD0ToPiK(candidate));
       }
@@ -305,6 +315,7 @@ struct HfTaskD0 {
       }
       registry.fill(HIST("hPtCand"), candidate.pt());
       registry.fill(HIST("hCpaVsPtCand"), candidate.cpa(), candidate.pt());
+      registry.fill(HIST("DlenpT"), candidate.decayLengthXY(), candidate.pt());
     }
   }
 };

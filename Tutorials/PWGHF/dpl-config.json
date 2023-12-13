@@ -9,38 +9,34 @@
         "step-value-enumeration": "1",
         "aod-file": "AnalysisResults_trees.root",
         "aod-parent-access-level": "1",
-        "aod-parent-base-path-replacement": "/home/ldellost/HFO2_tutorial/;"
+        "aod-parent-base-path-replacement": "\/home\/ldellost\/HFO2_tutorial\/;"
     },
     "internal-dpl-aod-spawner": "",
     "bc-converter": "",
-    "internal-dpl-aod-index-builder": "",
     "timestamp-task": {
         "verbose": "false",
-        "rct-path": "RCT/Info/RunInformation",
-        "orbit-reset-path": "CTP/Calib/OrbitReset",
-        "ccdb-url": "http://alice-ccdb.cern.ch",
+        "rct-path": "RCT\/Info\/RunInformation",
+        "orbit-reset-path": "CTP\/Calib\/OrbitReset",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
         "isRun2MC": "false"
     },
+    "tracks-extra-converter": "",
+    "zdc-converter": "",
     "track-propagation": {
-        "ccdb-url": "http://alice-ccdb.cern.ch",
-        "lutPath": "GLO/Param/MatLUT",
-        "geoPath": "GLO/Config/GeometryAligned",
-        "grpmagPath": "GLO/Config/GRPMagField",
-        "mVtxPath": "GLO/Calib/MeanVertex",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "lutPath": "GLO\/Param\/MatLUT",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "mVtxPath": "GLO\/Calib\/MeanVertex",
         "minPropagationDistance": "83.0999985",
         "processStandard": "false",
         "processCovariance": "true"
     },
+    "internal-dpl-aod-index-builder": "",
+    "tracks-extra-spawner": "",
     "bc-selection-task": {
         "triggerBcShift": "999",
-        "processRun2": "false",
-        "processRun3": "true"
-    },
-    "event-selection-task": {
-        "syst": "pp",
-        "muonSelection": "0",
-        "customDeltaBC": "300",
-        "isMC": "false",
+        "ITSROFrameBorderMargin": "30",
         "processRun2": "false",
         "processRun3": "true"
     },
@@ -51,7 +47,7 @@
         "maxR": "200",
         "maxDZIni": "4",
         "minParamChange": "0.001",
-        "minRelChi2Change": "0.9"
+        "minRelChi2Change": "0.90000000000000002"
     },
     "pid-multiplicity": {
         "processIU": "false",
@@ -63,15 +59,15 @@
     },
     "tpc-pid-full": {
         "param-file": "",
-        "ccdb-url": "http://alice-ccdb.cern.ch",
-        "ccdbPath": "Analysis/PID/TPC/Response",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "ccdbPath": "Analysis\/PID\/TPC\/Response",
         "recoPass": "",
         "ccdb-timestamp": "0",
         "useNetworkCorrection": "false",
         "autofetchNetworks": "true",
         "skipTPCOnly": "false",
         "networkPathLocally": "network.onnx",
-        "networkPathCCDB": "Analysis/PID/TPC/ML",
+        "networkPathCCDB": "Analysis\/PID\/TPC\/ML",
         "enableNetworkOptimizations": "true",
         "networkSetNumThreads": "0",
         "pid-el": "-1",
@@ -84,13 +80,22 @@
         "pid-he": "-1",
         "pid-al": "-1"
     },
+    "event-selection-task": {
+        "syst": "pp",
+        "muonSelection": "0",
+        "customDeltaBC": "300",
+        "isMC": "false",
+        "processRun2": "false",
+        "processRun3": "true"
+    },
+    "hf-candidate-creator2-prong-expressions": "",
     "tof-event-time": {
         "minMomentum": "0.5",
         "maxMomentum": "2",
         "maxEvTimeTOF": "100000",
         "paramFileName": "",
-        "ccdb-url": "http://alice-ccdb.cern.ch",
-        "parametrizationPath": "TOF/Calib/Params",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "parametrizationPath": "TOF\/Calib\/Params",
         "passName": "",
         "ccdb-timestamp": "-1",
         "loadResponseFromCCDB": "false",
@@ -102,11 +107,10 @@
         "processFT0": "false",
         "processOnlyFT0": "false"
     },
-    "hf-candidate-creator2-prong-expressions": "",
     "tof-pid-full": {
         "paramFileName": "",
-        "ccdb-url": "http://alice-ccdb.cern.ch",
-        "parametrizationPath": "TOF/Calib/Params",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "parametrizationPath": "TOF\/Calib\/Params",
         "timeShiftCCDBPath": "",
         "passName": "",
         "ccdb-timestamp": "-1",
@@ -164,12 +168,12 @@
     "hf-candidate-selector-d0": {
         "ptCandMin": "0",
         "ptCandMax": "50",
-        "ptPidTpcMin": "0.15",
+        "ptPidTpcMin": "0.14999999999999999",
         "ptPidTpcMax": "10",
         "nSigmaTpc": "3",
-        "cpaMin": "0.98",
-        "massWindow": "0.4",
-        "lenghtMax" : "2."
+        "cpaMin": "0.97999999999999998",
+        "massWindow": "0.40000000000000002",
+        "lenMax": "2"
     },
     "hf-task-d0": {
         "selectionFlagD0": "1",
