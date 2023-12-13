@@ -352,6 +352,8 @@ class VarManager : public TObject
     kVertexingTauxyErr,
     kVertexingTauz,
     kVertexingTauzErr,
+    kVertexingPz,
+    kVertexingSV,
     kVertexingProcCode,
     kVertexingChi2PCA,
     kCosThetaHE,
@@ -1739,6 +1741,9 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       values[kVertexingTauz] = (collision.posZ() - secondaryVertex[2]) * v12.M() / (TMath::Abs(v12.Pz()) * o2::constants::physics::LightSpeedCm2NS);
       values[kVertexingTauxy] = values[kVertexingLxy] * v12.M() / (v12.P() * o2::constants::physics::LightSpeedCm2NS);
 
+      values[kVertexingPz] = TMath::Abs(v12.Pz());
+      values[kVertexingSV] = secondaryVertex[2];
+
       values[kVertexingTauzErr] = values[kVertexingLzErr] * v12.M() / (TMath::Abs(v12.Pz()) * o2::constants::physics::LightSpeedCm2NS);
       values[kVertexingTauxyErr] = values[kVertexingLxyErr] * v12.M() / (v12.P() * o2::constants::physics::LightSpeedCm2NS);
 
@@ -1800,6 +1805,9 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
         values[kVertexingLxyzErr] = values[kVertexingLxyzErr] < 0. ? 1.e8f : std::sqrt(values[kVertexingLxyzErr]) / values[kVertexingLxyz];
         values[kVertexingTauxy] = KFGeoTwoProng.GetPseudoProperDecayTime(KFPV, KFGeoTwoProng.GetMass()) / (o2::constants::physics::LightSpeedCm2NS);
         values[kVertexingTauz] = dzPair2PV * KFGeoTwoProng.GetMass() / (TMath::Abs(KFGeoTwoProng.GetPz()) * o2::constants::physics::LightSpeedCm2NS);
+        //values[kMass] = KFGeoTwoProng.GetMass();
+        values[kVertexingPz] = TMath::Abs(KFGeoTwoProng.GetPz());
+        values[kVertexingSV] = KFGeoTwoProng.GetZ();
         values[kVertexingTauxyErr] = values[kVertexingLxyErr] * KFGeoTwoProng.GetMass() / (KFGeoTwoProng.GetPt() * o2::constants::physics::LightSpeedCm2NS);
         values[kVertexingTauzErr] = values[kVertexingLzErr] * KFGeoTwoProng.GetMass() / (TMath::Abs(KFGeoTwoProng.GetPz()) * o2::constants::physics::LightSpeedCm2NS);
         if (fgUsedVars[kCosPointingAngle]) {
@@ -1861,11 +1869,29 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
           auto geoMan2 = o2::base::GeometryManager::meanMaterialBudget(t2.x(), t2.y(), t2.z(), KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY(), KFGeoTwoProng.GetZ());
           auto x2x01 = static_cast<float>(geoMan1.meanX2X0);
           auto x2x02 = static_cast<float>(geoMan2.meanX2X0);
+
+          //std::cout << "T1:" << pars1.getPt() << " " << pars1.getEta() << " " << pars1.getPhi() << std::endl; 
+          //std::cout << "T2:" << pars2.getPt() << " " << pars2.getEta() << " " << pars2.getPhi() << std::endl;
+          //std::cout << "Mass:" << KFGeoTwoProng.GetMass() << std::endl;
+          std::cout << "propbefore:" << KFGeoTwoProng.GetZ() << " " << KFGeoTwoProng.GetX() << " " << KFGeoTwoProng.GetY() 
+                    << " " << KFGeoTwoProng.GetCovariance(0, 0) << " " << KFGeoTwoProng.GetCovariance(1, 1) << " " << fgFitterTwoProngFwd.getBz()  
+                    << " " << x2x01 << std::endl;
+      
           pars1.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, fgFitterTwoProngFwd.getBz(), x2x01);
           pars2.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, fgFitterTwoProngFwd.getBz(), x2x02);
+          
+          //std::cout << "TBIS:" << pars1.getPt() << " " << pars1.getEta() << " " << pars1.getPhi() << std::endl; 
+          //std::cout << "T2BIS:" << pars2.getPt() << " " << pars2.getEta() << " " << pars2.getPhi() << std::endl;
+          //std::cout << "Mass:" << KFGeoTwoProng.GetMass() << std::endl;
+          std::cout << "propafter:" << KFGeoTwoProng.GetZ() << " " << KFGeoTwoProng.GetX() << " " << KFGeoTwoProng.GetY() 
+                    << " " << KFGeoTwoProng.GetCovariance(0, 0) << " " << KFGeoTwoProng.GetCovariance(1, 1) << " " << fgFitterTwoProngFwd.getBz()  
+                    << " " << x2x01 << std::endl;
+          
           v1 = {pars1.getPt(), pars1.getEta(), pars1.getPhi(), m1};
           v2 = {pars2.getPt(), pars2.getEta(), pars2.getPhi(), m2};
           v12 = v1 + v2;
+
+          //std::cout << "MASSV12:" << v12.M() << std::endl;
 
           values[kPt1] = pars1.getPt();
           values[kEta1] = pars1.getEta();
@@ -1993,6 +2019,8 @@ void VarManager::FillDileptonTrackVertexing(C const& collision, T1 const& lepton
     values[VarManager::kVertexingTauz] = -999.;
     values[VarManager::kVertexingTauxyErr] = -999.;
     values[VarManager::kVertexingTauzErr] = -999.;
+    values[VarManager::kVertexingPz] = -999.;
+    values[VarManager::kVertexingSV] = -999.;
     return;
   }
 
@@ -2035,6 +2063,9 @@ void VarManager::FillDileptonTrackVertexing(C const& collision, T1 const& lepton
 
     values[kVertexingTauz] = (collision.posZ() - secondaryVertex[2]) * v123.M() / (TMath::Abs(v123.Pz()) * o2::constants::physics::LightSpeedCm2NS);
     values[kVertexingTauxy] = values[kVertexingLxy] * v123.M() / (v123.P() * o2::constants::physics::LightSpeedCm2NS);
+
+    values[kVertexingPz] = TMath::Abs(v123.Pz());
+    values[kVertexingSV] = secondaryVertex[2];
 
     values[kVertexingTauzErr] = values[kVertexingLzErr] * v123.M() / (TMath::Abs(v123.Pz()) * o2::constants::physics::LightSpeedCm2NS);
     values[kVertexingTauxyErr] = values[kVertexingLxyErr] * v123.M() / (v123.P() * o2::constants::physics::LightSpeedCm2NS);

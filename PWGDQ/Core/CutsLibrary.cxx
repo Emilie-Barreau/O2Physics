@@ -1812,6 +1812,11 @@ AnalysisCompositeCut* o2::aod::dqcuts::GetCompositeCut(const char* cutName)
     return cut;
   }
 
+  if (!nameStr.compare("pairRapidityGlobalForward")) {
+    cut->AddCut(GetAnalysisCut("pairRapidityGlobalForward"));
+    return cut;
+  }
+
   if (!nameStr.compare("pairJpsiLowPt1")) {
     cut->AddCut(GetAnalysisCut("pairJpsi"));
     cut->AddCut(GetAnalysisCut("pairPtLow1"));
@@ -3108,8 +3113,8 @@ AnalysisCut* o2::aod::dqcuts::GetAnalysisCut(const char* cutName)
     cut->AddCut(VarManager::kMuonPDca, 0.0, 594.0, false, VarManager::kMuonRAtAbsorberEnd, 17.6, 26.5);
     cut->AddCut(VarManager::kMuonPDca, 0.0, 324.0, false, VarManager::kMuonRAtAbsorberEnd, 26.5, 89.5);
     cut->AddCut(VarManager::kMuonChi2, 0.0, 1e6);
-    cut->AddCut(VarManager::kMuonChi2MatchMCHMID, 0.0, 1e6); // matching MCH-MID
-    cut->AddCut(VarManager::kMuonChi2MatchMCHMFT, 0.0, 1e6); // matching MFT-MCH
+    cut->AddCut(VarManager::kMuonChi2MatchMCHMID, 0.0, 1e2); // matching MCH-MID 1e6 16
+    cut->AddCut(VarManager::kMuonChi2MatchMCHMFT, 0.0, 1e2); // matching MFT-MCH
     return cut;
   }
 
@@ -3475,6 +3480,11 @@ AnalysisCut* o2::aod::dqcuts::GetAnalysisCut(const char* cutName)
 
   if (!nameStr.compare("pairRapidityForward")) {
     cut->AddCut(VarManager::kRap, 2.5, 4.0);
+    return cut;
+  }
+
+  if (!nameStr.compare("pairRapidityGlobalForward")) {
+    cut->AddCut(VarManager::kRap, 2.5, 3.6);
     return cut;
   }
 
