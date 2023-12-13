@@ -1,0 +1,7 @@
+This repository contains reduced AO2D (processed by table-maker) from the dataset LHC23zzg, Pb-Pb collisions at 5.36 TeV
+
+To run the table reader use the following command:
+
+o2-analysis-dq-table-reader -b --configuration json://configuration_table_reader.json --aod-file AO2D_small_no_cuts.root
+
+The file AO2D_pt_cut.root contains more candidates and allows to see the J/psi peak
