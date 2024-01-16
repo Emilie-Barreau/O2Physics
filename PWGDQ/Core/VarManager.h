@@ -1601,6 +1601,7 @@ template <int pairType, uint32_t collFillMap, uint32_t fillMap, typename C, type
 void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2, bool propToSV, float* values)
 {
   // check at compile time that the event and cov matrix have the cov matrix
+  std::cout << "DEBUT FONCTION" << std::endl;
   constexpr bool eventHasVtxCov = ((collFillMap & Collision) > 0 || (collFillMap & ReducedEventVtxCov) > 0);
   constexpr bool trackHasCov = ((fillMap & TrackCov) > 0 || (fillMap & ReducedTrackBarrelCov) > 0);
   constexpr bool muonHasCov = ((fillMap & MuonCov) > 0 || (fillMap & ReducedMuonCov) > 0);
@@ -1753,6 +1754,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
                                   (v12.P() * values[VarManager::kVertexingLxyz]);
     }
   } else {
+    std::cout << "KFPARTICLE" << std::endl;
     KFParticle trk0KF;
     KFParticle trk1KF;
     KFParticle KFGeoTwoProng;
@@ -1784,10 +1786,10 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       KFPVertex kfpVertex = createKFPVertexFromCollision(collision);
       values[kKFNContributorsPV] = kfpVertex.GetNContributors();
       KFParticle KFPV(kfpVertex);
+      double dxPair2PV = KFGeoTwoProng.GetX() - KFPV.GetX();
+      double dyPair2PV = KFGeoTwoProng.GetY() - KFPV.GetY();
+      double dzPair2PV = KFGeoTwoProng.GetZ() - KFPV.GetZ();
       if (fgUsedVars[kVertexingLxy] || fgUsedVars[kVertexingLz] || fgUsedVars[kVertexingLxyz] || fgUsedVars[kVertexingLxyErr] || fgUsedVars[kVertexingLzErr] || fgUsedVars[kVertexingTauxy] || fgUsedVars[kVertexingLxyOverErr] || fgUsedVars[kVertexingLzOverErr] || fgUsedVars[kVertexingLxyzOverErr]) {
-        double dxPair2PV = KFGeoTwoProng.GetX() - KFPV.GetX();
-        double dyPair2PV = KFGeoTwoProng.GetY() - KFPV.GetY();
-        double dzPair2PV = KFGeoTwoProng.GetZ() - KFPV.GetZ();
         values[kVertexingLxy] = std::sqrt(dxPair2PV * dxPair2PV + dyPair2PV * dyPair2PV);
         values[kVertexingLz] = std::sqrt(dzPair2PV * dzPair2PV);
         values[kVertexingLxyz] = std::sqrt(dxPair2PV * dxPair2PV + dyPair2PV * dyPair2PV + dzPair2PV * dzPair2PV);
@@ -1848,6 +1850,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       if (fgUsedVars[kKFTracksDCAxyMax]) {
         values[kKFTracksDCAxyMax] = TMath::Abs(values[kKFTrack0DCAxy]) > TMath::Abs(values[kKFTrack1DCAxy]) ? values[kKFTrack0DCAxy] : values[kKFTrack1DCAxy];
       }
+      std::cout << "PROPTOSV" << std::endl;
       if (propToSV) {
         if constexpr ((pairType == kDecayToMuMu) && muonHasCov) {
           double chi21 = t1.chi2();
@@ -1864,6 +1867,12 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
                                  t2.c1PtX(), t2.c1PtY(), t2.c1PtPhi(), t2.c1PtTgl(), t2.c1Pt21Pt2()};
           SMatrix55 t2covs(c2.begin(), c2.end());
           o2::track::TrackParCovFwd pars2{t2.z(), t2pars, t2covs, chi22};
+          
+          std::cout << "T1COVS :" << std::endl;
+          std::cout << t1covs << std::endl;
+          std::cout << "T2COVS :" << std::endl;
+          std::cout << t2covs << std::endl;
+          std::cout << "---------------------------------------" << std::endl;
 
           auto geoMan1 = o2::base::GeometryManager::meanMaterialBudget(t1.x(), t1.y(), t1.z(), KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY(), KFGeoTwoProng.GetZ());
           auto geoMan2 = o2::base::GeometryManager::meanMaterialBudget(t2.x(), t2.y(), t2.z(), KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY(), KFGeoTwoProng.GetZ());
@@ -1873,25 +1882,54 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
           //std::cout << "T1:" << pars1.getPt() << " " << pars1.getEta() << " " << pars1.getPhi() << std::endl; 
           //std::cout << "T2:" << pars2.getPt() << " " << pars2.getEta() << " " << pars2.getPhi() << std::endl;
           //std::cout << "Mass:" << KFGeoTwoProng.GetMass() << std::endl;
-          std::cout << "propbefore:" << KFGeoTwoProng.GetZ() << " " << KFGeoTwoProng.GetX() << " " << KFGeoTwoProng.GetY() 
-                    << " " << KFGeoTwoProng.GetCovariance(0, 0) << " " << KFGeoTwoProng.GetCovariance(1, 1) << " " << fgFitterTwoProngFwd.getBz()  
-                    << " " << x2x01 << std::endl;
-      
-          pars1.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, fgFitterTwoProngFwd.getBz(), x2x01);
-          pars2.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, fgFitterTwoProngFwd.getBz(), x2x02);
+          /*std::cout << "propbefore:" << KFGeoTwoProng.GetZ() << " " << KFGeoTwoProng.GetX() << " " << KFGeoTwoProng.GetY() 
+                    << " " << KFGeoTwoProng.GetCovariance(0, 0) << " " << KFGeoTwoProng.GetCovariance(1, 1) << " " << fgFitterTwoProngFwd.getBz() 
+                    << " " << KFGeoTwoProng.GetCovariance(0) << " " << KFGeoTwoProng.GetCovariance(1)
+                    << " " << x2x01 << std::endl;*/
+          
+          std::cout << "C00 = " << KFGeoTwoProng.GetCovariance(0, 0) << std::endl;
+          std::cout << "C10 = " << KFGeoTwoProng.GetCovariance(1, 0) << " C11 = " << KFGeoTwoProng.GetCovariance(1, 1) << std::endl;
+          std::cout << "C20 = " << KFGeoTwoProng.GetCovariance(2, 0) << " C21 = " << KFGeoTwoProng.GetCovariance(2, 1) 
+                    << " C22 = " << KFGeoTwoProng.GetCovariance(2, 2) << std::endl;
+          std::cout << "C30 = " << KFGeoTwoProng.GetCovariance(3, 0) << " C31 = " << KFGeoTwoProng.GetCovariance(3, 1)
+                    << " C32 = " << KFGeoTwoProng.GetCovariance(3, 2) << " C33 = " << KFGeoTwoProng.GetCovariance(3, 3) << std::endl;
+          std::cout << "C40 = " << KFGeoTwoProng.GetCovariance(4, 0) << " C41 = " << KFGeoTwoProng.GetCovariance(4, 1)
+                    << " C42 = " << KFGeoTwoProng.GetCovariance(4, 2) << " C43 = " << KFGeoTwoProng.GetCovariance(4, 3) 
+                    << " C44 = " << KFGeoTwoProng.GetCovariance(4, 4) << std::endl;
+          std::cout << "C50 = " << KFGeoTwoProng.GetCovariance(5, 0) << " C51 = " << KFGeoTwoProng.GetCovariance(5, 1)
+                    << " C52 = " << KFGeoTwoProng.GetCovariance(4, 2) << " C53 = " << KFGeoTwoProng.GetCovariance(5, 3) 
+                    << " C54 = " << KFGeoTwoProng.GetCovariance(5, 4) << " C55 = " << KFGeoTwoProng.GetCovariance(5, 5) << std::endl;
+          std::cout << "============================================================================================================" << std::endl;
+
+          float B[3];
+          float xyz[3] = {0, 0, 0};
+          KFGeoTwoProng.GetFieldValue(xyz, B);
+          pars1.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, B[2], x2x01);
+          pars2.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, B[2], x2x02);
           
           //std::cout << "TBIS:" << pars1.getPt() << " " << pars1.getEta() << " " << pars1.getPhi() << std::endl; 
           //std::cout << "T2BIS:" << pars2.getPt() << " " << pars2.getEta() << " " << pars2.getPhi() << std::endl;
-          //std::cout << "Mass:" << KFGeoTwoProng.GetMass() << std::endl;
+          std::cout << "Mass:" << KFGeoTwoProng.GetMass() << std::endl;
           std::cout << "propafter:" << KFGeoTwoProng.GetZ() << " " << KFGeoTwoProng.GetX() << " " << KFGeoTwoProng.GetY() 
-                    << " " << KFGeoTwoProng.GetCovariance(0, 0) << " " << KFGeoTwoProng.GetCovariance(1, 1) << " " << fgFitterTwoProngFwd.getBz()  
+                    << " " << KFGeoTwoProng.GetCovariance(0, 0) << " " << KFGeoTwoProng.GetCovariance(1, 1) << " " << B[2]  
                     << " " << x2x01 << std::endl;
           
           v1 = {pars1.getPt(), pars1.getEta(), pars1.getPhi(), m1};
           v2 = {pars2.getPt(), pars2.getEta(), pars2.getPhi(), m2};
           v12 = v1 + v2;
+        
+          //Correction Masse = 0 avec KF -> Masse ProptoPCA
+          values[kMass] = v12.M();
+          values[kPt] = v12.Pt();
+          values[kEta] = v12.Eta();
+          values[kPhi] = v12.Phi();
+          values[kRap] = -v12.Rapidity();
+          values[kVertexingTauxy] = KFGeoTwoProng.GetPseudoProperDecayTime(KFPV, v12.M()) / (o2::constants::physics::LightSpeedCm2NS);
+          values[kVertexingTauz] = dzPair2PV * v12.M() / (TMath::Abs(v12.Pz()) * o2::constants::physics::LightSpeedCm2NS);
+          values[kVertexingTauxyErr] = values[kVertexingLxyErr] * v12.M() / (v12.Pt() * o2::constants::physics::LightSpeedCm2NS);
+          values[kVertexingTauzErr] = values[kVertexingLzErr] * v12.M() / (TMath::Abs(v12.Pz()) * o2::constants::physics::LightSpeedCm2NS);
 
-          //std::cout << "MASSV12:" << v12.M() << std::endl;
+          std::cout << "MASSV12:" << v12.M() << std::endl;
 
           values[kPt1] = pars1.getPt();
           values[kEta1] = pars1.getEta();
