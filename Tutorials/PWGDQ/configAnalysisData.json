@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "AO2D_001.root",
+        "aod-file": "AO2D-4.root",
         "aod-reader-json": "readerConfiguration_dileptons.json"
     },
     "internal-dpl-injected-dummy-sink": "",
@@ -29,8 +29,8 @@
         "cfgTPCpostCalib": "false",
         "cfgRunPeriods": "LHC22f",
         "processSkimmed": "false",
-        "processSkimmedWithCov": "true",
-        "processDummy": "false"
+        "processSkimmedWithCov": "false",
+        "processDummy": "true"
     },
     "analysis-prefilter-selection": {
         "cfgPrefilterPairCut": "",
@@ -38,7 +38,7 @@
         "processDummy": "true"
     },
     "analysis-muon-selection": {
-        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgMuonCuts": "muonQualityCuts",
         "cfgQA": "true",
         "cfgAddMuonHistogram": "muon",
         "processSkimmed": "true",
@@ -58,7 +58,7 @@
     },
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts",
-        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgMuonCuts": "muonQualityCuts",
         "cfgPairCuts": "pairRapidityGlobalForward",
         "ccdb-url": "http://alice-ccdb.cern.ch",
         "ccdb-path": "Users/lm",
@@ -66,7 +66,7 @@
         "cfgCorrFullGeo": "true",
         "cfgFlatTables": "true",
         "cfgUseKFVertexing": "true",
-        "cfgUseRemoteField": "false",
+        "cfgUseRemoteField": "true",
         "cfgMagField": "5.0",
         "ccdburl": "http://alice-ccdb.cern.ch",
         "grpmagPath": "GLO/Config/GRPMagField",

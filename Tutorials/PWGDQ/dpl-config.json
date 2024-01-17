@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "AO2D_001.root",
+        "aod-file": "AO2D-4.root",
         "aod-reader-json": "readerConfiguration_dileptons.json"
     },
     "analysis-event-selection": {
@@ -19,7 +19,7 @@
         "processDummy": "false"
     },
     "analysis-muon-selection": {
-        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgMuonCuts": "muonQualityCuts",
         "cfgQA": "true",
         "cfgAddMuonHistogram": "muon",
         "processSkimmed": "true",
@@ -32,14 +32,14 @@
         "cfgPrefilterCutId": "32",
         "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
         "ccdb-path-tpc": "Users\/i\/iarsene\/Calib\/TPCpostCalib",
-        "ccdb-no-later-than": "1702456324527",
+        "ccdb-no-later-than": "1705486263667",
         "cfgTPCpostCalib": "false",
         "cfgRunPeriods": "LHC22f",
         "cfgDummyRunlist": "false",
         "cfgInitRunNumber": "543215",
         "processSkimmed": "false",
-        "processSkimmedWithCov": "true",
-        "processDummy": "false"
+        "processSkimmedWithCov": "false",
+        "processDummy": "true"
     },
     "analysis-event-mixing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts",
@@ -60,15 +60,15 @@
     },
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts",
-        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgMuonCuts": "muonQualityCuts",
         "cfgPairCuts": "pairRapidityGlobalForward",
         "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
         "ccdb-path": "Users\/lm",
-        "ccdb-no-later-than": "1702456324512",
+        "ccdb-no-later-than": "1705486263748",
         "cfgAddSEPHistogram": "dimuon,vertexing-forward",
         "cfgFlatTables": "true",
         "cfgUseKFVertexing": "true",
-        "cfgUseRemoteField": "false",
+        "cfgUseRemoteField": "true",
         "cfgMagField": "5",
         "ccdburl": "http:\/\/alice-ccdb.cern.ch",
         "grpmagPath": "GLO\/Config\/GRPMagField",

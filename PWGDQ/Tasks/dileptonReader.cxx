@@ -97,9 +97,9 @@ struct dileptonReader {
                 //hTauz->Fill(dimuon.tauz());
                 registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
                 registry.get<TH1>(HIST("Pt"))->Fill(dimuon.pt());
-                registry.get<TH1>(HIST("Pz"))->Fill(dimuon.vertexPz());
-                registry.get<TH1>(HIST("SecondVertex"))->Fill(dimuon.sVertex());
-                registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
+                //registry.get<TH1>(HIST("Pz"))->Fill(dimuon.vertexPz());
+                //registry.get<TH1>(HIST("SecondVertex"))->Fill(dimuon.sVertex());
+                //registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
                 registry.get<TH1>(HIST("Eta"))->Fill(dimuon.eta());
 
                 // TH3 containing mass and chi2 information filled to do chi2 study                                                    // fill mass invariant distribution for Global tracks

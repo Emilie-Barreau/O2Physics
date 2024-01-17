@@ -1,7 +1,0 @@
-This repository contains reduced AO2Ds (processed by table-maker) produced starting from data collected in pp collisions at 13.6 TeV
-
-To run the table reader use the following command:
-
-o2-analysis-dq-table-reader -b --configuration json://configuration.json --aod-file @input_data.txt
-
-In case of memory issues on LXPLUS reduce the number of files to be analyzed in input_data.txt
