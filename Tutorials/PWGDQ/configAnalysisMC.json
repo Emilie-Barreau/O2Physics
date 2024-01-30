@@ -21,33 +21,34 @@
         "cfgTrackCuts": "jpsiO2MCdebugCuts2",
         "cfgTrackMCSignals": "eFromJpsi,eFromLMeeLF",
         "cfgQA": "true",
-        "processSkimmed": "true",
-        "processDummy": "false"
+        "processSkimmed": "false",
+        "processDummy": "true"
     },
     "analysis-muon-selection": {
         "cfgMuonCuts": "muonQualityCuts",
         "cfgMuonMCSignals": "muFromJpsi",
         "cfgQA": "true",
-        "processSkimmed": "false",
-        "processDummy": "true"
+        "cfgAddMuonHistogram": "muon",
+        "processSkimmed": "true",
+        "processDummy": "false"
     },
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts2",
         "cfgMuonCuts": "muonQualityCuts",
-        "cfgBarrelMCRecSignals": "eeFromJpsi,eeFromLMeeLF,dielectron",
+        "cfgBarrelMCRecSignals": "mumuFromJpsi",
         "cfgBarrelMCGenSignals": "Jpsi",
-        "cfgFlatTables": "false",
+        "cfgFlatTables": "true",
         "cfgUseKFVertexing": "false",
         "cfgUseRemoteField": "false",
         "cfgMagField": "5.0",
         "ccdburl": "http://alice-ccdb.cern.ch",
         "grpmagPath": "GLO/Config/GRPMagField",
         "cfgUseAbsDCA": "false",
-        "cfgPropToPCA": "false",
-        "processDecayToEESkimmed": "true",
+        "cfgPropToPCA": "true",
+        "processDecayToEESkimmed": "false",
         "processDecayToEEVertexingSkimmed": "false",
         "processDecayToMuMuSkimmed": "false",
-        "processDecayToMuMuVertexingSkimmed": "false",
+        "processDecayToMuMuVertexingSkimmed": "true",
         "processDummy": "false"
     },
     "analysis-dilepton-track": {

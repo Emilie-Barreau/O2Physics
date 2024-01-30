@@ -7,10 +7,9 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "@/Users/emiliebarreau/alice/ServiceTask_Analysis/Analysis_LHC22o_pass5_skimQC1/TM/AO2D_LHC22o_TM.txt",
-        "aod-reader-json": "/Users/emiliebarreau/alice/O2Physics/Tutorials/PWGDQ/writerConfiguration_dileptons.json"
+        "aod-file": "AO2D_001.root",
+        "aod-reader-json": "readerConfiguration_dileptons.json"
     },
-    "internal-dpl-injected-dummy-sink": "",
     "analysis-event-selection": {
         "cfgMixingVars": "Vtx3",
         "cfgEventCuts": "eventStandardNoINT7",
@@ -19,29 +18,27 @@
         "processSkimmed": "true",
         "processDummy": "false"
     },
+    "analysis-muon-selection": {
+        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgQA": "true",
+        "cfgAddMuonHistogram": "muon",
+        "processSkimmed": "true",
+        "processDummy": "false"
+    },
     "analysis-track-selection": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts",
         "cfgQA": "true",
         "cfgAddTrackHistogram": "dca,its,tpcpid,tofpid",
         "cfgPrefilterCutId": "32",
-        "ccdb-url": "http://alice-ccdb.cern.ch",
-        "ccdb-path-tpc": "Users/i/iarsene/Calib/TPCpostCalib",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "ccdb-path-tpc": "Users\/i\/iarsene\/Calib\/TPCpostCalib",
+        "ccdb-no-later-than": "1701703760677",
         "cfgTPCpostCalib": "false",
         "cfgRunPeriods": "LHC22f",
+        "cfgDummyRunlist": "false",
+        "cfgInitRunNumber": "543215",
         "processSkimmed": "false",
-        "processSkimmedWithCov": "false",
-        "processDummy": "true"
-    },
-    "analysis-prefilter-selection": {
-        "cfgPrefilterPairCut": "",
-        "processBarrelSkimmed": "false",
-        "processDummy": "true"
-    },
-    "analysis-muon-selection": {
-        "cfgMuonCuts": "muonQualityCuts",
-        "cfgQA": "true",
-        "cfgAddMuonHistogram": "muon",
-        "processSkimmed": "true",
+        "processSkimmedWithCov": "true",
         "processDummy": "false"
     },
     "analysis-event-mixing": {
@@ -56,40 +53,58 @@
         "processMuonVnSkimmed": "false",
         "processDummy": "true"
     },
+    "analysis-prefilter-selection": {
+        "cfgPrefilterPairCut": "",
+        "processBarrelSkimmed": "false",
+        "processDummy": "true"
+    },
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts",
-        "cfgMuonCuts": "muonQualityCuts",
-        "cfgPairCuts": "",
-        "ccdb-url": "http://alice-ccdb.cern.ch",
-        "ccdb-path": "Users/lm",
+        "cfgMuonCuts": "matchedQualityCuts",
+        "cfgPairCuts": "pairRapidityGlobalForward",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "ccdb-path": "Users\/lm",
+        "ccdb-no-later-than": "1701703760696",
         "cfgAddSEPHistogram": "dimuon,vertexing-forward",
-        "cfgCorrFullGeo": "false",
         "cfgFlatTables": "true",
-        "cfgUseKFVertexing": "true",
+        "cfgUseKFVertexing": "false",
         "cfgUseRemoteField": "true",
-        "cfgMagField": "5.0",
-        "ccdburl": "http://alice-ccdb.cern.ch",
-        "grpmagPath": "GLO/Config/GRPMagField",
-        "cfgUseAbsDCA": "true",
-        "cfgPropToPCA": "false",
+        "cfgMagField": "5",
+        "ccdburl": "http:\/\/alice-ccdb.cern.ch",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "cfgUseAbsDCA": "false",
+        "cfgPropToPCA": "true",
+        "cfgCorrFullGeo": "true",
+        "cfgNoCorrFwdProp": "false",
+        "lutPath": "GLO\/Param\/MatLUT",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "syst": "pp",
+        "energy": "13600",
         "processDecayToEESkimmed": "false",
         "processDecayToEESkimmedWithCov": "false",
         "processDecayToEEVertexingSkimmed": "false",
         "processDecayToEEPrefilterSkimmed": "false",
+        "processDecayToEESkimmedWithColl": "false",
         "processDecayToMuMuSkimmed": "false",
         "processDecayToMuMuVertexingSkimmed": "true",
         "processVnDecayToEESkimmed": "false",
         "processVnDecayToMuMuSkimmed": "false",
         "processElectronMuonSkimmed": "false",
+        "processDecayToPiPiSkimmed": "false",
         "processAllSkimmed": "false",
         "processDummy": "false"
     },
     "analysis-dilepton-hadron": {
         "cfgLeptonCuts": "jpsiPID1",
         "cfgAddDileptonHadHistogram": "dilepton-hadron-correlation",
+        "cfgMixingDepth": "5",
+        "cfgDileptonLowMass": "2.79999995",
+        "cfgDileptonHighMass": "3.20000005",
         "processSkimmed": "false",
+        "processMixedEvent": "false",
         "processDummy": "true"
     },
+    "internal-dpl-aod-writer": "",
     "internal-dpl-aod-global-analysis-file-sink": "",
-    "internal-dpl-aod-writer": ""
+    "internal-dpl-injected-dummy-sink": ""
 }

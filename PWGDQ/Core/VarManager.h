@@ -1783,6 +1783,7 @@ template <int pairType, uint32_t collFillMap, uint32_t fillMap, typename C, type
 void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2, bool propToSV, float* values)
 {
   // check at compile time that the event and cov matrix have the cov matrix
+  //std::cout << "FillPairVertexing" << std::endl;
   constexpr bool eventHasVtxCov = ((collFillMap & Collision) > 0 || (collFillMap & ReducedEventVtxCov) > 0);
   constexpr bool trackHasCov = ((fillMap & TrackCov) > 0 || (fillMap & ReducedTrackBarrelCov) > 0);
   constexpr bool muonHasCov = ((fillMap & MuonCov) > 0 || (fillMap & ReducedMuonCov) > 0);
@@ -1941,6 +1942,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       values[kVertexingTauzProjected] = values[kVertexingLzProjected] * v12.M() / (v12.P());
     }
   } else {
+    //std::cout << "KFParticle" << std::endl;
     KFParticle trk0KF;
     KFParticle trk1KF;
     KFParticle KFGeoTwoProng;
@@ -1974,7 +1976,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       KFParticle KFPV(kfpVertex);
       double dxPair2PV = KFGeoTwoProng.GetX() - KFPV.GetX();
       double dyPair2PV = KFGeoTwoProng.GetY() - KFPV.GetY();
-      double dzPair2PV = KFGeoTwoProng.GetZ() - KFPV.GetZ();
+      double dzPair2PV = - KFGeoTwoProng.GetZ() + KFPV.GetZ();
       if (fgUsedVars[kVertexingLxy] || fgUsedVars[kVertexingLz] || fgUsedVars[kVertexingLxyz] || fgUsedVars[kVertexingLxyErr] || fgUsedVars[kVertexingLzErr] || fgUsedVars[kVertexingTauxy] || fgUsedVars[kVertexingLxyOverErr] || fgUsedVars[kVertexingLzOverErr] || fgUsedVars[kVertexingLxyzOverErr] || fgUsedVars[kCosPointingAngle]) {
         values[kVertexingLxy] = std::sqrt(dxPair2PV * dxPair2PV + dyPair2PV * dyPair2PV);
         values[kVertexingLz] = std::sqrt(dzPair2PV * dzPair2PV);
@@ -1999,6 +2001,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
                                      std::sqrt(dyPair2PV * dyPair2PV) * v12.Py() +
                                      std::sqrt(dzPair2PV * dzPair2PV) * v12.Pz()) /
                                     (v12.P() * values[VarManager::kVertexingLxyz]);
+      //std::cout << "MASS QUI MARCHE OU PAS : " << KFGeoTwoProng.GetMass() << std::endl;
       }
       // As defined in Run 2 (projected onto momentum)
       if (fgUsedVars[kVertexingLxyProjected] || fgUsedVars[kVertexingLxyzProjected] || fgUsedVars[kVertexingLzProjected]) {
@@ -2043,7 +2046,9 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       if (fgUsedVars[kKFTracksDCAxyMax]) {
         values[kKFTracksDCAxyMax] = TMath::Abs(values[kKFTrack0DCAxy]) > TMath::Abs(values[kKFTrack1DCAxy]) ? values[kKFTrack0DCAxy] : values[kKFTrack1DCAxy];
       }
+      //std::cout << "Avant propToSV" << std::endl;
       if (propToSV) {
+        //std::cout << "propToSV" << std::endl;
         if constexpr ((pairType == kDecayToMuMu) && muonHasCov) {
           double chi21 = t1.chi2();
           double chi22 = t2.chi2();
@@ -2059,7 +2064,12 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
                                  t2.c1PtX(), t2.c1PtY(), t2.c1PtPhi(), t2.c1PtTgl(), t2.c1Pt21Pt2()};
           SMatrix55 t2covs(c2.begin(), c2.end());
           o2::track::TrackParCovFwd pars2{t2.z(), t2pars, t2covs, chi22};
-
+          //std::cout << t1.x() << " " << t1.y() << " " << t1.z() << std::endl;
+          //std::cout << KFGeoTwoProng.GetX() << " " << KFGeoTwoProng.GetY() << " " << KFGeoTwoProng.GetZ() << std::endl;
+          if (std::isnan(KFGeoTwoProng.GetX()) || std::isnan(KFGeoTwoProng.GetY()) || std::isnan(KFGeoTwoProng.GetZ())){
+            std::cout << "NAN" << std::endl;
+            return;
+          }
           auto geoMan1 = o2::base::GeometryManager::meanMaterialBudget(t1.x(), t1.y(), t1.z(), KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY(), KFGeoTwoProng.GetZ());
           auto geoMan2 = o2::base::GeometryManager::meanMaterialBudget(t2.x(), t2.y(), t2.z(), KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY(), KFGeoTwoProng.GetZ());
           auto x2x01 = static_cast<float>(geoMan1.meanX2X0);
