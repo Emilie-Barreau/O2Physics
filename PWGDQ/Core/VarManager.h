@@ -835,12 +835,16 @@ void VarManager::FillPropagateMuon(const T& muon, const C& collision, float* val
       propmuon.setCovariances(proptrack.getCovariances());
 
     } else if (static_cast<int>(muon.trackType()) < 2) {
-      double centerMFT[3] = {0, 0, -61.4};
+      /*double centerMFT[3] = {0, 0, -61.4};
       o2::field::MagneticField* field = static_cast<o2::field::MagneticField*>(TGeoGlobalMagField::Instance()->GetField());
-      auto Bz = field->getBz(centerMFT); // Get field at centre of MFT
+      auto Bz = field->getBz(centerMFT);*/ // Get field at centre of MFT
+      double x[3] = {0., 0., 0.};
+      double b[3] = {0., 0., 0.};
+      TGeoGlobalMagField::Instance()->Field(x, b);
       auto geoMan = o2::base::GeometryManager::meanMaterialBudget(muon.x(), muon.y(), muon.z(), collision.posX(), collision.posY(), collision.posZ());
       auto x2x0 = static_cast<float>(geoMan.meanX2X0);
-      fwdtrack.propagateToVtxhelixWithMCS(collision.posZ(), {collision.posX(), collision.posY()}, {collision.covXX(), collision.covYY()}, Bz, x2x0);
+      //fwdtrack.propagateToVtxhelixWithMCS(collision.posZ(), {collision.posX(), collision.posY()}, {collision.covXX(), collision.covYY()}, Bz, x2x0);
+      fwdtrack.propagateToVtxhelixWithMCS(collision.posZ(), {collision.posX(), collision.posY()}, {collision.covXX(), collision.covYY()}, b[2], x2x0);
       propmuon.setParameters(fwdtrack.getParameters());
       propmuon.setZ(fwdtrack.getZ());
       propmuon.setCovariances(fwdtrack.getCovariances());
@@ -2088,6 +2092,15 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
           float B[3];
           float xyz[3] = {0, 0, 0};
           KFGeoTwoProng.GetFieldValue(xyz, B);
+          // TODO: find better soluton to handle cases where KF outputs negative variances
+           float covXX = 0.1;
+           float covYY = 0.1;
+           if (KFGeoTwoProng.GetCovariance(0, 0) > 0) {
+             covXX = KFGeoTwoProng.GetCovariance(0, 0);
+           }
+           if (KFGeoTwoProng.GetCovariance(1, 1) > 0) {
+             covYY = KFGeoTwoProng.GetCovariance(0, 0);
+           }
           pars1.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, B[2], x2x01);
           pars2.propagateToVtxhelixWithMCS(KFGeoTwoProng.GetZ(), {KFGeoTwoProng.GetX(), KFGeoTwoProng.GetY()}, {KFGeoTwoProng.GetCovariance(0, 0), KFGeoTwoProng.GetCovariance(1, 1)}, B[2], x2x02);
           v1 = {pars1.getPt(), pars1.getEta(), pars1.getPhi(), m1};

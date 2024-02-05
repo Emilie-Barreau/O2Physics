@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "@/Users/emiliebarreau/alice/ServiceTask_Analysis/Analysis_LHC22o_pass5_skimQC1/TM/AO2D_LHC22o_TM.txt",
+        "aod-file": "@/Users/emiliebarreau/alice/ServiceTask_Analysis/Analysis_LHC22o_pass5_skimQC1/TM_Reassociation/AO2D_TM.txt",
         "aod-reader-json": "/Users/emiliebarreau/alice/O2Physics/Tutorials/PWGDQ/writerConfiguration_dileptons.json"
     },
     "internal-dpl-injected-dummy-sink": "",
@@ -38,7 +38,7 @@
         "processDummy": "true"
     },
     "analysis-muon-selection": {
-        "cfgMuonCuts": "muonQualityCuts",
+        "cfgMuonCuts": "matchedQualityCuts",
         "cfgQA": "true",
         "cfgAddMuonHistogram": "muon",
         "processSkimmed": "true",
@@ -58,7 +58,7 @@
     },
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts",
-        "cfgMuonCuts": "muonQualityCuts",
+        "cfgMuonCuts": "matchedQualityCuts",
         "cfgPairCuts": "",
         "ccdb-url": "http://alice-ccdb.cern.ch",
         "ccdb-path": "Users/lm",

@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "/Users/emiliebarreau/alice/ServiceTask_Analysis/Analysis_LHC22o_pass5_skimQC1/TM/dileptonAOD_LHC22o_PCA.root",
+        "aod-file": "/Users/emiliebarreau/alice/ServiceTask_Analysis/Analysis_LHC22o_pass5_skimQC1/TM_Reassociation/matchedQualityCuts/dileptonAOD_LHC22o_Global_PCA.root",
         "aod-reader-json": "readerConfiguration_dileptons.json"
     },
     "dilepton-reader": {
