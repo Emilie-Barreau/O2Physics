@@ -68,7 +68,7 @@ tables = {
   "ReducedTracksBarrelPID" : {"table": "AOD/RTBARRELPID/0"},
   "ReducedTracksBarrelLabels" : {"table": "AOD/RTBARRELLABELS/0"},
   "ReducedMCTracks" : {"table": "AOD/REDUCEDMCTRACK/0"},
-  "ReducedMuons" : {"table": "AOD/RTMUON/0"},
+  "ReducedMuons" : {"table": "AOD/REDUCEDMUON/0"},
   "ReducedMuonsExtra" : {"table": "AOD/RTMUONEXTRA/0"},
   "ReducedMuonsCov" : {"table": "AOD/RTMUONCOV/0"},
   "ReducedMuonsLabels" : {"table": "AOD/RTMUONSLABELS/0"},

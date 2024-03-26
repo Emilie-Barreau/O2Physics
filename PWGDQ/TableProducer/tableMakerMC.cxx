@@ -801,6 +801,12 @@ struct TableMakerMC {
                     VarManager::fgValues[VarManager::kMuonCXX], VarManager::fgValues[VarManager::kMuonCXY], VarManager::fgValues[VarManager::kMuonCYY], VarManager::fgValues[VarManager::kMuonCPhiX], VarManager::fgValues[VarManager::kMuonCPhiY], VarManager::fgValues[VarManager::kMuonCPhiPhi],
                     VarManager::fgValues[VarManager::kMuonCTglX], VarManager::fgValues[VarManager::kMuonCTglY], VarManager::fgValues[VarManager::kMuonCTglPhi], VarManager::fgValues[VarManager::kMuonCTglTgl], VarManager::fgValues[VarManager::kMuonC1Pt2X], VarManager::fgValues[VarManager::kMuonC1Pt2Y],
                     VarManager::fgValues[VarManager::kMuonC1Pt2Phi], VarManager::fgValues[VarManager::kMuonC1Pt2Tgl], VarManager::fgValues[VarManager::kMuonC1Pt21Pt2]);
+            
+            muonExtra(muon.nClusters(), VarManager::fgValues[VarManager::kMuonPDca], VarManager::fgValues[VarManager::kMuonRAtAbsorberEnd],
+                        muon.chi2(), muon.chi2MatchMCHMID(), muon.chi2MatchMCHMFT(),
+                        muon.matchScoreMCHMFT(), muon.mchBitMap(), muon.midBitMap(),
+                        muon.midBoards(), muon.trackType(), VarManager::fgValues[VarManager::kMuonDCAx], VarManager::fgValues[VarManager::kMuonDCAy],
+                        muon.trackTime(), muon.trackTimeRes());
           } else {
             muonExtra(muon.nClusters(), muon.pDca(), muon.rAtAbsorberEnd(),
                       muon.chi2(), muon.chi2MatchMCHMID(), muon.chi2MatchMCHMFT(),
