@@ -93,3 +93,8 @@ o2physics_add_dpl_workflow(task-muon-mid-eff
                     SOURCES MIDefficiency.cxx
                     PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore O2::MIDBase
                     COMPONENT_NAME Analysis)
+
+o2physics_add_dpl_workflow(dilepton-reader
+                    SOURCES dileptonReader.cxx
+                    PUBLIC_LINK_LIBRARIES O2::Framework O2Physics::AnalysisCore O2Physics::PWGDQCore
+                    COMPONENT_NAME Analysis)
