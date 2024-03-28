@@ -814,7 +814,7 @@ struct TableMakerMC {
                       muon.midBoards(), muon.trackType(), muon.fwdDcaX(), muon.fwdDcaY(),
                       muon.trackTime(), muon.trackTimeRes());
           }
-          muonLabels(fNewLabels.find(mctrack.index())->second, muon.mcMask(), mcflags);
+          muonLabels(fNewLabels.find(mctrack.index())->second, muon.mcMask(), mcflags, mctrack.pdgCode());
         }
       } // end if constexpr (static_cast<bool>(TMuonFillMap))
     }   // end loop over collisions
