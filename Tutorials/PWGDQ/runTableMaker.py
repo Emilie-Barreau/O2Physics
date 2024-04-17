@@ -17,6 +17,7 @@ parser.add_argument('--add_track_prop', help="Add track propagation to the inner
 parser.add_argument("--add_weakdecay_ind", help = "Add Converts V0 and cascade version 000 to 001", action = "store_true")
 parser.add_argument("--add_col_conv", help = "Add the converter from collision to collision+001", action = "store_true")
 parser.add_argument('--add_tracks_extra', help="Add track propagation to the innermost layer (TPC or ITS)", action="store_true")
+parser.add_argument('--add_mft', help="Add converter for mft tracks", action="store_true")
 extrargs = parser.parse_args()
 
 commonDeps = ["o2-analysis-timestamp", "o2-analysis-event-selection", "o2-analysis-multiplicity-table"]
@@ -49,7 +50,8 @@ specificDeps = {
   "processMuonOnlyWithFilter" : ["o2-analysis-dq-filter-pp"],
   "processAmbiguousMuonOnly" : [],
   "processAmbiguousMuonOnlyWithCov" : [],
-  "processAmbiguousBarrelOnly" : []
+  "processAmbiguousBarrelOnly" : [],
+  "processMuonsAndMFT" : ["o2-analysis-mft-tracks-converter"]
   # "processFullWithCentWithV0Bits": ["o2-analysis-centrality-table","o2-analysis-dq-v0-selector", "o2-analysis-weak-decay-indices"],
   # "processFullWithEventFilterWithV0Bits": ["o2-analysis-dq-filter-pp","o2-analysis-dq-v0-selector", "o2-analysis-weak-decay-indices"],
 }
@@ -72,6 +74,8 @@ tables = {
   "ReducedMuonsExtra" : {"table": "AOD/RTMUONEXTRA/0"},
   "ReducedMuonsCov" : {"table": "AOD/RTMUONCOV/0"},
   "ReducedMuonsLabels" : {"table": "AOD/RTMUONSLABELS/0"},
+  #"ReducedMFTs" : {"table": "AOD/REDUCEDMFT/0"},
+  #"ReducedMFTs" : {"table": "AOD/RMFTEXTRA/0"},
   "AmbiguousTracksMid" : {"table": "AOD/AMBIGUOUSTRACK/0"},
   "AmbiguousTracksFwd" : {"table": "AOD/AMBIGUOUSFWDTR/0"},
   "DalitzBits" : {"table": "AOD/DALITZBITS/0"}
@@ -106,7 +110,8 @@ specificTables = {
   "processMuonOnlyWithFilter": [],
   "processAmbiguousMuonOnly": ["AmbiguousTracksFwd"],
   "processAmbiguousMuonOnlyWithCov": ["AmbiguousTracksFwd", "ReducedMuonsCov"],
-  "processAmbiguousBarrelOnly": ["AmbiguousTracksMid"]
+  "processAmbiguousBarrelOnly": ["AmbiguousTracksMid"],
+  "processMuonsAndMFT" : ["ReducedMuonsCov"]
 }
 
 # Make some checks on provided arguments
@@ -173,7 +178,7 @@ for processFunc in specificDeps.keys():
     if "processFull" in processFunc or "processBarrel" in processFunc or "processAmbiguousBarrel" in processFunc:
       for dep in barrelDeps:
         depsToRun[dep] = 1
-    if "processFull" in processFunc or "processMuon" in processFunc or "processAmbiguousMuon" in processFunc:
+    if "processFull" in processFunc or "processMuon" in processFunc or "processAmbiguousMuon" in processFunc or "processMuonsAndMFT" in processFunc:
       for dep in muonDeps:
         depsToRun[dep] = 1
     for dep in specificDeps[processFunc]:
@@ -201,7 +206,7 @@ for processFunc in specificDeps.keys():
         tablesToProduce[table] = 1
       if runOverMC == True:
         tablesToProduce["ReducedTracksBarrelLabels"] = 1
-    if "processFull" in processFunc or "processMuon" in processFunc:
+    if "processFull" in processFunc or "processMuon" in processFunc or "processMuonsAndMFT" in processFunc:
       print("common muon tables==========")
       for table in muonCommonTables:
         print(table)
@@ -257,6 +262,9 @@ if extrargs.add_col_conv:
 
 if extrargs.add_tracks_extra:
   commandToRun += " | o2-analysis-tracks-extra-converter --configuration json://" + updatedConfigFileName + " -b"
+
+if extrargs.add_tracks_extra:
+  commandToRun += " | o2-analysis-mft-tracks-converter --configuration json://" + updatedConfigFileName + " -b"
 
 print("====================================================================================================================")
 print("Command to run:")

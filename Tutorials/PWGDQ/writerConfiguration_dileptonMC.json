@@ -7,6 +7,36 @@
         "OutputDescriptors": [
             {
                 "table": "AOD/RTDIMUONALL/0"
+            },
+            {
+                "table": "AOD/RTDIMUON/0"
+            },
+            {
+                "table": "AOD/REDUCEDEVENT/0"
+            },
+            {
+                "table": "AOD/REDUCEDMUON/0"
+            },
+            {
+                "table": "AOD/RTMUONEXTRA/0"
+            },
+            {
+                "table": "AOD/RTMUONCOV/0"
+            },
+            {
+                "table": "AOD/REDUCEDMCEVENT/0"
+            },
+            {
+                "table": "AOD/REDUCEDMCTRACK/0"
+            },
+            {
+                "table": "AOD/REDUCEDMFT/0"
+            },
+            {
+                "table": "AOD/RMFTEXTRA/0"
+            },
+            {
+                "table": "AOD/RTMUONSLABELS/0"
             }
         ]
     }

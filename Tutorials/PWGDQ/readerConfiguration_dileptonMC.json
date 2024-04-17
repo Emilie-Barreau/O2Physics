@@ -33,7 +33,16 @@
                 "table": "AOD/REMCCOLLBL/0",
             },
             {
+                "table": "AOD/REDUCEDMFT/0",
+            },
+            {
+                "table": "AOD/RMFTEXTRA/0",
+            },
+            {
                 "table": "AOD/RTDIMUONALL/0",
+            },
+            {
+                "table": "AOD/RTDIMUON/0",
             }
         ]
     }

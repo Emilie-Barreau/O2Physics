@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "MC302011_reducedAod.root",
+        "aod-file": "/Users/emiliebarreau/alice/O2Physics/Tutorials/PWGDQ/MC302011_reducedAod_pt07_pdg.root",
         "aod-reader-json": "readerConfiguration_dileptonMC.json"
     },
     "internal-dpl-injected-dummy-sink": "",
@@ -37,7 +37,7 @@
         "cfgMuonCuts": "matchedGlobal",
         "cfgBarrelMCRecSignals": "mumuFromJpsi,dimuon",
         "cfgBarrelMCGenSignals": "Jpsi",
-        "cfgAddSEPHistogram": "dimuon,vertexing-forward",
+        "cfgAddSEPHistogram": "dimuon,vertexing-forward,mft-pid",
         "cfgCorrFullGeo": "true",
         "cfgFlatTables": "true",
         "cfgUseKFVertexing": "true",
