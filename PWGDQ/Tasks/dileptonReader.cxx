@@ -183,18 +183,42 @@ struct dileptonReader {
 
       // Global tracks studies
       if ((dimuon.eta1() > -3.6 && dimuon.eta1() < -2.5) && (dimuon.eta2() > -3.6 && dimuon.eta2() < -2.5)) { // cut on eta in mft acceptance
-        if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {                   // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
-          if (!(dimuon.isAmbig1()) && !(dimuon.isAmbig2())) {                                                 // remove ambiguous tracks
-            // hRapidityGlobal->Fill(rap);
-            // registry.get<TH3>(HIST("massChi2TH3"))->Fill(dimuon.mass(), dimuon.chi2MatchMCHMFT1(), dimuon.chi2MatchMCHMFT2());
-            if (dimuon.sign() == 0) {
-              if (rap > 2.5 && rap < 3.6) {
-                if (dimuon.mass() > 1.8) {
-                }
-              } // end rapidity cut
-            } // end sign selection
-          } // ambig cut
-        } // end MCH-MFT chi2 selection
+                                                                                                              // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {                   // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
+        if (!(dimuon.isAmbig1()) && !(dimuon.isAmbig2())) {                                                   // remove ambiguous tracks
+          // hRapidityGlobal->Fill(rap);
+          // registry.get<TH3>(HIST("massChi2TH3"))->Fill(dimuon.mass(), dimuon.chi2MatchMCHMFT1(), dimuon.chi2MatchMCHMFT2());
+          if (dimuon.sign() == 0) {
+            if (rap > 2.5 && rap < 3.6) {
+              if (dimuon.mass() > 1.8) {
+
+                /*if (dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443) {
+                  if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM Jpsi
+                    registry.get<TH1>(HIST("Sa_SV"))->Fill(dimuon.sVertex());
+                  } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM Jpsi
+                    registry.get<TH1>(HIST("Sc_SV"))->Fill(dimuon.sVertex());
+                  } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM Jpsi
+                    registry.get<TH1>(HIST("Sb_SV"))->Fill(dimuon.sVertex());
+                  } else {
+                    continue;
+                  }
+                } else {
+                  registry.get<TH1>(HIST("PdgCode_mothers1"))->Fill(dimuon.pdgCode1());
+                  registry.get<TH1>(HIST("PdgCode_mothers2"))->Fill(dimuon.pdgCode2());
+                  if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM X
+                    registry.get<TH1>(HIST("Ba_SV"))->Fill(dimuon.sVertex());
+                  } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM X
+                    registry.get<TH1>(HIST("Bc_SV"))->Fill(dimuon.sVertex());
+                  } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM X
+                    registry.get<TH1>(HIST("Bb_SV"))->Fill(dimuon.sVertex());
+                  } else {
+                    continue;
+                  }
+                }*/
+              }
+            } // end rapidity cut
+          } // end sign selection
+        } // ambig cut
+        //} // end MCH-MFT chi2 selection
       } // end eta cut
     } // end loop over dimuons
   };
