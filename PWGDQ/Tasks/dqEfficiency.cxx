@@ -788,6 +788,20 @@ struct AnalysisSameEventPairing {
 
       constexpr bool muonHasCov = ((TTrackFillMap & VarManager::ObjTypes::MuonCov) > 0 || (TTrackFillMap & VarManager::ObjTypes::ReducedMuonCov) > 0);
       if constexpr ((TPairType == VarManager::kDecayToMuMu) && muonHasCov) {
+        auto muontrack1 = tracksMC.rawIteratorAt(t1.reducedMCTrackId());
+        auto muontrack2 = tracksMC.rawIteratorAt(t2.reducedMCTrackId());
+        auto motherPdg1 = 0;
+        auto motherPdg2 = 0;
+        if (muontrack1.has_mothers()) {
+              auto motherId1 = muontrack1.mothersIds()[0];
+              auto mother1 = tracksMC.rawIteratorAt(motherId1);
+              motherPdg1 = mother1.pdgCode();
+        }
+        if (muontrack2.has_mothers()) {
+              auto motherId2 = muontrack2.mothersIds()[0];
+              auto mother2 = tracksMC.rawIteratorAt(motherId2);
+              motherPdg2 = mother2.pdgCode();
+        }
         if (fConfigFlatTables.value) {
           dimuonAllList(event.posX(), event.posY(), event.posZ(), event.numContrib(),
                         event.reducedMCevent().mcPosX(), event.reducedMCevent().mcPosY(), event.reducedMCevent().mcPosZ(),
@@ -808,7 +822,8 @@ struct AnalysisSameEventPairing {
                         t2.reducedMCTrack().pt(), t2.reducedMCTrack().eta(), t2.reducedMCTrack().phi(), t2.reducedMCTrack().e(),
                         t1.reducedMCTrack().vx(), t1.reducedMCTrack().vy(), t1.reducedMCTrack().vz(), t1.reducedMCTrack().vt(),
                         t2.reducedMCTrack().vx(), t2.reducedMCTrack().vy(), t2.reducedMCTrack().vz(), t2.reducedMCTrack().vt(),
-                        t1.isAmbiguous(), t2.isAmbiguous(), -999., -999., -999., -999., -999., -999., -999., -999., -999.,
+                        t1.isAmbiguous(), t2.isAmbiguous(), motherPdg1, motherPdg2,
+                        -999., -999., -999., -999., -999., -999., -999., -999., -999.,
                         -999., -999., -999., -999., -999., VarManager::fgValues[VarManager::kVertexingPz],
                         VarManager::fgValues[VarManager::kVertexingSV]);
         }

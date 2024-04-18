@@ -46,7 +46,7 @@ struct dileptonReader {
     AxisSpec tauzAxis = {200, -0.9, 0.9, "#tau_{z} (ns)"};
     AxisSpec ptAxis = {120, 0.0, 30.0, "p_{T} (GeV/c)"};
     AxisSpec pzAxis = {300, 0.0, 100.0, "p_{z} (GeV/c)"};
-    AxisSpec SVAxis = {1080, -1000.0, 80.0, "Secondary_Vertex (cm)"}; // 900 -80 80
+    AxisSpec SVAxis = {65, -80.0, 50.0, "Secondary_Vertex (cm)"}; // 900 -80 80
     AxisSpec rapAxis = {200, 2., 4., "y"};
     AxisSpec rabsAxis = {100, 0., 100., "R_{abs}"};
     AxisSpec etaAxis = {350, -8., -1., "#eta"};
@@ -72,20 +72,33 @@ struct dileptonReader {
     registry.add("Mass", "Invariant mass distribution", massSpec);
     // registry.add("massChi2TH3", "Mass and MCH-MFT Chi2 TH3 Histogram", histospec);
     registry.add("Pz", "Pz distribution", pzSpec);
-    registry.add("SecondVertex", "Second Vertex distribution", SVSpec);
     registry.add("Tauz", "Tauz distribution", tauzSpec);
     registry.add("Rapidity", "Rapidity distribution", rapSpec);
-    registry.add("Eta", "Pseudo-rapidity distribution", etaSpec);
     registry.add("DeltaZ", "PosZ - SVertex distribution", SVSpec);
     registry.add("PrimaryVertex", "Primary Vertex distribution", SVSpec);
+
+    registry.add("SecondVertex", "Second Vertex distribution", SVSpec);
+    registry.add("Sa_SV", "Second Vertex distribution for GM Jpsi", SVSpec);
+    registry.add("Sb_SV", "Second Vertex distribution for GM/FM Jpsi", SVSpec);
+    registry.add("Sc_SV", "Second Vertex distribution for FM Jpsi", SVSpec);
+    registry.add("Ba_SV", "Second Vertex distribution for GM X", SVSpec);
+    registry.add("Bb_SV", "Second Vertex distribution for GM/FM X", SVSpec);
+    registry.add("Bc_SV", "Second Vertex distribution for FM X", SVSpec);
+
     registry.add("FakeMatches1", "Fake matches1", mcMaskSpec);
     registry.add("FakeMatches2", "Fake matches2", mcMaskSpec);
+
+    registry.add("Eta", "Pseudo-rapidity distribution", etaSpec);
     registry.add("Eta1", "Pseudo-rapidity distribution of muon 1", etaSpec);
     registry.add("Eta2", "Pseudo-rapidity distribution of muon 2", etaSpec);
+
     registry.add("IndexMCTrack_GM", "Index ReducedMCTrack Good", indexMcTrackSpec);
     registry.add("IndexMCTrack_FM", "Index ReducedMCTrack Fake", indexMcTrackSpec);
     registry.add("IndexMCTrack_MCMask", "Good/Fake Matches", mcMaskSpec);
+
     registry.add("PdgCode_mothers", "PdgCode mothers", PdgCodeSpec);
+    registry.add("PdgCode_mothers1", "PdgCode mothers of muon 1", PdgCodeSpec);
+    registry.add("PdgCode_mothers2", "PdgCode mothers of muon 2", PdgCodeSpec);
 
     registry.add("IndexMCTrack_Jpsi_GM", "Muons from Jpsi Good Matches", indexMcTrackSpec);
     registry.add("IndexMCTrack_Jpsi_FM", "Muons from Jpsi Fake Matches", indexMcTrackSpec);
@@ -108,7 +121,7 @@ struct dileptonReader {
     registry.add("Rabs_Pion_FM", "Rabs mu from Pion Fake Matches", rabsSpec);
   };
 
-  void processbis(aod::DimuonsAll const& dimuons)
+  void process(aod::DimuonsAll const& dimuons)
   {
     // Double_t const PI = ROOT::Math::Pi(); // uncomment if you want to use pi, can be useful
 
@@ -129,8 +142,7 @@ struct dileptonReader {
         } // end pt cut
       } // end eta cut (MUON standalone acceptance)
 
-      if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) {
-      }
+      // if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) {}
       registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
       registry.get<TH1>(HIST("Pt"))->Fill(dimuon.pt());
       registry.get<TH1>(HIST("Pz"))->Fill(dimuon.vertexPz());
@@ -144,6 +156,31 @@ struct dileptonReader {
       registry.get<TH1>(HIST("FakeMatches2"))->Fill(dimuon.mcMask2());
       registry.get<TH1>(HIST("Eta1"))->Fill(dimuon.eta1());
       registry.get<TH1>(HIST("Eta2"))->Fill(dimuon.eta2());
+
+      if (dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443) {
+        if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM Jpsi
+          registry.get<TH1>(HIST("Sa_SV"))->Fill(dimuon.sVertex());
+        } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM Jpsi
+          registry.get<TH1>(HIST("Sc_SV"))->Fill(dimuon.sVertex());
+        } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM Jpsi
+          registry.get<TH1>(HIST("Sb_SV"))->Fill(dimuon.sVertex());
+        } else {
+          continue;
+        }
+      } else {
+        registry.get<TH1>(HIST("PdgCode_mothers1"))->Fill(dimuon.pdgCode1());
+        registry.get<TH1>(HIST("PdgCode_mothers2"))->Fill(dimuon.pdgCode2());
+        if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM X
+          registry.get<TH1>(HIST("Ba_SV"))->Fill(dimuon.sVertex());
+        } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM X
+          registry.get<TH1>(HIST("Bc_SV"))->Fill(dimuon.sVertex());
+        } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM X
+          registry.get<TH1>(HIST("Bb_SV"))->Fill(dimuon.sVertex());
+        } else {
+          continue;
+        }
+      }
+
       // Global tracks studies
       if ((dimuon.eta1() > -3.6 && dimuon.eta1() < -2.5) && (dimuon.eta2() > -3.6 && dimuon.eta2() < -2.5)) { // cut on eta in mft acceptance
         if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {                   // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
@@ -162,7 +199,7 @@ struct dileptonReader {
     } // end loop over dimuons
   };
 
-  void process(soa::Join<aod::ReducedMuons, aod::ReducedMuonsExtra, aod::ReducedMuonsLabels> const& muons, aod::ReducedMCTracks const& mctracks)
+  void processbis(soa::Join<aod::ReducedMuons, aod::ReducedMuonsExtra, aod::ReducedMuonsLabels> const& muons, aod::ReducedMCTracks const& mctracks)
   {
     for (auto& muon : muons) {
       auto muontrack = mctracks.rawIteratorAt(muon.reducedMCTrackId());
