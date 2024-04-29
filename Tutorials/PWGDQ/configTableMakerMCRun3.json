@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "@/Users/emiliebarreau/alice/MonteCarlo/302011/AO2D_302011.txt"
+        "aod-file": "@/Users/emiliebarreau/alice/MonteCarlo/302008/AO2D_302008.txt"
     },
     "internal-dpl-aod-spawner": "",
     "internal-dpl-aod-index-builder": "",
@@ -194,7 +194,7 @@
         "cfgMuonLowPt": "0.7",
         "cfgMinTpcSignal": "30",
         "cfgMaxTpcSignal": "300",
-        "cfgMCsignals": "muFromJpsi,Jpsi,muFromBc,muonPrimary,pionPrimary,pionPrimaryFromHc",
+        "cfgMCsignals": "muFromJpsi,Jpsi,muFromBc,muonPrimary,pionPrimary,pionPrimaryFromHc,nonPromptJpsi",
         "cfgIsRun2": "false",
         "cfgQA": "true",
         "cfgDetailedQA": "false",

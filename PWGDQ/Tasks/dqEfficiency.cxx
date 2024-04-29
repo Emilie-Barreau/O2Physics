@@ -297,8 +297,8 @@ struct AnalysisTrackSelection {
             fHistMan->FillHistClass(fHistNamesMCMatched[j][i].Data(), VarManager::fgValues);
           }
         } // end loop over cuts
-      }   // end loop over MC signals
-    }     // end loop over tracks
+      } // end loop over MC signals
+    } // end loop over tracks
   }
 
   void processSkimmed(MyEventsSelected::iterator const& event, MyBarrelTracks const& tracks, ReducedMCEvents const& eventsMC, ReducedMCTracks const& tracksMC)
@@ -461,8 +461,8 @@ struct AnalysisMuonSelection {
             fHistMan->FillHistClass(fHistNamesMCMatched[j][i].Data(), VarManager::fgValues);
           }
         } // end loop over cuts
-      }   // end loop over MC signals
-    }     // end loop over muons
+      } // end loop over MC signals
+    } // end loop over muons
   }
 
   void processSkimmed(MyEventsSelected::iterator const& event, MyMuonTracks const& muons, ReducedMCEvents const& eventsMC, ReducedMCTracks const& tracksMC)
@@ -594,8 +594,8 @@ struct AnalysisSameEventPairing {
           }
           fBarrelHistNamesMCmatched.push_back(mcSigClasses);
         } // end loop over cuts
-      }   // end if(cutNames.IsNull())
-    }     // end if processBarrel
+      } // end if(cutNames.IsNull())
+    } // end if processBarrel
 
     if (enableMuonHistos) {
       TString cutNames = fConfigMuonCuts.value;
@@ -618,8 +618,8 @@ struct AnalysisSameEventPairing {
           }
           fMuonHistNamesMCmatched.push_back(mcSigClasses);
         } // end loop over cuts
-      }   // end if(cutNames.IsNull())
-    }     // end if processMuon
+      } // end if(cutNames.IsNull())
+    } // end if processMuon
 
     // NOTE: For the electron-muon pairing, the policy is that the user specifies n track and n muon cuts via configurables
     //     So for each barrel cut there is a corresponding muon cut
@@ -755,7 +755,7 @@ struct AnalysisSameEventPairing {
       VarManager::FillPair<TPairType, TTrackFillMap>(t1, t2);
       // secondary vertexing is not implemented for e-mu pairs so we need to hide this function from the e-mu analysis for now
       if constexpr ((TPairType == VarManager::kDecayToEE) || (TPairType == VarManager::kDecayToMuMu)) {
-        VarManager::FillPairVertexing<TPairType, TEventFillMap, TTrackFillMap>(event, t1, t2, fPropToPCA, VarManager::fgValues);
+        VarManager::FillPairVertexing<TPairType, TEventFillMap, TTrackFillMap>(event, t1, t2, fPropToPCA, VarManager::fgValues); // Souci
       }
 
       // run MC matching for this pair
@@ -793,14 +793,14 @@ struct AnalysisSameEventPairing {
         auto motherPdg1 = 0;
         auto motherPdg2 = 0;
         if (muontrack1.has_mothers()) {
-              auto motherId1 = muontrack1.mothersIds()[0];
-              auto mother1 = tracksMC.rawIteratorAt(motherId1);
-              motherPdg1 = mother1.pdgCode();
+          auto motherId1 = muontrack1.mothersIds()[0];
+          auto mother1 = tracksMC.rawIteratorAt(motherId1);
+          motherPdg1 = mother1.pdgCode();
         }
         if (muontrack2.has_mothers()) {
-              auto motherId2 = muontrack2.mothersIds()[0];
-              auto mother2 = tracksMC.rawIteratorAt(motherId2);
-              motherPdg2 = mother2.pdgCode();
+          auto motherId2 = muontrack2.mothersIds()[0];
+          auto mother2 = tracksMC.rawIteratorAt(motherId2);
+          motherPdg2 = mother2.pdgCode();
         }
         if (fConfigFlatTables.value) {
           dimuonAllList(event.posX(), event.posY(), event.posZ(), event.numContrib(),
@@ -849,7 +849,7 @@ struct AnalysisSameEventPairing {
         }
       }
     } // end loop over barrel track pairs
-  }   // end runPairing
+  } // end runPairing
 
   template <typename TTracksMC>
   void runMCGen(TTracksMC& groupedMCTracks)
@@ -899,7 +899,7 @@ struct AnalysisSameEventPairing {
         }
       }
     } // end of true pairing loop
-  }   // end runMCGen
+  } // end runMCGen
 
   // Preslice<ReducedMCTracks> perReducedMcEvent = aod::reducedtrackMC::reducedMCeventId;
   PresliceUnsorted<ReducedMCTracks> perReducedMcEvent = aod::reducedtrackMC::reducedMCeventId;

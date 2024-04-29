@@ -2821,9 +2821,9 @@ void VarManager::FillDileptonTrackVertexing(C const& collision, T1 const& lepton
           values[kVertexingTauxyProjectedNs] = values[kVertexingTauxyProjected] / o2::constants::physics::LightSpeedCm2NS;
           values[kVertexingTauzProjected] = (values[kVertexingLzProjected] * KFGeoThreeProng.GetMass()) / KFGeoThreeProng.GetP();
         } // end Run 2 quantities
-      }   // end eventHasVtxCov
-    }     // end (candidateType == kBtoJpsiEEK) && trackHasCov
-  }       // end KF
+      } // end eventHasVtxCov
+    } // end (candidateType == kBtoJpsiEEK) && trackHasCov
+  } // end KF
 }
 
 template <typename C, typename A>

@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "/Users/emiliebarreau/alice/MonteCarlo/Table_Maker/reducedAod_withcfgsignal.root",
+        "aod-file": "/Users/emiliebarreau/alice/O2Physics/Tutorials/PWGDQ/MC302008_reducedAod_withsignal.root",
         "aod-reader-json": "readerConfiguration_dileptonMC.json"
     },
     "internal-dpl-injected-dummy-sink": "",
@@ -26,7 +26,7 @@
     },
     "analysis-muon-selection": {
         "cfgMuonCuts": "matchedGlobal",
-        "cfgMuonMCSignals": "muFromJpsi,Jpsi,muFromBc,muonPrimary,pionPrimary,pionPrimaryFromHc",
+        "cfgMuonMCSignals": "muFromJpsi,Jpsi,muFromBc,muonPrimary,pionPrimary,pionPrimaryFromHc,nonPromptJpsi",
         "cfgAddMuonHistogram": "muon,vertexing",
         "cfgQA": "true",
         "processSkimmed": "true",
@@ -35,12 +35,12 @@
     "analysis-same-event-pairing": {
         "cfgTrackCuts": "jpsiO2MCdebugCuts2",
         "cfgMuonCuts": "matchedGlobal",
-        "cfgBarrelMCRecSignals": "mumuFromJpsi,dimuon,pionPrimary,pionPrimaryFromHc",
+        "cfgBarrelMCRecSignals": "mumuFromJpsi,dimuon,pionPrimary,pionPrimaryFromHc,muFromBc,mumuFromJpsiFromBc",
         "cfgBarrelMCGenSignals": "Jpsi,muonPrimary,pionPrimary",
         "cfgAddSEPHistogram": "dimuon,vertexing-forward,mft-pid",
         "cfgCorrFullGeo": "true",
         "cfgFlatTables": "true",
-        "cfgUseKFVertexing": "false",
+        "cfgUseKFVertexing": "true",
         "cfgUseRemoteField": "false",
         "cfgMagField": "5.0",
         "ccdburl": "http://alice-ccdb.cern.ch",
