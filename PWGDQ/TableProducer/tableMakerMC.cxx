@@ -906,12 +906,30 @@ struct TableMakerMC {
       auto mctrack = mcTracks.iteratorAt(oldLabel);
       uint16_t mcflags = fMCFlags.find(oldLabel)->second;
 
+      if (mctrack.pdgCode() == 13 || mctrack.pdgCode() == -13) {
+        cout << "mcflag muon : " << mcflags << endl;
+        if (mctrack.has_mothers()) {
+          auto muontrack = mctrack.mothersIds()[0];
+          auto mother = mcTracks.iteratorAt(muontrack);
+          auto motherPdg = mother.pdgCode();
+          cout << "MOTHER : " << motherPdg << endl;
+        } else {
+          cout << "NAAAAN" << endl;
+        }
+      }
+
       std::vector<int> mothers;
       if (mctrack.has_mothers()) {
         for (auto& m : mctrack.mothersIds()) {
           if (m < mcTracks.size()) { // protect against bad mother indices
+            cout << "m truc : " << m << endl;
+            auto mother = mcTracks.iteratorAt(m);
+            auto motherPdg = mother.pdgCode();
+            cout << "pdgCode trucbidule : " << motherPdg << endl;
             if (fNewLabels.find(m) != fNewLabels.end()) {
               mothers.push_back(fNewLabels.find(m)->second);
+            } else {
+              cout << "WTF" << endl;
             }
           } else {
             cout << "Mother label (" << m << ") exceeds the McParticles size (" << mcTracks.size() << ")" << endl;

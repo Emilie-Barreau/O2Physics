@@ -7,60 +7,135 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file": "\/Users\/emiliebarreau\/alice\/O2Physics\/Tutorials\/PWGDQ\/MC302008_reducedAod_withsignal.root",
-        "aod-reader-json": "readerConfiguration_dileptonMC.json"
+        "aod-file": "\/Users\/emiliebarreau\/alice\/MonteCarlo\/526964\/001\/AO2D.root"
     },
-    "analysis-event-selection": {
-        "cfgEventCuts": "eventStandardNoINT7",
-        "cfgQA": "true",
-        "processSkimmed": "true",
-        "processDummy": "false"
+    "internal-dpl-aod-spawner": "",
+    "internal-dpl-aod-index-builder": "",
+    "timestamp-task": {
+        "verbose": "false",
+        "rct-path": "RCT\/Info\/RunInformation",
+        "orbit-reset-path": "CTP\/Calib\/OrbitReset",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "isRun2MC": "false"
     },
-    "analysis-muon-selection": {
-        "cfgMuonCuts": "matchedGlobal",
-        "cfgMuonMCSignals": "muFromJpsi,Jpsi,muFromBc,muonPrimary,pionPrimary,pionPrimaryFromHc,nonPromptJpsi",
-        "cfgQA": "true",
-        "processSkimmed": "true",
-        "processDummy": "false"
+    "bc-selection-task": {
+        "triggerBcShift": "999",
+        "ITSROFrameBorderMargin": "30",
+        "TimeFrameStartBorderMargin": "350",
+        "TimeFrameEndBorderMargin": "4000",
+        "processRun2": "false",
+        "processRun3": "true"
     },
-    "analysis-track-selection": {
-        "cfgTrackCuts": "jpsiO2MCdebugCuts2",
-        "cfgTrackMCSignals": "eFromJpsi,eFromLMeeLF",
-        "cfgQA": "true",
-        "processSkimmed": "false",
-        "processDummy": "true"
+    "fwd-track-extension": "",
+    "event-selection-task": {
+        "syst": "pp",
+        "muonSelection": "0",
+        "customDeltaBC": "300",
+        "isMC": "true",
+        "processRun2": "false",
+        "processRun3": "true"
     },
-    "analysis-same-event-pairing": {
-        "cfgTrackCuts": "jpsiO2MCdebugCuts2",
-        "cfgMuonCuts": "matchedGlobal",
-        "cfgBarrelMCRecSignals": "mumuFromJpsi,dimuon,pionPrimary,pionPrimaryFromHc,muFromBc,mumuFromJpsiFromBc",
-        "cfgBarrelMCGenSignals": "Jpsi,muonPrimary,pionPrimary,nonPromptJpsi",
-        "cfgFlatTables": "true",
-        "cfgUseKFVertexing": "true",
-        "cfgUseRemoteField": "false",
-        "cfgMagField": "5",
+    "multiplicity-table": {
+        "doVertexZeq": "1",
+        "fractionOfEvents": "2",
+        "enabledTables": {
+            "labels_rows": [
+                "FV0Mults",
+                "FT0Mults",
+                "FDDMults",
+                "ZDCMults",
+                "TrackletMults",
+                "TPCMults",
+                "PVMults",
+                "MultsExtra",
+                "MultSelections",
+                "MultZeqs",
+                "MultsExtraMC"
+            ],
+            "labels_cols": [
+                "Enable"
+            ],
+            "values": [
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ]
+            ]
+        },
         "ccdburl": "http:\/\/alice-ccdb.cern.ch",
-        "grpmagPath": "GLO\/Config\/GRPMagField",
-        "cfgUseAbsDCA": "false",
-        "cfgPropToPCA": "true",
-        "cfgCorrFullGeo": "true",
-        "cfgNoCorrFwdProp": "false",
-        "lutPath": "GLO\/Param\/MatLUT",
-        "geoPath": "GLO\/Config\/GeometryAligned",
-        "processDecayToEESkimmed": "false",
-        "processDecayToEEVertexingSkimmed": "false",
-        "processDecayToMuMuSkimmed": "false",
-        "processDecayToMuMuVertexingSkimmed": "true",
-        "processDummy": "false"
+        "ccdbpath": "Centrality\/Calibration",
+        "processRun2": "false",
+        "processRun3": "true",
+        "processGlobalTrackingCounters": "false",
+        "processMC": "false"
     },
-    "analysis-dilepton-track": {
-        "cfgLeptonCuts": "muonQualityCuts",
-        "cfgFillCandidateTable": "false",
-        "cfgBarrelMCRecSignals": "mumuFromJpsiFromBc,mumumuFromBc",
-        "cfgBarrelMCGenSignals": "Jpsi",
-        "processDimuonMuonSkimmed": "false",
-        "processDielectronKaonSkimmed": "false",
-        "processDummy": "true"
+    "table-maker-m-c": {
+        "cfgEventCuts": "eventStandardNoINT7",
+        "cfgBarrelTrackCuts": "jpsiO2MCdebugCuts,jpsiO2MCdebugCuts2,jpsiO2MCdebugCuts3,kaonPID2",
+        "cfgMuonCuts": "muonQualityCuts",
+        "cfgAddEventHistogram": "cent,mc",
+        "cfgAddTrackHistogram": "mc",
+        "cfgAddMuonHistogram": "muon,mc,mft-pid",
+        "cfgAddMCTruthHistogram": "",
+        "cfgBarrelLowPt": "0.5",
+        "cfgMuonLowPt": "0",
+        "cfgMinTpcSignal": "30",
+        "cfgMaxTpcSignal": "300",
+        "cfgMCsignals": "Jpsi,muFromJpsi",
+        "cfgIsRun2": "false",
+        "cfgQA": "true",
+        "cfgDetailedQA": "false",
+        "cfgIsAmbiguous": "true",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "cfgPropMuon": "false",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "grpmagPathRun2": "GLO\/GRP\/GRP",
+        "processFull": "false",
+        "processFullWithCov": "false",
+        "processBarrelOnly": "false",
+        "processBarrelOnlyWithMults": "false",
+        "processBarrelOnlyWithCent": "false",
+        "processBarrelOnlyWithCentAndMults": "false",
+        "processBarrelOnlyWithCov": "false",
+        "processBarrelOnlyWithDalitzBits": "false",
+        "processMuonOnly": "false",
+        "processMuonOnlyWithCov": "true",
+        "processMuonOnlyWithCent": "false",
+        "processOnlyBCs": "false",
+        "processAmbiguousMuonOnly": "false",
+        "processAmbiguousMuonOnlyWithCov": "false",
+        "processAmbiguousBarrelOnly": "false",
+        "processMuonsAndMFT": "false"
     },
     "internal-dpl-aod-writer": "",
     "internal-dpl-aod-global-analysis-file-sink": "",

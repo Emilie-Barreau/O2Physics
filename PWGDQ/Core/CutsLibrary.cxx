@@ -1950,6 +1950,11 @@ AnalysisCompositeCut* o2::aod::dqcuts::GetCompositeCut(const char* cutName)
     return cut;
   }
 
+  if (!nameStr.compare("no_Cuts")) {
+    cut->AddCut(GetAnalysisCut("no_Cuts"));
+    return cut;
+  }
+
   if (!nameStr.compare("matchedQualityCuts")) {
     cut->AddCut(GetAnalysisCut("matchedQualityCuts"));
     return cut;
@@ -4613,6 +4618,11 @@ AnalysisCut* o2::aod::dqcuts::GetAnalysisCut(const char* cutName)
     cut->AddCut(VarManager::kTPCnSigmaEl_Corr, -2.0, 4.0, false, VarManager::kPin, 3.0, 9999.0);
     cut->AddCut(VarManager::kTPCnSigmaPi_Corr, 2.5, 999, false, VarManager::kPin, 0, 2.0);
     cut->AddCut(VarManager::kTPCnSigmaPr_Corr, 2.5, 999, false, VarManager::kPin, 0, 2.0);
+    return cut;
+  }
+
+  if (!nameStr.compare("no_Cuts")) {
+    cut->AddCut(VarManager::kMuonChi2, 0.0, 1e6);
     return cut;
   }
 
