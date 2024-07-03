@@ -45,6 +45,9 @@
                 "table": "AOD/RTDIMUONALL/0"
             },
             {
+                "table": "AOD/RTDIMUONEXTRA/0"
+            },
+            {
                 "table": "AOD/RTDILEPTONTRACK/0"
             }
         ]

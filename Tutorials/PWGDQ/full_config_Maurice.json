@@ -1,0 +1,380 @@
+{
+  "dataset_production_type": "MC",
+  "max_df_size": 100000000,
+  "dataset_id": 916,
+  "cpu_cores": 1,
+  "workflows": [
+    {
+      "subwagon_id": 24301,
+      "subwagon_name": "base",
+      "configuration": {
+        "analysis-track-selection": {
+          "cfgAddTrackHistogram": "",
+          "cfgDummyRunlist": "0",
+          "processSkimmedWithCov": "0",
+          "ccdb-no-later-than": "1719795393302",
+          "processDummy": "1",
+          "processSkimmed": "0",
+          "cfgTrackMCSignals": "",
+          "cfgTrackCuts": "jpsiO2MCdebugCuts2",
+          "ccdb-path-tpc": "Users/z/zhxiong/TPCPID/PostCalib",
+          "cfgQA": "0",
+          "cfgInitRunNumber": "543215",
+          "grpmagPath": "GLO/Config/GRPMagField",
+          "ccdb-url": "http://alice-ccdb.cern.ch",
+          "cfgTPCpostCalib": "0"
+        },
+        "analysis-prefilter-selection": {
+          "cfgTrackCuts": "jpsiO2MCdebugCuts2",
+          "cfgPrefilterTrackCut": "jpsiO2MCdebugCuts2",
+          "cfgPrefilterPairCut": "",
+          "processBarrelSkimmed": "0",
+          "processDummy": "1"
+        },
+        "analysis-dilepton-track": {
+          "cfgDileptonHighMass": "3.2",
+          "processMuonSkimmed": "0",
+          "cfgGrpmagPath": "GLO/Config/GRPMagField",
+          "cfgMagField": "5",
+          "cfgTrackCut": "kaonPID",
+          "cfgDileptonTrackHistogramsSubgroups": "invmass,vertexing",
+          "processBarrelSkimmed": "0",
+          "processDummy": "1",
+          "cfgBarrelMCGenSignals": "",
+          "cfgUseRemoteField": "0",
+          "cfgBarrelMCRecSignals": "",
+          "cfgUseKFVertexing": "0",
+          "processMCGen": "0",
+          "cfgDileptonLxyCut": "0",
+          "cfgDileptonpTCut": "0",
+          "cfgDileptonLowMass": "2.8"
+        },
+        "analysis-event-selection": {
+          "cfgAddEventHistogram": "Event;event;trigger;muon",
+          "cfgQA": "1",
+          "ccdb-no-later-than": "1719795393300",
+          "cfgAddEventMCHistogram": "generator",
+          "ccdb-url": "http://alice-ccdb.cern.ch",
+          "processDummy": "0",
+          "cfgEventCuts": "eventStandardSel8PbPbQuality",
+          "processSkimmed": "1"
+        },
+        "analysis-muon-selection": {
+          "cfgMuonMCSignals": "muFromJpsi",
+          "cfgMuonCuts": "matchedMchMid",
+          "cfgAddMuonHistogram": "muon;track;pt;eta",
+          "processSkimmedWithCov": "0",
+          "cfgQA": "1",
+          "ccdb-no-later-than": "1719795393302",
+          "grpmagPath": "GLO/Config/GRPMagField",
+          "geoPath": "GLO/Config/GeometryAligned",
+          "ccdb-url": "http://alice-ccdb.cern.ch",
+          "processDummy": "0",
+          "processSkimmed": "1"
+        },
+        "analysis-same-event-pairing": {
+          "lutPath": "GLO/Param/MatLUT",
+          "cfgPairCuts": "",
+          "ccdb-no-later-than": "1719795393302",
+          "cfgNoCorrFwdProp": "1",
+          "cfgUseAbsDCA": "1",
+          "cfgBarrelMCGenSignals": "Jpsi",
+          "cfgTrackCuts": "jpsiO2MCdebugCuts2",
+          "cfgMuonCuts": "matchedMchMid",
+          "cfgBarrelMCRecSignals": "mumuFromJpsi",
+          "cfgUseKFVertexing": "0",
+          "cfgCorrFullGeo": "0",
+          "ccdb-path": "Users/lm",
+          "processAllSkimmed": "0",
+          "energy": "13600",
+          "cfgPropToPCA": "0",
+          "cfgAddSEPHistogram": "",
+          "cfgMagField": "5",
+          "processBarrelOnlySkimmed": "0",
+          "geoPath": "GLO/Config/GeometryAligned",
+          "processDummy": "0",
+          "cfgFlatTables": "1",
+          "syst": "pp",
+          "cfgUseRemoteField": "0",
+          "processMuonOnlySkimmed": "1",
+          "grpmagPath": "GLO/Config/GRPMagField",
+          "ccdb-url": "http://alice-ccdb.cern.ch"
+        }
+      },
+      "wagon_id": 14131,
+      "workflow_name": "o2-analysis-dq-efficiency-with-assoc",
+      "suffix": ""
+    },
+    {
+      "subwagon_id": 23701,
+      "subwagon_name": "base",
+      "configuration": {
+        "table-maker-m-c": {
+          "cfgAddTrackHistogram": "",
+          "cfgBarrelRequireITS": "1",
+          "cfgBarrelRequireTPC": "1",
+          "processPbPb": "0",
+          "cfgDetailedQA": "0",
+          "cfgMCsignals": "muFromJpsi,Jpsi,Psi2S,muFromPsi2S",
+          "cfgIsRun2": "0",
+          "grpmagPathRun2": "GLO/GRP/GRP",
+          "cfgEventCuts": "eventStandardSel8PbPbQuality",
+          "processPP": "0",
+          "cfgMuonCuts": "matchedMchMid",
+          "cfgPropMuon": "1",
+          "cfgAddMuonHistogram": "",
+          "processOnlyBCs": "0",
+          "cfgQA": "0",
+          "cfgBarrelMaxAbsEta": "0.9",
+          "cfgBarrelMinTPCncls": "50",
+          "processPbPbBarrelOnly": "0",
+          "processPbPbMuonOnly": "0",
+          "cfgMuonLowPt": "0",
+          "cfgBarrelMaxITSchi2": "36",
+          "cfgBarrelMinPt": "0.5",
+          "cfgBarrelTrackCuts": "jpsiPID1",
+          "geoPath": "GLO/Config/GeometryAligned",
+          "cfgBarrelMaxTPCchi2": "10",
+          "processPPMuonOnly": "1",
+          "cfgAddMCTruthHistogram": "",
+          "cfgAddEventHistogram": "",
+          "processPPBarrelOnly": "0",
+          "grpmagPath": "GLO/Config/GRPMagField",
+          "ccdb-url": "http://alice-ccdb.cern.ch"
+        }
+      },
+      "wagon_id": 13906,
+      "workflow_name": "o2-analysis-dq-table-maker-mc-with-assoc",
+      "suffix": ""
+    },
+    {
+      "subwagon_id": 17,
+      "subwagon_name": "base",
+      "configuration": {
+        "timestamp-task": {
+          "rct-path": "RCT/Info/RunInformation",
+          "orbit-reset-path": "CTP/Calib/OrbitReset",
+          "ccdb-url": "http://alice-ccdb.cern.ch",
+          "verbose": "0",
+          "isRun2MC": "0"
+        }
+      },
+      "wagon_id": 17,
+      "workflow_name": "o2-analysis-timestamp",
+      "suffix": ""
+    },
+    {
+      "subwagon_id": 651,
+      "subwagon_name": "base",
+      "configuration": {
+        "multiplicity-table": {
+          "processGlobalTrackingCounters": "0",
+          "doVertexZeq": "1",
+          "produceHistograms": "0",
+          "processRun3": "1",
+          "processRun2": "0",
+          "ccdbpath": "Centrality/Calibration",
+          "ccdburl": "http://alice-ccdb.cern.ch",
+          "enabledTables": {
+            "values": [
+              [
+                1
+              ],
+              [
+                1
+              ],
+              [
+                1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                -1
+              ],
+              [
+                1
+              ]
+            ]
+          },
+          "processMC": "1",
+          "fractionOfEvents": "2"
+        }
+      },
+      "wagon_id": 597,
+      "workflow_name": "o2-analysis-multiplicity-table",
+      "suffix": ""
+    },
+    {
+      "subwagon_id": 3694,
+      "subwagon_name": "base",
+      "configuration": {
+        "fwd-track-extension": {}
+      },
+      "wagon_id": 3232,
+      "workflow_name": "o2-analysis-fwdtrackextension",
+      "suffix": ""
+    },
+    {
+      "subwagon_id": 19034,
+      "subwagon_name": "base",
+      "configuration": {
+        "fwd-track-to-collision-association": {
+          "timeMargin": "0",
+          "processFwdAssocWithTime": "1",
+          "bcWindowForOneSigma": "115",
+          "processFwdStandardAssoc": "0",
+          "nSigmaForTimeCompat": "3",
+          "includeUnassigned": "0",
+          "fillTableOfCollIdsPerTrack": "1",
+          "processMFTStandardAssoc": "0",
+          "processMFTAssocWithTime": "0"
+        }
+      },
+      "wagon_id": 12256,
+      "workflow_name": "o2-analysis-fwdtrack-to-collision-associator",
+      "suffix": ""
+    },
+    {
+      "subwagon_id": 637,
+      "subwagon_name": "base",
+      "configuration": {
+        "bc-selection-task": {
+          "ITSROFrameStartBorderMargin": "-1",
+          "triggerBcShift": "0",
+          "TimeFrameStartBorderMargin": "-1",
+          "processRun3": "1",
+          "processRun2": "0",
+          "TimeFrameEndBorderMargin": "-1",
+          "ITSROFrameEndBorderMargin": "-1"
+        },
+        "event-selection-task": {
+          "TimeRangeVetoOnCollStandard": "10",
+          "processRun3": "1",
+          "TimeIntervalForOccupancyCalculationMin": "-40",
+          "processRun2": "0",
+          "TimeIntervalForOccupancyCalculationMax": "100",
+          "ReferenceOccupanciesInTimeBins": {
+            "values": [
+              3000,
+              1400,
+              750,
+              1000,
+              1750,
+              4000
+            ]
+          },
+          "syst": "pp",
+          "isMC": "1",
+          "maxDiffZvtxFT0vsPV": "1",
+          "UseWeightsForOccupancyEstimator": "1",
+          "muonSelection": "0",
+          "TimeBinsForOccupancyCalculation": {
+            "values": [
+              -40,
+              -20,
+              0,
+              25,
+              50,
+              75,
+              100
+            ]
+          },
+          "TimeRangeVetoOnCollNarrow": "4"
+        }
+      },
+      "wagon_id": 584,
+      "workflow_name": "o2-analysis-event-selection",
+      "suffix": ""
+    }
+  ],
+  "allowed_parent_level": 0,
+  "type": "test",
+  "derived_data_type": "standard",
+  "inputdata": [
+    "/alice/sim/2024/LHC24e5/527041"
+  ],
+  "package_tag": "VO_ALICE@O2Physics::daily-20240701-0200-1",
+  "OutputDirector": {
+    "debug_mode": true,
+    "resfile": "AO2D",
+    "OutputDescriptors": [
+      {
+        "table": "AOD/RTDIMUONALL/0"
+      },
+      {
+        "table": "AOD/RTDIMUEXTRA/0"
+      },
+      {
+        "table": "AOD/RTDIMUON/0"
+      },
+      {
+        "table": "AOD/REDUCEDMUON/0"
+      },
+      {
+        "table": "AOD/REDUCEDMFT/0"
+      },
+      {
+        "table": "AOD/RMFTEXTRA/0"
+      },
+      {
+        "table": "AOD/REDUCEDEVENT/0"
+      },
+      {
+        "table": "AOD/REEXTENDED/0"
+      },
+      {
+        "table": "AOD/REVTXCOV/0"
+      },
+      {
+        "table": "AOD/RTMUONCOV/0"
+      },
+      {
+        "table": "AOD/RTMUONEXTRA/0"
+      },
+      {
+        "table": "AOD/REDUCEDMCEVENT/0"
+      },
+      {
+        "table": "AOD/REDUCEDMCTRACK/0"
+      },
+      {
+        "table": "AOD/REMCCOLLBL/0"
+      },
+      {
+        "table": "AOD/RTMUONSLABELS/0"
+      },
+      {
+        "table": "AOD/RMASSOC/0"
+      }
+    ],
+    "ntfmerge": 1
+  },
+  "wagons_timestamp": 1719832182740,
+  "train_id": "232794",
+  "derived_data": true
+}

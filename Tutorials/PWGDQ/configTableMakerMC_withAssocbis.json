@@ -1,0 +1,188 @@
+{
+    "internal-dpl-clock": "",
+    "internal-dpl-aod-reader": {
+        "aod-file-private": "/Users/emiliebarreau/alice/MonteCarlo/526964/001/AO2D.root",
+        "time-limit": "300",
+        "orbit-offset-enumeration": "0",
+        "orbit-multiplier-enumeration": "0",
+        "start-value-enumeration": "0",
+        "end-value-enumeration": "-1",
+        "step-value-enumeration": "1"
+    },
+    "internal-dpl-aod-spawner": "",
+    "internal-dpl-aod-index-builder": "",
+    "timestamp-task": {
+        "verbose": "false",
+        "rct-path": "RCT\/Info\/RunInformation",
+        "orbit-reset-path": "CTP\/Calib\/OrbitReset",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "isRun2MC": "false"
+    },
+    "fwd-track-to-collision-association": {
+        "nSigmaForTimeCompat": "3",
+        "timeMargin": "0",
+        "includeUnassigned": "false",
+        "fillTableOfCollIdsPerTrack": "true",
+        "bcWindowForOneSigma": "115",
+        "processFwdAssocWithTime": "true",
+        "processFwdStandardAssoc": "false",
+        "processMFTAssocWithTime": "false",
+        "processMFTStandardAssoc": "false"
+    },
+    "bc-selection-task": {
+        "triggerBcShift": "0",
+        "ITSROFrameStartBorderMargin": "-1",
+        "ITSROFrameEndBorderMargin": "-1",
+        "TimeFrameStartBorderMargin": "-1",
+        "TimeFrameEndBorderMargin": "-1",
+        "processRun2": "false",
+        "processRun3": "true"
+    },
+    "fwd-track-extension": "",
+    "event-selection-task": {
+        "syst": "pp",
+        "muonSelection": "0",
+        "maxDiffZvtxFT0vsPV": "1",
+        "isMC": "true",
+        "TimeIntervalForOccupancyCalculationMin": "-40",
+        "TimeIntervalForOccupancyCalculationMax": "100",
+        "TimeBinsForOccupancyCalculation": {
+            "values": [
+                "-40",
+                "-20",
+                "0",
+                "25",
+                "50",
+                "75",
+                "100"
+            ]
+        },
+        "ReferenceOccupanciesInTimeBins": {
+            "values": [
+                "3000",
+                "1400",
+                "750",
+                "1000",
+                "1750",
+                "4000"
+            ]
+        },
+        "TimeRangeVetoOnCollStandard": "10",
+        "TimeRangeVetoOnCollNarrow": "4",
+        "UseWeightsForOccupancyEstimator": "true",
+        "processRun2": "false",
+        "processRun3": "true"
+    },
+    "multiplicity-table": {
+        "doVertexZeq": "1",
+        "fractionOfEvents": "2",
+        "enabledTables": {
+            "labels_rows": [
+                "FV0Mults",
+                "FT0Mults",
+                "FDDMults",
+                "ZDCMults",
+                "TrackletMults",
+                "TPCMults",
+                "PVMults",
+                "MultsExtra",
+                "MultSelections",
+                "FV0MultZeqs",
+                "FT0MultZeqs",
+                "FDDMultZeqs",
+                "PVMultZeqs",
+                "MultsExtraMC"
+            ],
+            "labels_cols": [
+                "Enable"
+            ],
+            "values": [
+                [
+                    "1"
+                ],
+                [
+                    "1"
+                ],
+                [
+                    "1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "1"
+                ]
+            ]
+        },
+        "ccdburl": "http:\/\/alice-ccdb.cern.ch",
+        "ccdbpath": "Centrality\/Calibration",
+        "produceHistograms": "false",
+        "processRun2": "false",
+        "processRun3": "true",
+        "processGlobalTrackingCounters": "false",
+        "processMC": "true"
+    },
+    "table-maker-m-c": {
+        "cfgEventCuts": "eventStandardSel8PbPbQuality",
+        "cfgBarrelTrackCuts": "jpsiPID1",
+        "cfgMuonCuts": "muonQualityCuts",
+        "cfgMCsignals": "Jpsi,muFromJpsi,Psi2S,muFromPsi2S",
+        "cfgQA": "false",
+        "cfgDetailedQA": "false",
+        "cfgAddEventHistogram": "",
+        "cfgAddTrackHistogram": "",
+        "cfgAddMuonHistogram": "",
+        "cfgAddMCTruthHistogram": "",
+        "cfgIsRun2": "false",
+        "cfgBarrelMaxAbsEta": "0.899999976",
+        "cfgBarrelMinPt": "0.5",
+        "cfgBarrelRequireTPC": "true",
+        "cfgBarrelMinTPCncls": "50",
+        "cfgBarrelMaxTPCchi2": "10",
+        "cfgBarrelRequireITS": "true",
+        "cfgBarrelMaxITSchi2": "36",
+        "cfgMuonLowPt": "0",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "cfgPropMuon": "false",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "grpmagPathRun2": "GLO\/GRP\/GRP",
+        "processPP": "false",
+        "processPPBarrelOnly": "false",
+        "processPPMuonOnly": "true",
+        "processPbPb": "false",
+        "processPbPbBarrelOnly": "false",
+        "processPbPbMuonOnly": "false",
+        "processOnlyBCs": "false"
+    },
+    "internal-dpl-aod-writer": "",
+    "internal-dpl-aod-global-analysis-file-sink": "",
+    "internal-dpl-injected-dummy-sink": ""
+}
