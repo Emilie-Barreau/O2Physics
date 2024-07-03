@@ -458,7 +458,7 @@ DECLARE_SOA_COLUMN(McReducedFlags, mcReducedFlags, uint16_t);
 // NOTE: MC labels. This table has one entry for each reconstructed muon (joinable with the muon tables)
 //          The McParticleId points to the position of the MC truth track from the ReducedTracksMC table
 DECLARE_SOA_TABLE(ReducedMuonsLabels, "AOD", "RTMUONSLABELS", //!
-                  reducedmuonlabel::ReducedMCTrackId, reducedmuonlabel::McMask, reducedtrackMC::McReducedFlags);
+                  reducedmuonlabel::ReducedMCTrackId, reducedmuonlabel::McMask, reducedtrackMC::McReducedFlags, mcparticle::PdgCode);
 
 using ReducedMuonsLabel = ReducedMuonsLabels::iterator;
 
