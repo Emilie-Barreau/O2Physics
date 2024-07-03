@@ -297,8 +297,8 @@ struct AnalysisTrackSelection {
             fHistMan->FillHistClass(fHistNamesMCMatched[j][i].Data(), VarManager::fgValues);
           }
         } // end loop over cuts
-      }   // end loop over MC signals
-    }     // end loop over tracks
+      } // end loop over MC signals
+    } // end loop over tracks
   }
 
   void processSkimmed(MyEventsSelected::iterator const& event, MyBarrelTracks const& tracks, ReducedMCEvents const& eventsMC, ReducedMCTracks const& tracksMC)
@@ -461,8 +461,8 @@ struct AnalysisMuonSelection {
             fHistMan->FillHistClass(fHistNamesMCMatched[j][i].Data(), VarManager::fgValues);
           }
         } // end loop over cuts
-      }   // end loop over MC signals
-    }     // end loop over muons
+      } // end loop over MC signals
+    } // end loop over muons
   }
 
   void processSkimmed(MyEventsSelected::iterator const& event, MyMuonTracks const& muons, ReducedMCEvents const& eventsMC, ReducedMCTracks const& tracksMC)
@@ -596,8 +596,8 @@ struct AnalysisSameEventPairing {
           }
           fBarrelHistNamesMCmatched.push_back(mcSigClasses);
         } // end loop over cuts
-      }   // end if(cutNames.IsNull())
-    }     // end if processBarrel
+      } // end if(cutNames.IsNull())
+    } // end if processBarrel
 
     if (enableMuonHistos) {
       TString cutNames = fConfigMuonCuts.value;
@@ -624,8 +624,8 @@ struct AnalysisSameEventPairing {
           }
           fMuonHistNamesMCmatched.push_back(mcSigClasses);
         } // end loop over cuts
-      }   // end if(cutNames.IsNull())
-    }     // end if processMuon
+      } // end if(cutNames.IsNull())
+    } // end if processMuon
 
     // NOTE: For the electron-muon pairing, the policy is that the user specifies n track and n muon cuts via configurables
     //     So for each barrel cut there is a corresponding muon cut
@@ -691,7 +691,7 @@ struct AnalysisSameEventPairing {
   }
 
   template <int TPairType, uint32_t TEventFillMap, uint32_t TEventMCFillMap, uint32_t TTrackFillMap, typename TEvent, typename TTracks1, typename TTracks2, typename TEventsMC, typename TTracksMC>
-  void runPairing(TEvent const& event, TTracks1 const& tracks1, TTracks2 const& tracks2, TEventsMC const& /*eventsMC*/, TTracksMC const& /*tracksMC*/)
+  void runPairing(TEvent const& event, TTracks1 const& tracks1, TTracks2 const& tracks2, TEventsMC const& /*eventsMC*/, TTracksMC const& tracksMC)
   {
     if (fCurrentRun != event.runNumber()) {
       if (fUseRemoteField) {
@@ -807,6 +807,20 @@ struct AnalysisSameEventPairing {
 
       constexpr bool muonHasCov = ((TTrackFillMap & VarManager::ObjTypes::MuonCov) > 0 || (TTrackFillMap & VarManager::ObjTypes::ReducedMuonCov) > 0);
       if constexpr ((TPairType == VarManager::kDecayToMuMu) && muonHasCov) {
+        auto muontrack1 = tracksMC.rawIteratorAt(t1.reducedMCTrackId());
+        auto muontrack2 = tracksMC.rawIteratorAt(t2.reducedMCTrackId());
+        auto motherPdg1 = 0;
+        auto motherPdg2 = 0;
+        if (muontrack1.has_mothers()) {
+          auto motherId1 = muontrack1.mothersIds()[0];
+          auto mother1 = tracksMC.rawIteratorAt(motherId1);
+          motherPdg1 = mother1.pdgCode();
+        }
+        if (muontrack2.has_mothers()) {
+          auto motherId2 = muontrack2.mothersIds()[0];
+          auto mother2 = tracksMC.rawIteratorAt(motherId2);
+          motherPdg2 = mother2.pdgCode();
+        }
         if (fConfigFlatTables.value) {
           dimuonAllList(event.posX(), event.posY(), event.posZ(), event.numContrib(),
                         event.reducedMCevent().mcPosX(), event.reducedMCevent().mcPosY(), event.reducedMCevent().mcPosZ(),
@@ -827,7 +841,7 @@ struct AnalysisSameEventPairing {
                         t2.reducedMCTrack().pt(), t2.reducedMCTrack().eta(), t2.reducedMCTrack().phi(), t2.reducedMCTrack().e(),
                         t1.reducedMCTrack().vx(), t1.reducedMCTrack().vy(), t1.reducedMCTrack().vz(), t1.reducedMCTrack().vt(),
                         t2.reducedMCTrack().vx(), t2.reducedMCTrack().vy(), t2.reducedMCTrack().vz(), t2.reducedMCTrack().vt(),
-                        t1.isAmbiguous(), t2.isAmbiguous(), -999., -999., -999., -999., -999., -999., -999., -999., -999.,
+                        t1.isAmbiguous(), t2.isAmbiguous(), motherPdg1, motherPdg2, -999., -999., -999., -999., -999., -999., -999., -999., -999.,
                         -999., -999., -999., VarManager::fgValues[VarManager::kVertexingPz],
                         VarManager::fgValues[VarManager::kVertexingSV]);
         }
@@ -865,7 +879,7 @@ struct AnalysisSameEventPairing {
         }
       }
     } // end loop over barrel track pairs
-  }   // end runPairing
+  } // end runPairing
 
   template <typename TTracksMC>
   void runMCGen(TTracksMC& groupedMCTracks)
@@ -915,7 +929,7 @@ struct AnalysisSameEventPairing {
         }
       }
     } // end of true pairing loop
-  }   // end runMCGen
+  } // end runMCGen
 
   // Preslice<ReducedMCTracks> perReducedMcEvent = aod::reducedtrackMC::reducedMCeventId;
   PresliceUnsorted<ReducedMCTracks> perReducedMcEvent = aod::reducedtrackMC::reducedMCeventId;

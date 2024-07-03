@@ -509,6 +509,9 @@ DECLARE_SOA_COLUMN(Sign2, sign2, int); //! Sign of the second prong
 DECLARE_SOA_COLUMN(McMask1, mcMask1, uint16_t); //! MC mask of the MCLabel of the first prong
 DECLARE_SOA_COLUMN(McMask2, mcMask2, uint16_t); //! MC mask of the MCLabel of the second prong
 
+DECLARE_SOA_COLUMN(PdgCode1, pdgCode1, int); //! pdgCode for mother of first prong
+DECLARE_SOA_COLUMN(PdgCode2, pdgCode2, int); //! pdgCode for mother of second prong
+
 DECLARE_SOA_COLUMN(Chi2MatchMCHMID1, chi2MatchMCHMID1, float); //! MCH-MID Match Chi2 for MUONStandalone tracks
 DECLARE_SOA_COLUMN(Chi2MatchMCHMFT1, chi2MatchMCHMFT1, float); //! MCH-MFT Match Chi2 for GlobalMuonTracks
 DECLARE_SOA_COLUMN(Chi21, chi21, float);                       //! Chi2 for Muon Tracks
@@ -742,7 +745,7 @@ DECLARE_SOA_TABLE(DimuonsAll, "AOD", "RTDIMUONALL", //!
                   dilepton_track_index::PtMC2, dilepton_track_index::EtaMC2, dilepton_track_index::PhiMC2, dilepton_track_index::EMC2,
                   dilepton_track_index::Vx1, dilepton_track_index::Vy1, dilepton_track_index::Vz1, dilepton_track_index::Vt1,
                   dilepton_track_index::Vx2, dilepton_track_index::Vy2, dilepton_track_index::Vz2, dilepton_track_index::Vt2,
-                  dilepton_track_index::IsAmbig1, dilepton_track_index::IsAmbig2,
+                  dilepton_track_index::IsAmbig1, dilepton_track_index::IsAmbig2, dilepton_track_index::PdgCode1, dilepton_track_index::PdgCode2,
                   reducedpair::U2Q2,
                   reducedpair::U3Q3,
                   reducedpair::R2EP_AB,
