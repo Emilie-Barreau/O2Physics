@@ -1216,7 +1216,8 @@ struct AnalysisSameEventPairing {
     tempCutsStr = tempCuts;
     // check that in this task we have specified muon cuts
     if (!muonCutsStr.IsNull()) {
-      // loop over the muon cuts computed by the muon selection task and build a filter mask for those required in this task
+      // cout << "HEHOOOO" << endl; // CHECK
+      //  loop over the muon cuts computed by the muon selection task and build a filter mask for those required in this task
       std::unique_ptr<TObjArray> objArray(tempCutsStr.Tokenize(","));
       fNCutsMuon = objArray->GetEntries();
       for (int icut = 0; icut < objArray->GetEntries(); ++icut) {
@@ -1361,6 +1362,7 @@ struct AnalysisSameEventPairing {
     std::map<int, std::vector<TString>> histNamesMC = fBarrelHistNamesMCmatched;
     int ncuts = fNCutsBarrel;
     if constexpr (TPairType == VarManager::kDecayToMuMu) {
+      // cout << "HOHOHO" << endl; // CHECK
       cutNames = fConfigMuonCuts.value;
       histNames = fMuonHistNames;
       histNamesMC = fMuonHistNamesMCmatched;
@@ -1385,9 +1387,14 @@ struct AnalysisSameEventPairing {
     constexpr bool trackHasCov = ((TTrackFillMap & VarManager::ObjTypes::ReducedTrackBarrelCov) > 0);
 
     for (auto& event : events) {
+      // cout << "FONCTIONNE" << endl; //CHECK
       if (!event.isEventSelected_bit(0)) {
+        // cout << "DO IT" << endl;
         continue;
       }
+
+      // cout << "TU PEUX LE FAIRE" << endl; //CHECK
+
       // Reset the fValues array
       VarManager::ResetValues(0, VarManager::kNVars);
       VarManager::FillEvent<gkEventFillMap>(event, VarManager::fgValues);
@@ -1399,6 +1406,8 @@ struct AnalysisSameEventPairing {
       }
 
       for (auto& [a1, a2] : o2::soa::combinations(groupedAssocs, groupedAssocs)) {
+
+        // cout << "STP" << endl;
 
         if constexpr (TPairType == VarManager::kDecayToEE || TPairType == VarManager::kDecayToPiPi) {
           twoTrackFilter = a1.isBarrelSelected_raw() & a2.isBarrelSelected_raw() & a1.isBarrelSelectedPrefilter_raw() & a2.isBarrelSelectedPrefilter_raw() & fTrackFilterMask;
@@ -1461,10 +1470,12 @@ struct AnalysisSameEventPairing {
         }
 
         if constexpr (TPairType == VarManager::kDecayToMuMu) {
+          // cout << "HAHAHA" << endl; // CHECK
           twoTrackFilter = a1.isMuonSelected_raw() & a2.isMuonSelected_raw() & fMuonFilterMask;
           if (!twoTrackFilter) { // the tracks must have at least one filter bit in common to continue
             continue;
           }
+          // cout << "YOLO" << endl;
           auto t1 = a1.template reducedmuon_as<TTracks>();
           auto t2 = a2.template reducedmuon_as<TTracks>();
           sign1 = t1.sign();
@@ -1486,6 +1497,8 @@ struct AnalysisSameEventPairing {
             isCorrectAssoc_leg2 = (t2.reducedMCTrack().reducedMCevent() == event.reducedMCevent());
           }
 
+          // cout << "La vie c'est pas fou des fois" << endl;
+
           VarManager::FillPair<TPairType, TTrackFillMap>(t1, t2);
           if constexpr (TTwoProngFitter) {
             VarManager::FillPairVertexing<TPairType, TEventFillMap, TTrackFillMap>(event, t1, t2, fConfigPropToPCA);
@@ -1501,26 +1514,34 @@ struct AnalysisSameEventPairing {
             dileptonInfoList(t1.collisionId(), event.posX(), event.posY(), event.posZ());
           }
 
-          auto muontrack1 = mcTracks.rawIteratorAt(t1.reducedMCTrackId());
-          auto muontrack2 = mcTracks.rawIteratorAt(t2.reducedMCTrackId());
+          //cout << "Tu marchais tres bien hier comme par hasard" << endl;
+
           auto motherPdg1 = 0;
           auto motherPdg2 = 0;
-          if (muontrack1.has_mothers()) {
-            auto motherId1 = muontrack1.mothersIds()[0];
-            auto mother1 = mcTracks.rawIteratorAt(motherId1);
-            motherPdg1 = mother1.pdgCode();
-          }
-          if (muontrack2.has_mothers()) {
-            auto motherId2 = muontrack2.mothersIds()[0];
-            auto mother2 = mcTracks.rawIteratorAt(motherId2);
-            motherPdg2 = mother2.pdgCode();
+          if (t1.has_reducedMCTrack() && t2.has_reducedMCTrack()) {
+            auto muontrack1 = mcTracks.rawIteratorAt(t1.reducedMCTrackId());
+            auto muontrack2 = mcTracks.rawIteratorAt(t2.reducedMCTrackId());
+            if (muontrack1.has_mothers()) {
+              auto motherId1 = muontrack1.mothersIds()[0];
+              auto mother1 = mcTracks.rawIteratorAt(motherId1);
+              motherPdg1 = mother1.pdgCode();
+            }
+            if (muontrack2.has_mothers()) {
+              auto motherId2 = muontrack2.mothersIds()[0];
+              auto mother2 = mcTracks.rawIteratorAt(motherId2);
+              motherPdg2 = mother2.pdgCode();
+            }
           }
 
+          //cout << "C'est pas que tu me les brises mais pas loin hein" << endl;
+
           if constexpr (TTwoProngFitter) {
+            // cout << "MAIS MAAAARCHE" << endl;
             dimuonsExtraList(t1.globalIndex(), t2.globalIndex(), VarManager::fgValues[VarManager::kVertexingTauz], VarManager::fgValues[VarManager::kVertexingLz], VarManager::fgValues[VarManager::kVertexingLxy]);
             if (fConfigFlatTables.value) {
+              // cout << "EUUUUUUUUUUH" << endl;
               dimuonAllList(event.posX(), event.posY(), event.posZ(), event.numContrib(),
-                            -999., -999., -999.,
+                            event.reducedMCevent().mcPosX(), event.reducedMCevent().mcPosY(), event.reducedMCevent().mcPosZ(),
                             VarManager::fgValues[VarManager::kMass],
                             false,
                             VarManager::fgValues[VarManager::kPt], VarManager::fgValues[VarManager::kEta], VarManager::fgValues[VarManager::kPhi], t1.sign() + t2.sign(), VarManager::fgValues[VarManager::kVertexingChi2PCA],
@@ -1530,7 +1551,7 @@ struct AnalysisSameEventPairing {
                             VarManager::fgValues[VarManager::kPt1], VarManager::fgValues[VarManager::kEta1], VarManager::fgValues[VarManager::kPhi1], t1.sign(),
                             VarManager::fgValues[VarManager::kPt2], VarManager::fgValues[VarManager::kEta2], VarManager::fgValues[VarManager::kPhi2], t2.sign(),
                             t1.fwdDcaX(), t1.fwdDcaY(), t2.fwdDcaX(), t2.fwdDcaY(),
-                            0., 0.,
+                            t1.mcMask(), t2.mcMask(),
                             t1.chi2MatchMCHMID(), t2.chi2MatchMCHMID(),
                             t1.chi2MatchMCHMFT(), t2.chi2MatchMCHMFT(),
                             t1.chi2(), t2.chi2(),
@@ -2125,18 +2146,29 @@ void DefineHistograms(HistogramManager* histMan, TString histClasses, const char
         if (classStr.Contains("Ambiguity")) {
           dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "track", Form("%s,ambiguity", histName.Data()));
         }
+      } else if (classStr.Contains("Muon")) {
+        if (!classStr.Contains("Ambiguity")) {
+          dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "track", histName);
+        } else {
+          dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "track", "muon-ambiguity");
+        }
       }
     }
-    if (classStr.Contains("Muon")) {
+    /*if (classStr.Contains("Muon")) {
       if (!classStr.Contains("Ambiguity")) {
         dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "track", histName);
       } else {
         dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "track", "muon-ambiguity");
       }
-    }
+    }*/
 
     if (classStr.Contains("Pairs")) {
-      dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "pair", histName);
+      if (classStr.Contains("Barrel")) {
+        dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "pair", "barrel,vertexing-barrel,kalman-filter");
+      }
+      if (classStr.Contains("Muon")) {
+        dqhistograms::DefineHistograms(histMan, objArray->At(iclass)->GetName(), "pair", "dimuon,dimuon-multi-diff,vertexing-forward");
+      }
     }
 
     if (classStr.Contains("MCTruthGenPair")) {
