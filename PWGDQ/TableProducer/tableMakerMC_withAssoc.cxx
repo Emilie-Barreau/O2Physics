@@ -798,6 +798,25 @@ struct TableMakerMC {
                 muon.cXX(), muon.cXY(), muon.cYY(), muon.cPhiX(), muon.cPhiY(), muon.cPhiPhi(),
                 muon.cTglX(), muon.cTglY(), muon.cTglPhi(), muon.cTglTgl(), muon.c1PtX(), muon.c1PtY(),
                 muon.c1PtPhi(), muon.c1PtTgl(), muon.c1Pt21Pt2());
+
+        //int value = static_cast<int>(muon.trackType());
+        /*if (value == 0) {
+          if (muon.cXX() < 1.0e-6) {
+            cout << "=======================" << endl;
+            cout << "PROBLEME ! " << endl;
+            cout << "muon.cXX : " << muon.cXX() << endl;
+            cout << "z : " << muon.z() << endl;
+            cout << "track type : " << value << endl;
+            cout << "=======================" << endl;
+          } else {
+            cout << "=======================" << endl;
+            cout << "OK !" << endl;
+            cout << "muon.cXX : " << muon.cXX() << endl;
+            cout << "z : " << muon.z() << endl;
+            cout << "track type : " << value << endl;
+            cout << "=======================" << endl;
+          }
+        }*/
       }
       if (muon.has_mcParticle()) {
         auto mctrack = muon.template mcParticle_as<aod::McParticles>();
