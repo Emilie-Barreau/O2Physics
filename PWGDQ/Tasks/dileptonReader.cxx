@@ -172,7 +172,7 @@ struct dileptonReader {
     registry.add("Rabs_Pion_FM", "Rabs mu from Pion Fake Matches", rabsSpec);
   };
 
-  void processbis(aod::DimuonsAll const& dimuons)
+  void process(aod::DimuonsAll const& dimuons)
   {
     // Double_t const PI = ROOT::Math::Pi(); // uncomment if you want to use pi, can be useful
 
@@ -195,12 +195,12 @@ struct dileptonReader {
 
       // if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) {}
 
-      /*ROOT::Math::PtEtaPhiMVector v1MC(dimuon.ptMC1(), dimuon.etaMC1(), dimuon.phiMC1(), 0.105658);
+      ROOT::Math::PtEtaPhiMVector v1MC(dimuon.ptMC1(), dimuon.etaMC1(), dimuon.phiMC1(), 0.105658);
       ROOT::Math::PtEtaPhiMVector v2MC(dimuon.ptMC2(), dimuon.etaMC2(), dimuon.phiMC2(), 0.105658);
       ROOT::Math::PtEtaPhiMVector v12MC = v1MC + v2MC;
       float Tauz1MC = (dimuon.mcPosZ() - dimuon.vz1()) * v12MC.M() / TMath::Abs(v12MC.Pz());
       float Tauz2MC = (dimuon.mcPosZ() - dimuon.vz2()) * v12MC.M() / TMath::Abs(v12MC.Pz());
-      float realTauzMC = (Tauz1MC + Tauz2MC) / 2.;*/
+      float realTauzMC = (Tauz1MC + Tauz2MC) / 2.;
 
       /*registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
       registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
@@ -215,8 +215,10 @@ struct dileptonReader {
       registry.get<TH1>(HIST("FakeMatches2"))->Fill(dimuon.mcMask2());
       registry.get<TH1>(HIST("Eta1"))->Fill(dimuon.eta1());
       registry.get<TH1>(HIST("Eta2"))->Fill(dimuon.eta2());
+      registry.get<TH1>(HIST("PdgCode_mothers1"))->Fill(dimuon.pdgCode1());
+      registry.get<TH1>(HIST("PdgCode_mothers2"))->Fill(dimuon.pdgCode2());*/
 
-      if (dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443) {
+      /*if (dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443) {
         if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM Jpsi
           registry.get<TH1>(HIST("Sa_SV"))->Fill(dimuon.sVertex());
           registry.get<TH1>(HIST("Tauz_Sa"))->Fill(dimuon.tauz());
@@ -239,7 +241,6 @@ struct dileptonReader {
         } else {
           continue;
         }
-      } else {
         registry.get<TH1>(HIST("PdgCode_mothers1"))->Fill(dimuon.pdgCode1());
         registry.get<TH1>(HIST("PdgCode_mothers2"))->Fill(dimuon.pdgCode2());
         if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM X
@@ -279,106 +280,110 @@ struct dileptonReader {
 
       // Global tracks studies
       if ((dimuon.eta1() > -3.6 && dimuon.eta1() < -2.5) && (dimuon.eta2() > -3.6 && dimuon.eta2() < -2.5)) { // cut on eta in mft acceptance
-                                                                                                              // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {                   // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
-        if (!(dimuon.isAmbig1()) && !(dimuon.isAmbig2())) {                                                   // remove ambiguous tracks
-          // hRapidityGlobal->Fill(rap);
-          // registry.get<TH3>(HIST("massChi2TH3"))->Fill(dimuon.mass(), dimuon.chi2MatchMCHMFT1(), dimuon.chi2MatchMCHMFT2());
-          if (dimuon.sign() == 0) {
-            if (rap > 2.5 && rap < 3.6) {
-              if (dimuon.mass() > 1.8) {
-                // if (dimuon.mass() > 2.8 && dimuon.mass() < 3.3) {
-                // if (dimuon.pt() > 2.) {
-                registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
-                registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
-                registry.get<TH1>(HIST("SecondVertex"))->Fill(dimuon.sVertex());
-                registry.get<TH1>(HIST("Pt"))->Fill(dimuon.pt());
-                registry.get<TH1>(HIST("Pz"))->Fill(dimuon.vertexPz());
-                registry.get<TH1>(HIST("DeltaZ"))->Fill(dimuon.posZ() - dimuon.sVertex());
-                registry.get<TH1>(HIST("PrimaryVertex"))->Fill(dimuon.posZ());
-                registry.get<TH1>(HIST("Eta"))->Fill(dimuon.eta());
-                registry.get<TH1>(HIST("Rapidity"))->Fill(rap);
-                registry.get<TH1>(HIST("FakeMatches1"))->Fill(dimuon.mcMask1());
-                registry.get<TH1>(HIST("FakeMatches2"))->Fill(dimuon.mcMask2());
-                registry.get<TH1>(HIST("Eta1"))->Fill(dimuon.eta1());
-                registry.get<TH1>(HIST("Eta2"))->Fill(dimuon.eta2());
+        if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {                   // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
+          if (!(dimuon.isAmbig1()) && !(dimuon.isAmbig2())) {                                                 // remove ambiguous tracks
+            // hRapidityGlobal->Fill(rap);
+            // registry.get<TH3>(HIST("massChi2TH3"))->Fill(dimuon.mass(), dimuon.chi2MatchMCHMFT1(), dimuon.chi2MatchMCHMFT2());
+            if (dimuon.sign() == 0) {
+              if (rap > 2.5 && rap < 3.6) {
+                if (dimuon.mass() > 1.8) {
+                  // if (dimuon.mass() > 2.8 && dimuon.mass() < 3.3) {
+                  // if (dimuon.pt() > 2.) {
+                  if ((dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443)) {
+                    registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
+                    registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
+                    registry.get<TH1>(HIST("SecondVertex"))->Fill(dimuon.sVertex());
+                    registry.get<TH1>(HIST("Pt"))->Fill(dimuon.pt());
+                    registry.get<TH1>(HIST("Pz"))->Fill(dimuon.vertexPz());
+                    registry.get<TH1>(HIST("DeltaZ"))->Fill(dimuon.posZ() - dimuon.sVertex());
+                    registry.get<TH1>(HIST("PrimaryVertex"))->Fill(dimuon.posZ());
+                    registry.get<TH1>(HIST("Eta"))->Fill(dimuon.eta());
+                    registry.get<TH1>(HIST("Rapidity"))->Fill(rap);
+                    registry.get<TH1>(HIST("FakeMatches1"))->Fill(dimuon.mcMask1());
+                    registry.get<TH1>(HIST("FakeMatches2"))->Fill(dimuon.mcMask2());
+                    registry.get<TH1>(HIST("Eta1"))->Fill(dimuon.eta1());
+                    registry.get<TH1>(HIST("Eta2"))->Fill(dimuon.eta2());
+                  } else {
+                    continue;
+                  }
 
-                /*if (dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443) {
-                  if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM Jpsi
-                    registry.get<TH1>(HIST("Sa_SV"))->Fill(dimuon.sVertex());
-                    registry.get<TH1>(HIST("Tauz_Sa"))->Fill(dimuon.tauz());
-                    registry.get<TH1>(HIST("Mass_Sa"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("Pz_Sa"))->Fill(dimuon.vertexPz());
-                    registry.get<TH1>(HIST("Chi2_GM1"))->Fill(dimuon.chi2MatchMCHMFT1());
-                    registry.get<TH1>(HIST("Chi2_GM2"))->Fill(dimuon.chi2MatchMCHMFT2());
+                  if (dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443) {
+                    if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM Jpsi
+                      registry.get<TH1>(HIST("Sa_SV"))->Fill(dimuon.sVertex());
+                      registry.get<TH1>(HIST("Tauz_Sa"))->Fill(dimuon.tauz());
+                      registry.get<TH1>(HIST("Mass_Sa"))->Fill(dimuon.mass());
+                      registry.get<TH1>(HIST("Pz_Sa"))->Fill(dimuon.vertexPz());
+                      registry.get<TH1>(HIST("Chi2_GM1"))->Fill(dimuon.chi2MatchMCHMFT1());
+                      registry.get<TH1>(HIST("Chi2_GM2"))->Fill(dimuon.chi2MatchMCHMFT2());
 
-                    registry.get<TH1>(HIST("TauzMC"))->Fill(realTauzMC);
-                    registry.get<TH1>(HIST("TauzMC1"))->Fill(Tauz1MC);
-                    registry.get<TH1>(HIST("TauzMC2"))->Fill(Tauz2MC);
-                    registry.get<TH1>(HIST("Posz"))->Fill(dimuon.mcPosZ());
-                    registry.get<TH1>(HIST("Vz"))->Fill(dimuon.vz1());
-                    registry.get<TH1>(HIST("DeltaMC"))->Fill(dimuon.mcPosZ() - dimuon.vz1());
-                    registry.get<TH1>(HIST("PzMC"))->Fill(TMath::Abs(v12MC.Pz()));
+                      registry.get<TH1>(HIST("TauzMC"))->Fill(realTauzMC);
+                      registry.get<TH1>(HIST("TauzMC1"))->Fill(Tauz1MC);
+                      registry.get<TH1>(HIST("TauzMC2"))->Fill(Tauz2MC);
+                      registry.get<TH1>(HIST("Posz"))->Fill(dimuon.mcPosZ());
+                      registry.get<TH1>(HIST("Vz"))->Fill(dimuon.vz1());
+                      registry.get<TH1>(HIST("DeltaMC"))->Fill(dimuon.mcPosZ() - dimuon.vz1());
+                      registry.get<TH1>(HIST("PzMC"))->Fill(TMath::Abs(v12MC.Pz()));
+                      // registry.get<TH1>(HIST("MassMC"))->Fill(v12MC.M());
+                      registry.get<TH1>(HIST("Delta_Tauz"))->Fill(dimuon.tauz() - realTauzMC);
+
+                      registry.get<TH2>(HIST("TauzTauzMC"))->Fill(dimuon.tauz(), realTauzMC);
+                      registry.get<TH2>(HIST("SVVz"))->Fill(dimuon.sVertex(), dimuon.vz1());
+                    } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM Jpsi
+                      registry.get<TH1>(HIST("Sc_SV"))->Fill(dimuon.sVertex());
+                      registry.get<TH1>(HIST("Tauz_Sc"))->Fill(dimuon.tauz());
+                      registry.get<TH1>(HIST("Mass_Sc"))->Fill(dimuon.mass());
+                      registry.get<TH1>(HIST("Pz_Sc"))->Fill(dimuon.vertexPz());
+                      registry.get<TH1>(HIST("Chi2_FM1"))->Fill(dimuon.chi2MatchMCHMFT1());
+                      registry.get<TH1>(HIST("Chi2_FM2"))->Fill(dimuon.chi2MatchMCHMFT2());
+                    } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM Jpsi
+                      registry.get<TH1>(HIST("Sb_SV"))->Fill(dimuon.sVertex());
+                      registry.get<TH1>(HIST("Tauz_Sb"))->Fill(dimuon.tauz());
+                      registry.get<TH1>(HIST("Mass_Sb"))->Fill(dimuon.mass());
+                      registry.get<TH1>(HIST("Pz_Sb"))->Fill(dimuon.vertexPz());
+                    } else {
+                      continue;
+                    }
+                    //} else if (dimuon.pdgCode1() == 0 && dimuon.pdgCode2() == 0) {
+                    // registry.get<TH1>(HIST("Tauz_Ba"))->Fill(dimuon.tauz());
+                    // registry.get<TH1>(HIST("Mass_Ba"))->Fill(dimuon.mass());
                     // registry.get<TH1>(HIST("MassMC"))->Fill(v12MC.M());
-                    registry.get<TH1>(HIST("Delta_Tauz"))->Fill(dimuon.tauz() - realTauzMC);
-
-                    registry.get<TH2>(HIST("TauzTauzMC"))->Fill(dimuon.tauz(), realTauzMC);
-                    registry.get<TH2>(HIST("SVVz"))->Fill(dimuon.sVertex(), dimuon.vz1());
-                  } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM Jpsi
-                    registry.get<TH1>(HIST("Sc_SV"))->Fill(dimuon.sVertex());
-                    registry.get<TH1>(HIST("Tauz_Sc"))->Fill(dimuon.tauz());
-                    registry.get<TH1>(HIST("Mass_Sc"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("Pz_Sc"))->Fill(dimuon.vertexPz());
-                    registry.get<TH1>(HIST("Chi2_FM1"))->Fill(dimuon.chi2MatchMCHMFT1());
-                    registry.get<TH1>(HIST("Chi2_FM2"))->Fill(dimuon.chi2MatchMCHMFT2());
-                  } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM Jpsi
-                    registry.get<TH1>(HIST("Sb_SV"))->Fill(dimuon.sVertex());
-                    registry.get<TH1>(HIST("Tauz_Sb"))->Fill(dimuon.tauz());
-                    registry.get<TH1>(HIST("Mass_Sb"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("Pz_Sb"))->Fill(dimuon.vertexPz());
+                    // continue;
                   } else {
-                    continue;
+                    registry.get<TH1>(HIST("PdgCode_mothers1"))->Fill(dimuon.pdgCode1());
+                    registry.get<TH1>(HIST("PdgCode_mothers2"))->Fill(dimuon.pdgCode2());
+                    if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM X
+                      registry.get<TH1>(HIST("Ba_SV"))->Fill(dimuon.sVertex());
+                      registry.get<TH1>(HIST("Tauz_Ba"))->Fill(dimuon.tauz());
+                      registry.get<TH1>(HIST("Mass_Ba"))->Fill(dimuon.mass());
+                      registry.get<TH1>(HIST("Pz_Ba"))->Fill(dimuon.vertexPz());
+                    } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM X
+                      registry.get<TH1>(HIST("Bc_SV"))->Fill(dimuon.sVertex());
+                      registry.get<TH1>(HIST("Tauz_Bc"))->Fill(dimuon.tauz());
+                      registry.get<TH1>(HIST("Mass_Bc"))->Fill(dimuon.mass());
+                      registry.get<TH1>(HIST("Pz_Bc"))->Fill(dimuon.vertexPz());
+                    } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM X
+                      registry.get<TH1>(HIST("Bb_SV"))->Fill(dimuon.sVertex());
+                      registry.get<TH1>(HIST("Tauz_Bb"))->Fill(dimuon.tauz());
+                      registry.get<TH1>(HIST("Mass_Bb"))->Fill(dimuon.mass());
+                      registry.get<TH1>(HIST("Pz_Bb"))->Fill(dimuon.vertexPz());
+                    } else {
+                      continue;
+                    }
                   }
-                  } else if (dimuon.pdgCode1() == 0 && dimuon.pdgCode2() == 0) {
-                  // registry.get<TH1>(HIST("Tauz_Ba"))->Fill(dimuon.tauz());
-                    registry.get<TH1>(HIST("Mass_Ba"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("MassMC"))->Fill(v12MC.M());
-                  // continue;
-                } else {
-                  registry.get<TH1>(HIST("PdgCode_mothers1"))->Fill(dimuon.pdgCode1());
-                  registry.get<TH1>(HIST("PdgCode_mothers2"))->Fill(dimuon.pdgCode2());
-                  if (dimuon.mcMask1() < 1. && dimuon.mcMask2() < 1.) { // GM & GM X
-                    registry.get<TH1>(HIST("Ba_SV"))->Fill(dimuon.sVertex());
-                    registry.get<TH1>(HIST("Tauz_Ba"))->Fill(dimuon.tauz());
-                    //registry.get<TH1>(HIST("Mass_Ba"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("Pz_Ba"))->Fill(dimuon.vertexPz());
-                  } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM X
-                    registry.get<TH1>(HIST("Bc_SV"))->Fill(dimuon.sVertex());
-                    registry.get<TH1>(HIST("Tauz_Bc"))->Fill(dimuon.tauz());
-                    registry.get<TH1>(HIST("Mass_Bc"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("Pz_Bc"))->Fill(dimuon.vertexPz());
-                  } else if ((dimuon.mcMask1() < 1. && dimuon.mcMask2() > 1.) || (dimuon.mcMask1() > 1. && dimuon.mcMask2() < 1.)) { // GM & FM X
-                    registry.get<TH1>(HIST("Bb_SV"))->Fill(dimuon.sVertex());
-                    registry.get<TH1>(HIST("Tauz_Bb"))->Fill(dimuon.tauz());
-                    registry.get<TH1>(HIST("Mass_Bb"))->Fill(dimuon.mass());
-                    registry.get<TH1>(HIST("Pz_Bb"))->Fill(dimuon.vertexPz());
-                  } else {
-                    continue;
-                  }
-                }*/
 
-                //} // end pt cut
-              } // end mass cut
-            } // end rapidity cut
-          } // end sign selection
-        } // ambig cut
-        //} // end MCH-MFT chi2 selection
+                  //} // end pt cut
+                } // end mass cut
+              } // end rapidity cut
+            } // end sign selection
+          } // ambig cut
+        } // end MCH-MFT chi2 selection
       } // end eta cut
     } // end loop over dimuons
   };
 
   Preslice<soa::Join<aod::FwdTracks, aod::McFwdTrackLabels, aod::FwdTracksDCA>> perCollisionMuons = aod::fwdtrack::collisionId;
 
-  void process(soa::Join<aod::ReducedMuons, aod::ReducedMuonsExtra, aod::ReducedMuonsLabels> const& muons, aod::ReducedMCTracks const& mctracks) // MyEventsSelected::iterator const& event,
+  void processbis(soa::Join<aod::ReducedMuons, aod::ReducedMuonsExtra, aod::ReducedMuonsLabels> const& muons, aod::ReducedMCTracks const& mctracks) // MyEventsSelected::iterator const& event,
   {
     // auto groupedMuons = muons.sliceBy(perCollisionReducedMuons, event.globalIndex());
 
