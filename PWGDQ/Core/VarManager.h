@@ -2820,6 +2820,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
       values[kVertexingTauxyzProjected] = values[kVertexingLxyzProjected] * v12.M() / (v12.P());
     }
   } else {
+    std::cout << "T'es pas là mais t'es où t'es dans KF" << std::endl;
     KFParticle trk0KF;
     KFParticle trk1KF;
     KFParticle KFGeoTwoProng;
@@ -2967,6 +2968,7 @@ void VarManager::FillPairVertexing(C const& collision, T const& t1, T const& t2,
           values[kKFMassGeoTop] = -999.;
       }
       if (propToSV) {
+        std::cout << "T'es pas là mais t'es où, t'es dans propToSV" << std::endl;
         if constexpr ((pairType == kDecayToMuMu) && muonHasCov) {
           double chi21 = t1.chi2();
           double chi22 = t2.chi2();

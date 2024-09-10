@@ -1514,7 +1514,7 @@ struct AnalysisSameEventPairing {
             dileptonInfoList(t1.collisionId(), event.posX(), event.posY(), event.posZ());
           }
 
-          //cout << "Tu marchais tres bien hier comme par hasard" << endl;
+          // cout << "Tu marchais tres bien hier comme par hasard" << endl;
 
           auto motherPdg1 = 0;
           auto motherPdg2 = 0;
@@ -1533,37 +1533,39 @@ struct AnalysisSameEventPairing {
             }
           }
 
-          //cout << "C'est pas que tu me les brises mais pas loin hein" << endl;
+          // cout << "C'est pas que tu me les brises mais pas loin hein" << endl;
 
           if constexpr (TTwoProngFitter) {
-            // cout << "MAIS MAAAARCHE" << endl;
-            dimuonsExtraList(t1.globalIndex(), t2.globalIndex(), VarManager::fgValues[VarManager::kVertexingTauz], VarManager::fgValues[VarManager::kVertexingLz], VarManager::fgValues[VarManager::kVertexingLxy]);
-            if (fConfigFlatTables.value) {
-              // cout << "EUUUUUUUUUUH" << endl;
-              dimuonAllList(event.posX(), event.posY(), event.posZ(), event.numContrib(),
-                            event.reducedMCevent().mcPosX(), event.reducedMCevent().mcPosY(), event.reducedMCevent().mcPosZ(),
-                            VarManager::fgValues[VarManager::kMass],
-                            false,
-                            VarManager::fgValues[VarManager::kPt], VarManager::fgValues[VarManager::kEta], VarManager::fgValues[VarManager::kPhi], t1.sign() + t2.sign(), VarManager::fgValues[VarManager::kVertexingChi2PCA],
-                            VarManager::fgValues[VarManager::kVertexingTauz], VarManager::fgValues[VarManager::kVertexingTauzErr],
-                            VarManager::fgValues[VarManager::kVertexingTauxy], VarManager::fgValues[VarManager::kVertexingTauxyErr],
-                            VarManager::fgValues[VarManager::kCosPointingAngle],
-                            VarManager::fgValues[VarManager::kPt1], VarManager::fgValues[VarManager::kEta1], VarManager::fgValues[VarManager::kPhi1], t1.sign(),
-                            VarManager::fgValues[VarManager::kPt2], VarManager::fgValues[VarManager::kEta2], VarManager::fgValues[VarManager::kPhi2], t2.sign(),
-                            t1.fwdDcaX(), t1.fwdDcaY(), t2.fwdDcaX(), t2.fwdDcaY(),
-                            t1.mcMask(), t2.mcMask(),
-                            t1.chi2MatchMCHMID(), t2.chi2MatchMCHMID(),
-                            t1.chi2MatchMCHMFT(), t2.chi2MatchMCHMFT(),
-                            t1.chi2(), t2.chi2(),
-                            -999., -999., -999., -999.,
-                            -999., -999., -999., -999.,
-                            -999., -999., -999., -999.,
-                            -999., -999., -999., -999.,
-                            t1.isAmbiguous(), t2.isAmbiguous(), motherPdg1, motherPdg2,
-                            -999.0, -999.0, -999.0, -999.0, -999.0,
-                            -999.0, -999.0, -999.0, -999.0, -999.0,
-                            -999.0, VarManager::fgValues[VarManager::kMultDimuons],
-                            VarManager::fgValues[VarManager::kVertexingPz], VarManager::fgValues[VarManager::kVertexingSV]);
+            if (t1.has_reducedMCTrack() && t2.has_reducedMCTrack()) {
+              // cout << "MAIS MAAAARCHE" << endl;
+              dimuonsExtraList(t1.globalIndex(), t2.globalIndex(), VarManager::fgValues[VarManager::kVertexingTauz], VarManager::fgValues[VarManager::kVertexingLz], VarManager::fgValues[VarManager::kVertexingLxy]);
+              if (fConfigFlatTables.value) {
+                // cout << "EUUUUUUUUUUH" << endl;
+                dimuonAllList(event.posX(), event.posY(), event.posZ(), event.numContrib(),
+                              event.reducedMCevent().mcPosX(), event.reducedMCevent().mcPosY(), event.reducedMCevent().mcPosZ(),
+                              VarManager::fgValues[VarManager::kMass],
+                              false,
+                              VarManager::fgValues[VarManager::kPt], VarManager::fgValues[VarManager::kEta], VarManager::fgValues[VarManager::kPhi], t1.sign() + t2.sign(), VarManager::fgValues[VarManager::kVertexingChi2PCA],
+                              VarManager::fgValues[VarManager::kVertexingTauz], VarManager::fgValues[VarManager::kVertexingTauzErr],
+                              VarManager::fgValues[VarManager::kVertexingTauxy], VarManager::fgValues[VarManager::kVertexingTauxyErr],
+                              VarManager::fgValues[VarManager::kCosPointingAngle],
+                              VarManager::fgValues[VarManager::kPt1], VarManager::fgValues[VarManager::kEta1], VarManager::fgValues[VarManager::kPhi1], t1.sign(),
+                              VarManager::fgValues[VarManager::kPt2], VarManager::fgValues[VarManager::kEta2], VarManager::fgValues[VarManager::kPhi2], t2.sign(),
+                              t1.fwdDcaX(), t1.fwdDcaY(), t2.fwdDcaX(), t2.fwdDcaY(),
+                              t1.mcMask(), t2.mcMask(),
+                              t1.chi2MatchMCHMID(), t2.chi2MatchMCHMID(),
+                              t1.chi2MatchMCHMFT(), t2.chi2MatchMCHMFT(),
+                              t1.chi2(), t2.chi2(),
+                              t1.reducedMCTrack().pt(), t1.reducedMCTrack().eta(), t1.reducedMCTrack().phi(), t1.reducedMCTrack().e(),
+                              t2.reducedMCTrack().pt(), t2.reducedMCTrack().eta(), t2.reducedMCTrack().phi(), t2.reducedMCTrack().e(),
+                              t1.reducedMCTrack().vx(), t1.reducedMCTrack().vy(), t1.reducedMCTrack().vz(), t1.reducedMCTrack().vt(),
+                              t2.reducedMCTrack().vx(), t2.reducedMCTrack().vy(), t2.reducedMCTrack().vz(), t2.reducedMCTrack().vt(),
+                              t1.isAmbiguous(), t2.isAmbiguous(), motherPdg1, motherPdg2,
+                              -999.0, -999.0, -999.0, -999.0, -999.0,
+                              -999.0, -999.0, -999.0, -999.0, -999.0,
+                              -999.0, VarManager::fgValues[VarManager::kMultDimuons],
+                              VarManager::fgValues[VarManager::kVertexingPz], VarManager::fgValues[VarManager::kVertexingSV]);
+              }
             }
           }
         }

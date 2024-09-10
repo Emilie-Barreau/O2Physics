@@ -77,6 +77,7 @@ struct dileptonReader {
     HistogramConfigSpec PdgCodeSpec({HistType::kTH1F, {PdgCodeAxis}});
     HistogramConfigSpec DeltaTauzSpec({HistType::kTH2F, {tauzAxis, tauzAxis}});
     HistogramConfigSpec SVVzSpec({HistType::kTH2F, {SVAxis, SVAxis}});
+    HistogramConfigSpec PzPzSpec({HistType::kTH2F, {pzAxis, pzAxis}});
 
     // add some histograms to the registry
     registry.add("Pt", "Pt distribution", ptSpec);
@@ -122,6 +123,7 @@ struct dileptonReader {
 
     registry.add("SVVz", "SV - Vz distribution", SVVzSpec);
     registry.add("TauzTauzMC", "Tauz - TauzMC distribution", DeltaTauzSpec);
+    registry.add("PzPzMC", "Pz - PzMC distribution", PzPzSpec);
 
     registry.add("Rapidity", "Rapidity distribution", rapSpec);
     registry.add("Rapiditybis", "Rapidity distribution", rapSpec);
@@ -129,6 +131,7 @@ struct dileptonReader {
     registry.add("PrimaryVertex", "Primary Vertex distribution", SVSpec);
 
     registry.add("SecondVertex", "Second Vertex distribution", SVSpec);
+    registry.add("Delta_SV", "(SV - Vz) distribution", SVSpec);
     registry.add("Sa_SV", "Second Vertex distribution for GM Jpsi", SVSpec);
     registry.add("Sb_SV", "Second Vertex distribution for GM/FM Jpsi", SVSpec);
     registry.add("Sc_SV", "Second Vertex distribution for FM Jpsi", SVSpec);
@@ -198,9 +201,13 @@ struct dileptonReader {
       ROOT::Math::PtEtaPhiMVector v1MC(dimuon.ptMC1(), dimuon.etaMC1(), dimuon.phiMC1(), 0.105658);
       ROOT::Math::PtEtaPhiMVector v2MC(dimuon.ptMC2(), dimuon.etaMC2(), dimuon.phiMC2(), 0.105658);
       ROOT::Math::PtEtaPhiMVector v12MC = v1MC + v2MC;
-      float Tauz1MC = (dimuon.mcPosZ() - dimuon.vz1()) * v12MC.M() / TMath::Abs(v12MC.Pz());
-      float Tauz2MC = (dimuon.mcPosZ() - dimuon.vz2()) * v12MC.M() / TMath::Abs(v12MC.Pz());
-      float realTauzMC = (Tauz1MC + Tauz2MC) / 2.;
+      float Tauz1MC = (dimuon.mcPosZ() - dimuon.vz1()) * 3.097 / TMath::Abs(v12MC.Pz());
+      float Tauz2MC = (dimuon.mcPosZ() - dimuon.vz2()) * 3.097 / TMath::Abs(v12MC.Pz());
+      float realTauzMC = (Tauz1MC + Tauz2MC) / 60.; // le facteur 60 c'est paske la vitesse de la lumière était en cm/ns tmtc
+      float realVz = (dimuon.vz1() + dimuon.vz2()) / 2.;
+
+      // float Tauz1 = (dimuon.posZ() - dimuon.sVertex()) * 3.097 / TMath::Abs(dimuon.vertexPz());
+      // auto tauz_bis = dimuon.tauz()*v12MC.M()/dimuon.mass();
 
       /*registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
       registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
@@ -278,6 +285,9 @@ struct dileptonReader {
       }*/
       //}
 
+      if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) { // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
+        registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
+      }
       // Global tracks studies
       if ((dimuon.eta1() > -3.6 && dimuon.eta1() < -2.5) && (dimuon.eta2() > -3.6 && dimuon.eta2() < -2.5)) { // cut on eta in mft acceptance
         if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {                   // if (dimuon.chi2MatchMCHMFT1() <= chi2Cut && dimuon.chi2MatchMCHMFT2() <= chi2Cut) {
@@ -290,7 +300,7 @@ struct dileptonReader {
                   // if (dimuon.mass() > 2.8 && dimuon.mass() < 3.3) {
                   // if (dimuon.pt() > 2.) {
                   if ((dimuon.pdgCode1() == 443 && dimuon.pdgCode2() == 443)) {
-                    registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
+                    // registry.get<TH1>(HIST("Tauz"))->Fill(dimuon.tauz());
                     registry.get<TH1>(HIST("Mass"))->Fill(dimuon.mass());
                     registry.get<TH1>(HIST("SecondVertex"))->Fill(dimuon.sVertex());
                     registry.get<TH1>(HIST("Pt"))->Fill(dimuon.pt());
@@ -325,9 +335,12 @@ struct dileptonReader {
                       registry.get<TH1>(HIST("PzMC"))->Fill(TMath::Abs(v12MC.Pz()));
                       // registry.get<TH1>(HIST("MassMC"))->Fill(v12MC.M());
                       registry.get<TH1>(HIST("Delta_Tauz"))->Fill(dimuon.tauz() - realTauzMC);
+                      registry.get<TH1>(HIST("Delta_SV"))->Fill(dimuon.sVertex() - realVz);
 
                       registry.get<TH2>(HIST("TauzTauzMC"))->Fill(dimuon.tauz(), realTauzMC);
-                      registry.get<TH2>(HIST("SVVz"))->Fill(dimuon.sVertex(), dimuon.vz1());
+                      registry.get<TH2>(HIST("SVVz"))->Fill(dimuon.sVertex(), dimuon.vz1()); // TMath::Abs(v12MC.Pz())
+                      registry.get<TH2>(HIST("PzPzMC"))->Fill(dimuon.vertexPz(), TMath::Abs(v12MC.Pz()));
+
                     } else if (dimuon.mcMask1() > 1. && dimuon.mcMask2() > 1.) { // FM & FM Jpsi
                       registry.get<TH1>(HIST("Sc_SV"))->Fill(dimuon.sVertex());
                       registry.get<TH1>(HIST("Tauz_Sc"))->Fill(dimuon.tauz());

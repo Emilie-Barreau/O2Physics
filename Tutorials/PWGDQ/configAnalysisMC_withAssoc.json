@@ -7,7 +7,7 @@
         "start-value-enumeration": "0",
         "end-value-enumeration": "-1",
         "step-value-enumeration": "1",
-        "aod-file-private": "/Users/emiliebarreau/alice/O2Physics/Tutorials/PWGDQ/reducedAod_newMCp_full_NOERASE.root",
+        "aod-file-private": "/Users/emiliebarreau/alice/MonteCarlo/New_Table_Maker_Prompt/reducedAod_newMCp_full_NOERASE.root",
         "aod-reader-json": "/Users/emiliebarreau/alice/JSONfiles/readerConfiguration_dileptonMC.json"
     },
     "analysis-event-selection": {
@@ -74,9 +74,9 @@
         "cfgFlatTables": "true",
         "cfgUseKFVertexing": "true",
         "cfgUseAbsDCA": "false",
-        "cfgPropToPCA": "true",
+        "cfgPropToPCA": "false",
         "cfgCorrFullGeo": "false",
-        "cfgNoCorrFwdProp": "true",
+        "cfgNoCorrFwdProp": "false",
         "syst": "pp",
         "energy": "13600",
         "processAllSkimmed": "false",
